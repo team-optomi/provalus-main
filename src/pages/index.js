@@ -140,19 +140,27 @@ const IndexPage = () => {
         <SectionThree>
           <h2 dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeSectionThreeTitle }} />
             <div class="one-fourth-col">
-              <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
+              <div class="icon-block">
+                <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
+              </div>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnOneContent }} />
             </div>
             <div class="one-fourth-col">
+              <div class="icon-block">
               <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.title} />
+              </div>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnTwoContent }} />
             </div>
             <div class="one-fourth-col">
+              <div class="icon-block">
               <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
+              </div>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnThreeContent }} />
             </div>
             <div class="one-fourth-col">
+              <div class="icon-block">
               <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
+              </div>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFourContent }} />
             </div>
         </SectionThree>
@@ -238,10 +246,139 @@ const Statistics = styled.div`
   }
 `
 
-const SectionTwo = styled.section``
+const SectionTwo = styled.section`
+  max-width: 1140px;
+  padding: 0 20px;
+  margin: 0 auto;
+  h2 {
+    font-family: "Kessel Light";
+    color: rgb(210,35,42);
+    font-weight: 400;
+    line-height: 1.2;
+    font-size: 38px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  p {
+    font-family: "Kessel Light";
+    line-height: 1.5;
+    font-size: 14px;
+    color: #828587;
+    max-width: 550px;
+    font-weight: 400;
+  }
+`
 
-const SectionThree = styled.section``
+const SectionThree = styled.section`
+  max-width: 1140px;
+  padding: 0 20px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  h2 {
+    font-family: "Kessel Light";
+    color: rgb(210,35,42);
+    font-weight: 400;
+    line-height: 1.2;
+    font-size: 38px;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    width: 100%;
+    text-align: center;
+  }
+  .one-fourth-col {
+    width: 25%;
+    padding: 0 35px;
+    border-right: 2px solid #aaa;
+    &:nth-child(2) {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+      border-right: none;
+    }
+    .icon-block {
+      height: 200px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .home-icon {
+        width: 100%;
+        max-height: 150px;
+        img {
+          object-fit: contain !important;
+        }
+      }
+    }
+    h3 {
+      font-family: "Balboa Medium";
+      color: #828587;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    p {
+      font-family: "Kessel Light";
+      line-height: 1.5;
+      font-size: 14px;
+      color: #828587;
+      max-width: 650px;
+      font-weight: 400;
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+`
 
-const SectionFour = styled.section``
+const SectionFour = styled.section`
+  max-width: 1140px;
+  padding: 0 20px;
+  margin: 100px auto;
+  h2 {
+    font-family: "Kessel Light";
+    color: rgb(210,35,42);
+    font-weight: 400;
+    line-height: 1.2;
+    font-size: 38px;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    width: 100%;
+  }
+  p {
+    font-family: "Kessel Light";
+    line-height: 1.5;
+    font-size: 14px;
+    color: #828587;
+    font-weight: 400;
+  }
+  div {
+    &:first-child {
+      p {
+        max-width: 650px;
+      }
+    }
+    &:nth-child(2) {
+      p {
+        text-align: center;
+      }
+    }
+    &:nth-child(3) {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    &:nth-child(4) {
+      p {
+        text-align: center;
+        margin-top: 50px;
+      }
+    }
+  }
+`
 
 export default IndexPage
