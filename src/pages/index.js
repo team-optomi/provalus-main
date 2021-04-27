@@ -182,7 +182,7 @@ const HomeHero = styled.section`
   margin: 0;
   padding: 0;
   position: relative;
-  padding-top: 120px;
+  padding-top: 80px;
   .hero-bg {
     position: absolute !important;
     top: 0;
@@ -192,7 +192,7 @@ const HomeHero = styled.section`
   }
   .hero-logo {
     position: relative;
-    max-width: 800px;
+    max-width: 600px;
     width: 100%;
     margin: 0 auto;
   }
@@ -205,6 +205,7 @@ const HomeHero = styled.section`
       line-height: 1.2;
       font-size: 32px;
       text-align: center;
+      margin-top: 20px;
       span.madelyn {
         font-family: "Madelyn";
         font-weight: 400;
@@ -263,7 +264,7 @@ const SectionTwo = styled.section`
     font-family: "Kessel Light";
     line-height: 1.5;
     font-size: 14px;
-    color: #828587;
+    color: #fff;
     max-width: 550px;
     font-weight: 400;
   }
@@ -327,7 +328,7 @@ const SectionThree = styled.section`
       font-family: "Kessel Light";
       line-height: 1.5;
       font-size: 14px;
-      color: #828587;
+      color: #fff;
       max-width: 650px;
       font-weight: 400;
       margin-bottom: 0;
@@ -354,7 +355,7 @@ const SectionFour = styled.section`
     font-family: "Kessel Light";
     line-height: 1.5;
     font-size: 14px;
-    color: #828587;
+    color: #fff;
     font-weight: 400;
   }
   div {
