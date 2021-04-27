@@ -12,7 +12,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const NewsPostTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
     fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
     alt: post.featuredImage?.node?.alt || ``,
@@ -120,17 +120,17 @@ const MainArticle = styled.article`
   }
 `
 
-export default BlogPostTemplate
+export default NewsPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostById(
+  query NewsPostById(
     # these variables are passed in via createPage.pageContext in gatsby-node.js
     $id: String!
     $previousPostId: String
     $nextPostId: String
   ) {
     # selecting the current post by id
-    post: wpPost(id: { eq: $id }) {
+    post: wpNewsSingle(id: { eq: $id }) {
       id
       excerpt
       content
@@ -152,13 +152,13 @@ export const pageQuery = graphql`
     }
 
     # this gets us the previous post by id (if it exists)
-    previous: wpPost(id: { eq: $previousPostId }) {
+    previous: wpNewsSingle(id: { eq: $previousPostId }) {
       uri
       title
     }
 
     # this gets us the next post by id (if it exists)
-    next: wpPost(id: { eq: $nextPostId }) {
+    next: wpNewsSingle(id: { eq: $nextPostId }) {
       uri
       title
     }

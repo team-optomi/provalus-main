@@ -1,37 +1,40 @@
-import React, { useEffect } from "react"
+import React from "react"
+import { Link } from "gatsby"
 import styled from 'styled-components'
 
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+// import gsap from "gsap"
+// import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import HeaderLogo from "../components/header-logo"
 
 const StickyLogo = () => {
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    if (typeof window !== `undefined`) {
-      gsap.registerPlugin(ScrollTrigger)
-      gsap.core.globals('ScrollTrigger', ScrollTrigger)
-    }
+  //   if (typeof window !== `undefined`) {
+  //     gsap.registerPlugin(ScrollTrigger)
+  //     gsap.core.globals('ScrollTrigger', ScrollTrigger)
+  //   }
 
-      let tl = gsap.timeline({
-          paused: true,
-          scrollTrigger: {
-            trigger: "#logoTrigger",
-            scrub: 1,
-            start: '50% top',
-            end: '50% top',
-            id: 'logo_trigger',
-            },
-          })
-          tl.to('.sticky-logo', { top: '0px' })
+  //     let tl = gsap.timeline({
+  //         paused: true,
+  //         scrollTrigger: {
+  //           trigger: "#logoTrigger",
+  //           scrub: 1,
+  //           start: '50% top',
+  //           end: '50% top',
+  //           id: 'logo_trigger',
+  //           },
+  //         })
+  //         tl.to('.sticky-logo', { top: '0px' })
 
-    }, []);
+  //   }, []);
 
       return(
           <StickyDiv className={"sticky-logo"}>
+            <Link to="/">
               <HeaderLogo/>
+            </Link>
           </StickyDiv>
       );
 
@@ -39,7 +42,7 @@ const StickyLogo = () => {
 
 const StickyDiv = styled.div`
     position: fixed;
-    top: -120px;
+    top: 0px;
     left: 5px;
     width: 200px;
     padding: 10px;

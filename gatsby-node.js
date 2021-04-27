@@ -25,6 +25,21 @@ exports.createPages = async gatsbyUtilities => {
 
   // And a paginated archive
   await createBlogPostArchive({ posts, gatsbyUtilities })
+
+
+   // Query our news posts from the GraphQL server
+   const newsPosts = await getNews(gatsbyUtilities)
+
+   // If there are no posts in WordPress, don't do anything
+   if (!newsPosts.length) {
+     return
+   }
+ 
+   // If there are posts, create pages for them
+   await createIndividualNewsPostPages({ newsPosts, gatsbyUtilities })
+ 
+   // And a paginated archive
+   await createNewsPostArchive({ newsPosts, gatsbyUtilities })
 }
 
 /**
@@ -60,7 +75,39 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
   )
 
 /**
- * This function creates all the individual blog pages in this site
+ * This function creates all the individual news pages in this site
+ */
+const createIndividualNewsPostPages = async ({ newsPosts, gatsbyUtilities }) =>
+Promise.all(
+  newsPosts.map(({ previous, newsPost, next }) =>
+    // createPage is an action passed to createPages
+    // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+    gatsbyUtilities.actions.createPage({
+      // Use the WordPress uri as the Gatsby page path
+      // This is a good idea so that internal links and menus work 👍
+      path: newsPost.uri,
+
+      // use the blog post template as the page component
+      component: path.resolve(`./src/templates/news-post.js`),
+
+      // `context` is available in the template as a prop and
+      // as a variable in GraphQL.
+      context: {
+        // we need to add the post id here
+        // so our blog post template knows which blog post
+        // the current page is (when you open it in a browser)
+        id: newsPost.id,
+
+        // We also use the next and previous id's to query them and add links!
+        previousPostId: previous ? previous.id : null,
+        nextPostId: next ? next.id : null,
+      },
+    })
+  )
+)
+
+/**
+ * This function creates the blog archives pages
  */
 async function createBlogPostArchive({ posts, gatsbyUtilities }) {
   const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
@@ -84,9 +131,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
 
       const getPagePath = page => {
         if (page > 0 && page <= totalPages) {
-          // Since our homepage is our blog page
-          // we want the first page to be "/" and any additional pages
-          // to be numbered.
+          // slug for archive and pagination
           // "/blog/2" for example
           return page === 1 ? `/blog/` : `/blog/${page}`
         }
@@ -101,6 +146,66 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
 
         // use the blog post archive template as the page component
         component: path.resolve(`./src/templates/blog-post-archive.js`),
+
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          // the index of our loop is the offset of which posts we want to display
+          // so for page 1, 0 * 10 = 0 offset, for page 2, 1 * 10 = 10 posts offset,
+          // etc
+          offset: index * postsPerPage,
+
+          // We need to tell the template how many posts to display too
+          postsPerPage,
+
+          nextPagePath: getPagePath(pageNumber + 1),
+          previousPagePath: getPagePath(pageNumber - 1),
+        },
+      })
+    })
+  )
+}
+
+/**
+ * This function creates the news archive pages
+ */
+ async function createNewsPostArchive({ newsPosts, gatsbyUtilities }) {
+  const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
+    {
+      wp {
+        readingSettings {
+          postsPerPage
+        }
+      }
+    }
+  `)
+
+  const { postsPerPage } = graphqlResult.data.wp.readingSettings
+
+  const postsChunkedIntoArchivePages = chunk(newsPosts, postsPerPage)
+  const totalPages = postsChunkedIntoArchivePages.length
+
+  return Promise.all(
+    postsChunkedIntoArchivePages.map(async (_newsPosts, index) => {
+      const pageNumber = index + 1
+
+      const getPagePath = page => {
+        if (page > 0 && page <= totalPages) {
+          // slug for archive and pagination
+          // "/blog/2" for example
+          return page === 1 ? `/news/` : `/news/${page}`
+        }
+
+        return null
+      }
+
+      // createPage is an action passed to createPages
+      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+      await gatsbyUtilities.actions.createPage({
+        path: getPagePath(pageNumber),
+
+        // use the blog post archive template as the page component
+        component: path.resolve(`./src/templates/news-post-archive.js`),
 
         // `context` is available in the template as a prop and
         // as a variable in GraphQL.
@@ -163,4 +268,44 @@ async function getPosts({ graphql, reporter }) {
   }
 
   return graphqlResult.data.allWpPost.edges
+}
+
+
+/**
+ * This function pulls all the news posts from graphql
+ */
+ async function getNews({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query WpNewsSingle {
+      # Query all WordPress blog posts sorted by date
+      allWpNewsSingle(sort: { fields: [date], order: DESC }) {
+        edges {
+          previous {
+            id
+          }
+
+          # note: this is a GraphQL alias. It renames "node" to "post" for this query
+          # We're doing this because this "node" is a post! It makes our code more readable further down the line.
+          newsPost: node {
+            id
+            uri
+          }
+
+          next {
+            id
+          }
+        }
+      }
+    }
+  `)
+
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      graphqlResult.errors
+    )
+    return
+  }
+
+  return graphqlResult.data.allWpNewsSingle.edges
 }
