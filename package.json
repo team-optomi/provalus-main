@@ -32,7 +32,9 @@
     "react-icons": "^4.2.0",
     "react-odometerjs": "^2.1.1",
     "react-player": "^2.9.0",
+    "react-slick": "^0.28.1",
     "react-visibility-sensor": "^5.1.1",
+    "slick-slider": "^1.8.2",
     "styled-components": "^5.2.1",
     "typeface-merriweather": "1.1.13",
     "typeface-montserrat": "1.1.13"
