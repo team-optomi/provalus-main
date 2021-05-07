@@ -118,6 +118,16 @@ const MainArticle = styled.article`
       }
     }
   }
+  .wp-video {
+    max-width: 1000px;
+    width: 100%;
+    height: auto;
+    video {
+        max-width: 1000px !important;
+        width: 100% !important;
+        height: auto;
+    }
+  }
 `
 
 export default BlogPostTemplate
