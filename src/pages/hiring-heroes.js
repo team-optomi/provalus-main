@@ -358,12 +358,12 @@ const HiringHeroesPage = () => {
   `
   
   const SectionOne = styled.section`
-    background-color: #231f20;
+    background-color: #0b283a;
     padding: 35px 0;
     padding-bottom: 70px;
     h2 {
       font-family: "Kessel Light";
-      color: #25408f;
+      color: #d0d5d9;
       font-weight: bold;
       font-size: 50px;
       text-align: center;
@@ -390,7 +390,7 @@ const HiringHeroesPage = () => {
   const PopLeft = styled.div`
     position: relative;
     width: 58.4%;
-    background-color: rgb(37, 64, 143);
+    background-color: #d0d5d9;
     padding: 20px 0;
     margin-bottom: 100px;
     margin-right: -4%;
@@ -398,7 +398,7 @@ const HiringHeroesPage = () => {
       font-family: "Kessel Light";
       font-size: 87px;
       font-weight: bold;
-      color: #fff;
+      color: #0b283a;
       line-height: 0;
       max-width: 500px;
       height: 200px;
@@ -414,7 +414,7 @@ const HiringHeroesPage = () => {
       }
     }
     .arrow-line {
-      border: 5px solid #25408f;
+      border: 5px solid #d0d5d9;
       width: 500px;
       height: 40px;
       position: absolute;
@@ -435,7 +435,7 @@ const HiringHeroesPage = () => {
   const PopRight = styled.div`
     border-style: solid;
     border-width: 5px 0px 5px 5px;
-    border-color: rgb(37, 64, 143);
+    border-color: #d0d5d9;
     width: 45%;
     height: 190px;
     padding: 35px 15px 15px 100px;
@@ -443,7 +443,7 @@ const HiringHeroesPage = () => {
     align-items: center;
     p {
       font-family: "Balboa Medium";
-      color: #fff;
+      color: #d0d5d9;
       font-size: 100px;
       line-height: 1;
       margin-bottom: 0;

@@ -80,6 +80,7 @@ const AboutPage = () => {
       line-height: 35px;
       color: #d2232a;
       text-align: center;
+      position: relative;
     }
   `
 
@@ -92,9 +93,9 @@ const AboutPage = () => {
   const SectionContent = styled.section`
     p {
         font-family: "Kessel Light";
-        line-height: 38px;
+        line-height: 1.5;
         padding-top: 30px;
-        font-size: 28px;
+        font-size: 18px;
         color: #fff;
         text-align: center;
     }

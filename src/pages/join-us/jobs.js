@@ -107,7 +107,7 @@ const JobsPage = () => {
     }
     p {
         font-family: "Kessel Light";
-        font-size: 16px;
+        font-size: 18px;
         color: #f1f2f2;
         text-align: center;
         padding-top: 0;

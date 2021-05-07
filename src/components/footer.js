@@ -91,7 +91,7 @@ const Footer = () => {
               </div>
               <div class="contact-right">
                 <FaPhoneAlt size={28}/>
-                <p>251.286.1070</p>
+                <p>888.689.0872</p>
               </div>
             </FooterContact>
             <FooterCopyright>

@@ -6,6 +6,8 @@ import Img from "gatsby-image"
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
 
+import scrollTo from 'gatsby-plugin-smoothscroll';
+import { FaChevronDown } from 'react-icons/fa'
 
 const IndexPage = () => {
 
@@ -133,8 +135,9 @@ const IndexPage = () => {
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
           </Statistics>
+          <button onClick={() => scrollTo('#home_section_two')}><FaChevronDown size={36}/></button>
         </HomeHero>
-        <SectionTwo>
+        <SectionTwo id="home_section_two">
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionTwoContent }} />
         </SectionTwo>
         <SectionThree>
@@ -167,7 +170,9 @@ const IndexPage = () => {
         <SectionFour>
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourFirstContent }} />
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourMiddleContent }} />
-          <Img className={"home-map"} fluid={post.node.HomePageContent.homeSectionFour.homeFourImage.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionFour.homeFourImage.title} />
+          <Link to="/contact/contact-us/" className={"home-map"}>
+            <Img className={"home-map"} fluid={post.node.HomePageContent.homeSectionFour.homeFourImage.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionFour.homeFourImage.title} />
+          </Link>
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourBottomContent }} />
         </SectionFour>
       </Layout>
@@ -203,7 +208,7 @@ const HomeHero = styled.section`
       color: rgb(210,35,42);
       font-weight: 700;
       line-height: 1.2;
-      font-size: 32px;
+      font-size: 28px;
       text-align: center;
       margin-top: 20px;
       span.madelyn {
@@ -213,6 +218,17 @@ const HomeHero = styled.section`
         bottom: 6px;
         position: relative;
       }
+    }
+  }
+  button {
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 26px);
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    &:hover {
+      cursor: pointer;
     }
   }
 `
@@ -233,12 +249,12 @@ const Statistics = styled.div`
       color: rgb(210,35,42);
       font-weight: 700;
       line-height: 1.2;
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 0;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       span.large {
-        font-size: 36px;
+        font-size: 28px;
         margin-right: 10px;
         line-height: 1;
         text-transform: uppercase;
@@ -251,6 +267,7 @@ const SectionTwo = styled.section`
   max-width: 1140px;
   padding: 0 20px;
   margin: 0 auto;
+  padding-top: 70px;
   h2 {
     font-family: "Kessel Light";
     color: rgb(210,35,42);
@@ -258,12 +275,13 @@ const SectionTwo = styled.section`
     line-height: 1.2;
     font-size: 38px;
     text-transform: uppercase;
+    margin-top: 0;
     margin-bottom: 10px;
   }
   p {
     font-family: "Kessel Light";
     line-height: 1.5;
-    font-size: 14px;
+    font-size: 18px;
     color: #fff;
     max-width: 550px;
     font-weight: 400;
@@ -341,6 +359,10 @@ const SectionFour = styled.section`
   max-width: 1140px;
   padding: 0 20px;
   margin: 100px auto;
+  .home-map {
+    max-width: 800px;
+    margin: 0 auto;
+  }
   h2 {
     font-family: "Kessel Light";
     color: rgb(210,35,42);
@@ -354,7 +376,7 @@ const SectionFour = styled.section`
   p {
     font-family: "Kessel Light";
     line-height: 1.5;
-    font-size: 14px;
+    font-size: 18px;
     color: #fff;
     font-weight: 400;
   }

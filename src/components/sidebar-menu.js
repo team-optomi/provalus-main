@@ -51,20 +51,6 @@ class SideMainMenu extends Component {
                     <SubMenu className={menuOneName}>
                         <MenuItem>
                             <Link
-                            to="/services/ito/"
-                            >
-                            ITO
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <Link
-                            to="/services/bpo/"
-                            >
-                            BPO
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <Link
                             to="/services/support/"
                             >
                             Support
@@ -72,9 +58,23 @@ class SideMainMenu extends Component {
                         </MenuItem>
                         <MenuItem>
                             <Link
-                            to="/services/teamvue/"
+                            to="/services/run/"
                             >
-                            TeamVue
+                            Run
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link
+                            to="/services/build/"
+                            >
+                            Build
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link
+                            to="/services/security/"
+                            >
+                            Security
                             </Link>
                         </MenuItem>
                     </SubMenu>
@@ -85,13 +85,13 @@ class SideMainMenu extends Component {
                     Client Value
                     </Link>
                 </MenuItem>
-                <MenuItem>
+                {/* <MenuItem>
                     <Link
                     to="/positive-change/community-contribution/"
                     >
                     Community Impact
                     </Link>
-                </MenuItem>
+                </MenuItem> */}
                 <MenuItem>
                     <Link
                     to="/positive-change/mission/"
@@ -184,7 +184,7 @@ const MenuItem = styled.li`
     a {
         letter-spacing: 1px;
         font-size: 18px;
-        color: #61b1e8;
+        color: #fff;
         text-decoration: none;
         transition-duration: .3s;
         &:hover {
@@ -198,7 +198,7 @@ const SubMenuToggle = styled.div`
         font-family: "Kessel Light";
         letter-spacing: 1px;
         font-size: 18px;
-        color: #61b1e8;
+        color: #fff;
         text-decoration: none;
         transition-duration: .3s;
         display: flex;

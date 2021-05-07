@@ -1,22 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Slider from "react-slick"
 import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
+import ScrollingImages from "../../components/scrolling-images"
 
 const ContactUsPage = () => {
-
-    const settings = {
-      arrows: false,
-      dots: false,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      focusOnSelect: true,
-      centerMode: true,
-    }
 
     const data = useStaticQuery(graphql`
       query {
@@ -64,15 +54,6 @@ const ContactUsPage = () => {
                 contactLocationOne
                 contactLocationThree
                 contactLocationTwo
-                contactScrollImages {
-                    localFile {
-                        childImageSharp {
-                            fluid(maxWidth: 800) {
-                                ...GatsbyImageSharpFluid_withWebp
-                            }
-                        }
-                    }
-                }
               }
             }
           }
@@ -110,13 +91,7 @@ const ContactUsPage = () => {
                     </div>
                 </SectionThree>
                 <SectionFour>
-                  <div class="contact-slider">
-                    <Slider {...settings}>
-                      {post.node.ContactUsContent.contactScrollImages.map(image => (
-                        <Img fluid={image.localFile.childImageSharp.fluid} alt={"scroll image"} />
-                      ))}
-                    </Slider>
-                  </div>
+                  <ScrollingImages/>
                   <div class="phone-content">
                       <Img fluid={data.phoneImage.childImageSharp.fixed} />
                       <p>888.689.0872</p>

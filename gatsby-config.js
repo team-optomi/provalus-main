@@ -61,6 +61,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     'gatsby-plugin-page-transitions',
     `gatsby-plugin-scroll-reveal`,
+    `gatsby-plugin-smoothscroll`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
 
