@@ -27,6 +27,7 @@ exports.createPages = async gatsbyUtilities => {
   await createBlogPostArchive({ posts, gatsbyUtilities })
 
 
+
    // Query our news posts from the GraphQL server
    const newsPosts = await getNews(gatsbyUtilities)
 
@@ -40,6 +41,22 @@ exports.createPages = async gatsbyUtilities => {
  
    // And a paginated archive
    await createNewsPostArchive({ newsPosts, gatsbyUtilities })
+
+
+
+   // Query our wellness posts from the GraphQL server
+   const wellnessPosts = await getWellnessPosts(gatsbyUtilities)
+
+   // If there are no posts in WordPress, don't do anything
+   if (!wellnessPosts.length) {
+     return
+   }
+ 
+   // If there are posts, create pages for them
+   await createIndividualWellnessPostPages({ wellnessPosts, gatsbyUtilities })
+ 
+   // And a paginated archive
+   await createWellnessPostArchive({ wellnessPosts, gatsbyUtilities })
 }
 
 /**
@@ -53,7 +70,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
       gatsbyUtilities.actions.createPage({
         // Use the WordPress uri as the Gatsby page path
         // This is a good idea so that internal links and menus work 👍
-        path: post.uri,
+        path: `/insights/${post.slug}`,
 
         // use the blog post template as the page component
         component: path.resolve(`./src/templates/blog-post.js`),
@@ -85,7 +102,7 @@ Promise.all(
     gatsbyUtilities.actions.createPage({
       // Use the WordPress uri as the Gatsby page path
       // This is a good idea so that internal links and menus work 👍
-      path: newsPost.uri,
+      path: `/news/${newsPost.slug}`,
 
       // use the blog post template as the page component
       component: path.resolve(`./src/templates/news-post.js`),
@@ -105,6 +122,38 @@ Promise.all(
     })
   )
 )
+
+/**
+ * This function creates all the individual wellness pages in this site
+ */
+ const createIndividualWellnessPostPages = async ({ wellnessPosts, gatsbyUtilities }) =>
+ Promise.all(
+   wellnessPosts.map(({ previous, wellnessPost, next }) =>
+     // createPage is an action passed to createPages
+     // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+     gatsbyUtilities.actions.createPage({
+       // Use the WordPress uri as the Gatsby page path
+       // This is a good idea so that internal links and menus work 👍
+       path: `/wellness/${wellnessPost.slug}`,
+ 
+       // use the blog post template as the page component
+       component: path.resolve(`./src/templates/wellness-post.js`),
+ 
+       // `context` is available in the template as a prop and
+       // as a variable in GraphQL.
+       context: {
+         // we need to add the post id here
+         // so our blog post template knows which blog post
+         // the current page is (when you open it in a browser)
+         id: wellnessPost.id,
+ 
+         // We also use the next and previous id's to query them and add links!
+         previousPostId: previous ? previous.id : null,
+         nextPostId: next ? next.id : null,
+       },
+     })
+   )
+ )
 
 /**
  * This function creates the blog archives pages
@@ -133,7 +182,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
         if (page > 0 && page <= totalPages) {
           // slug for archive and pagination
           // "/blog/2" for example
-          return page === 1 ? `/blog/` : `/blog/${page}`
+          return page === 1 ? `/insights/` : `/insights/${page}`
         }
 
         return null
@@ -227,6 +276,66 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
 }
 
 /**
+ * This function creates the wellness archive pages
+ */
+ async function createWellnessPostArchive({ wellnessPosts, gatsbyUtilities }) {
+  const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
+    {
+      wp {
+        readingSettings {
+          postsPerPage
+        }
+      }
+    }
+  `)
+
+  const { postsPerPage } = graphqlResult.data.wp.readingSettings
+
+  const postsChunkedIntoArchivePages = chunk(wellnessPosts, postsPerPage)
+  const totalPages = postsChunkedIntoArchivePages.length
+
+  return Promise.all(
+    postsChunkedIntoArchivePages.map(async (_wellnessPosts, index) => {
+      const pageNumber = index + 1
+
+      const getPagePath = page => {
+        if (page > 0 && page <= totalPages) {
+          // slug for archive and pagination
+          // "/blog/2" for example
+          return page === 1 ? `/wellness/` : `/wellness/${page}`
+        }
+
+        return null
+      }
+
+      // createPage is an action passed to createPages
+      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+      await gatsbyUtilities.actions.createPage({
+        path: getPagePath(pageNumber),
+
+        // use the blog post archive template as the page component
+        component: path.resolve(`./src/templates/wellness-post-archive.js`),
+
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          // the index of our loop is the offset of which posts we want to display
+          // so for page 1, 0 * 10 = 0 offset, for page 2, 1 * 10 = 10 posts offset,
+          // etc
+          offset: index * postsPerPage,
+
+          // We need to tell the template how many posts to display too
+          postsPerPage,
+
+          nextPagePath: getPagePath(pageNumber + 1),
+          previousPagePath: getPagePath(pageNumber - 1),
+        },
+      })
+    })
+  )
+}
+
+/**
  * This function queries Gatsby's GraphQL server and asks for
  * All WordPress blog posts. If there are any GraphQL error it throws an error
  * Otherwise it will return the posts 🙌
@@ -249,6 +358,7 @@ async function getPosts({ graphql, reporter }) {
           post: node {
             id
             uri
+            slug
           }
 
           next {
@@ -289,6 +399,7 @@ async function getPosts({ graphql, reporter }) {
           newsPost: node {
             id
             uri
+            slug
           }
 
           next {
@@ -308,4 +419,44 @@ async function getPosts({ graphql, reporter }) {
   }
 
   return graphqlResult.data.allWpNewsSingle.edges
+}
+
+/**
+ * This function pulls all the wellness posts from graphql
+ */
+ async function getWellnessPosts({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query WpWellnessPost {
+      # Query all WordPress wellness posts sorted by date
+      allWpWellnessPost(sort: { fields: [date], order: DESC }) {
+        edges {
+          previous {
+            id
+          }
+
+          # note: this is a GraphQL alias. It renames "node" to "post" for this query
+          # We're doing this because this "node" is a post! It makes our code more readable further down the line.
+          wellnessPost: node {
+            id
+            uri
+            slug
+          }
+
+          next {
+            id
+          }
+        }
+      }
+    }
+  `)
+
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      graphqlResult.errors
+    )
+    return
+  }
+
+  return graphqlResult.data.allWpWellnessPost.edges
 }

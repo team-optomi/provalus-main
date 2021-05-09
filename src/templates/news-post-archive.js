@@ -4,9 +4,11 @@ import parse from "html-react-parser"
 import styled from 'styled-components'
 import Img from "gatsby-image"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
+
+import { FaChevronLeft } from 'react-icons/fa'
+import { FaChevronRight } from 'react-icons/fa'
 
 const NewsIndex = ({
   data,
@@ -18,7 +20,6 @@ const NewsIndex = ({
     return (
       <Layout isHomePage>
         <SEO title="All posts" />
-        <Bio />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
           appear here!
@@ -64,13 +65,15 @@ const NewsIndex = ({
           })}
         </MainLoop>
 
-        {previousPagePath && (
-          <>
-            <Link to={previousPagePath}>Previous page</Link>
-            <br />
-          </>
-        )}
-        {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
+        <Pagination>
+          {previousPagePath && (
+            <>
+              <Link to={previousPagePath}><FaChevronLeft size={36}/></Link>
+              <br />
+            </>
+          )}
+          {nextPagePath && <Link to={nextPagePath}><FaChevronRight size={36}/></Link>}
+        </Pagination>
       </MainBackground>
       
     </Layout>
@@ -143,6 +146,18 @@ const MainLoop = styled.ol`
         }
       }
     }
+  }
+`
+
+const Pagination = styled.div`
+  margin: 0px auto;
+  padding: 50px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    color: #fff;
   }
 `
 

@@ -121,7 +121,7 @@ const SectionTwo = styled.section`
     overflow: hidden;
     padding: 100px 0;
     .background-image {
-      position: absolute;
+      position: relative;
       width: 100%;
       height: 100%;
       top: 0;
@@ -140,13 +140,19 @@ const SectionTwo = styled.section`
       }
     }
     .section-content {
-      position: relative;
+      position: absolute;
       z-index: 10;
-      padding: 0 20px;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       p {
         font-family: "Kessel Light";
-        line-height: 1.8;
-        font-size: 14px;
+        line-height: 1.5;
+        font-size: 18px;
         color: #fff;
         font-weight: 400;
         text-align: center;
@@ -191,8 +197,8 @@ const SectionThree = styled.section`
         }
         p {
           font-family: "Kessel Light";
-          line-height: 1.8;
-          font-size: 14px;
+          line-height: 1.5;
+          font-size: 18px;
           color: #fff;
           font-weight: 400;
           text-align: center;
@@ -207,37 +213,30 @@ const SectionThree = styled.section`
 
 const SectionFour = styled.section`
   width: 100%;
-  .contact-slider {
+  .phone-content {
     width: 100%;
-    max-width: 100%;
-    height: 350px;
-    margin: 0 auto;
-    .slick-slider {
-      max-width: 525px;
-      width: 100%;
-      margin: 0 auto;
-      overflow: visible;
-    }
-    .slick-list{
-      padding: 0;
-      overflow: visible;
-    }
-    .slick-slide {
-      width: 100%;
-      transition-duration: .3s;
-      outline: 0 !important;
-      height: 350px;
-      width: 525px;
-      > div {
-        height: 350px;
-        width: 525px;
-        border: 2px solid #d2232a;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .gatsby-image-wrapper {
+      width: 50px;
+      height: 53px;
+      margin-right: 20px;
+      img {
+        width: 50px !important;
+        height: auto !important;
+        object-fit: contain !important;
       }
-      .gatsby-image-wrapper {
-        height: 350px;
-        width: 525px;
-        width: 100%;
-      }
+    }
+    p {
+      font-family: "Kessel Light";
+      line-height: 1.5;
+      font-size: 18px;
+      color: #fff;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 0;
     }
   }
 `

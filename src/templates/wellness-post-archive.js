@@ -4,24 +4,22 @@ import parse from "html-react-parser"
 import styled from 'styled-components'
 import Img from "gatsby-image"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
 
 import { FaChevronLeft } from 'react-icons/fa'
 import { FaChevronRight } from 'react-icons/fa'
 
-const BlogIndex = ({
+const WellnessPostIndex = ({
   data,
   pageContext: { nextPagePath, previousPagePath },
 }) => {
-  const posts = data.allWpPost.nodes
+  const posts = data.allWpWellnessPost.nodes
 
   if (!posts.length) {
     return (
       <Layout isHomePage>
         <SEO title="All posts" />
-        <Bio />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
           appear here!
@@ -50,14 +48,14 @@ const BlogIndex = ({
                   <div class="entry-wrap">
                     <header>
                       <h2>
-                        <Link to={`/insights/${post.slug}`} itemProp="url">
+                        <Link to={`/wellness/${post.slug}`} itemProp="url">
                           <span itemProp="headline">{parse(title)}</span>
                         </Link>
                       </h2>
                     </header>
                     <section itemProp="description">{parse(post.excerpt)}</section>
                     <div class="bottom-flex">
-                      <p><Link to={`/insights/${post.slug}`} itemProp="url">Read More</Link></p>
+                      <p><Link to={`/wellness/${post.slug}`} itemProp="url">Read More</Link></p>
                       <p>{post.date}</p>
                     </div>
                   </div>
@@ -76,8 +74,6 @@ const BlogIndex = ({
           )}
           {nextPagePath && <Link to={nextPagePath}><FaChevronRight size={36}/></Link>}
         </Pagination>
-
-        
       </MainBackground>
       
     </Layout>
@@ -165,11 +161,11 @@ const Pagination = styled.div`
   }
 `
 
-export default BlogIndex
+export default WellnessPostIndex
 
 export const pageQuery = graphql`
-  query WordPressPostArchive($offset: Int!, $postsPerPage: Int!) {
-    allWpPost(
+  query WordPressWellnessArchive($offset: Int!, $postsPerPage: Int!) {
+    allWpWellnessPost(
       sort: { fields: [date], order: DESC }
       limit: $postsPerPage
       skip: $offset

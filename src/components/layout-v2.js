@@ -10,6 +10,8 @@ import SideBarMenu from "../components/sidebar-menu"
 import Footer from "../components/footer"
 
 import ".././odometer.css"
+import "../slick.css"
+import "../slick-theme.css"
 
 class Layout extends Component {
 
