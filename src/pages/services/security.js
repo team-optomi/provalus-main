@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
+import SecurityCaseStudySlider from "../../components/security-case-study-slider"
 
 const SecurityPage = () => {
 
@@ -53,7 +54,7 @@ const SecurityPage = () => {
             <div dangerouslySetInnerHTML={{ __html: post.node.SecurityPageContent.securitySectionTwo }}/>
           </SectionTwo>
           <SectionThree>
-            <div dangerouslySetInnerHTML={{ __html: post.node.SecurityPageContent.securitySectionThree }}/>
+            <SecurityCaseStudySlider />
           </SectionThree>
         </Layout>
       ))
@@ -186,7 +187,7 @@ const SectionTwo = styled.section`
 const SectionThree = styled.section`
   max-width: 1140px;
   padding: 0 20px;
-  margin: 40px auto;
+  margin: 80px auto;
 `
   
 export default SecurityPage

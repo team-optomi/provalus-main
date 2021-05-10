@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
+import RunCaseStudySlider from "../../components/run-case-study-slider"
 
 const RunPage = () => {
 
@@ -53,7 +54,7 @@ const RunPage = () => {
             <div dangerouslySetInnerHTML={{ __html: post.node.RunPageContent.runSectionTwo }}/>
           </SectionTwo>
           <SectionThree>
-            <div dangerouslySetInnerHTML={{ __html: post.node.RunPageContent.runSectionThree }}/>
+            <RunCaseStudySlider />
           </SectionThree>
         </Layout>
       ))
@@ -181,7 +182,7 @@ const SectionTwo = styled.section`
 const SectionThree = styled.section`
   max-width: 1140px;
   padding: 0 20px;
-  margin: 40px auto;
+  margin: 80px auto;
 `
   
 export default RunPage
