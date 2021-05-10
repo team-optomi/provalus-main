@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
+import SupportCaseStudySlider from "../../components/support-case-study-slider"
 
 const SupportPage = () => {
 
@@ -53,7 +54,7 @@ const SupportPage = () => {
             <div dangerouslySetInnerHTML={{ __html: post.node.SupportPageContent.supportSectionTwo }}/>
           </SectionTwo>
           <SectionThree>
-            <div dangerouslySetInnerHTML={{ __html: post.node.SupportPageContent.supportSectionThree }}/>
+            <SupportCaseStudySlider />
           </SectionThree>
         </Layout>
       ))
@@ -181,7 +182,8 @@ const SectionTwo = styled.section`
 const SectionThree = styled.section`
   max-width: 1140px;
   padding: 0 20px;
-  margin: 40px auto;
+  margin: 80px auto;
+  margin-bottom: 120px;
 `
   
 export default SupportPage

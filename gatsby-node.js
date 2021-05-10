@@ -57,6 +57,20 @@ exports.createPages = async gatsbyUtilities => {
  
    // And a paginated archive
    await createWellnessPostArchive({ wellnessPosts, gatsbyUtilities })
+
+
+   // Query our case study posts from the GraphQL server
+   const caseStudies = await getCaseStudies(gatsbyUtilities)
+
+   // If there are no posts in WordPress, don't do anything
+   if (!caseStudies.length) {
+     return
+   }
+ 
+   // If there are posts, create pages for them
+   await createIndividualCaseStudyPages({ caseStudies, gatsbyUtilities })
+
+
 }
 
 /**
@@ -150,6 +164,34 @@ Promise.all(
          // We also use the next and previous id's to query them and add links!
          previousPostId: previous ? previous.id : null,
          nextPostId: next ? next.id : null,
+       },
+     })
+   )
+ )
+
+/**
+ * This function creates all the individual case study pages in this site
+ */
+ const createIndividualCaseStudyPages = async ({ caseStudies, gatsbyUtilities }) =>
+ Promise.all(
+   caseStudies.map(({ caseStudy }) =>
+     // createPage is an action passed to createPages
+     // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+     gatsbyUtilities.actions.createPage({
+       // Use the WordPress uri as the Gatsby page path
+       // This is a good idea so that internal links and menus work 👍
+       path: `/case-studies/${caseStudy.slug}`,
+ 
+       // use the blog post template as the page component
+       component: path.resolve(`./src/templates/case-study.js`),
+ 
+       // `context` is available in the template as a prop and
+       // as a variable in GraphQL.
+       context: {
+         // we need to add the post id here
+         // so our blog post template knows which blog post
+         // the current page is (when you open it in a browser)
+         id: caseStudy.id,
        },
      })
    )
@@ -459,4 +501,36 @@ async function getPosts({ graphql, reporter }) {
   }
 
   return graphqlResult.data.allWpWellnessPost.edges
+}
+
+/**
+ * This function pulls all the wellness posts from graphql
+ */
+ async function getCaseStudies({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query WpCaseStudy {
+      # Query all WordPress case studies sorted by date
+      allWpCaseStudy(sort: { fields: [date], order: DESC }) {
+        edges {
+          # note: this is a GraphQL alias. It renames "node" to "caseStudy" for this query
+          # We're doing this because this "node" is a post! It makes our code more readable further down the line.
+          caseStudy: node {
+            id
+            uri
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      graphqlResult.errors
+    )
+    return
+  }
+
+  return graphqlResult.data.allWpCaseStudy.edges
 }
