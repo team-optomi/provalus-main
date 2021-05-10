@@ -40,9 +40,7 @@ const CaseStudyTemplate = ({ data: { caseStudy, caseStudyIcon } }) => {
 const MainBackground = styled.div`
   width: 100%;
   background-color: #353431;
-  padding-top: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 100px 20px;
 `
 
 const MainArticle = styled.article`
@@ -108,6 +106,16 @@ const MainArticle = styled.article`
                 margin-top: 0;
                 margin-bottom: 10px;
                 text-align: center;
+            }
+            img {
+              object-fit: contain !important;
+            }
+            &.flex {
+              display: flex;
+              justify-content: space-between;
+              > div {
+                width: calc(33.33% - 10px);
+              }
             }
         }
     }

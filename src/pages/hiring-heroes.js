@@ -13,7 +13,7 @@ const HiringHeroesPage = () => {
 
     const data = useStaticQuery(graphql`
       query {
-        arrowImage: file(relativePath: { eq: "arrow.png" }) {
+        arrowImage: file(relativePath: { eq: "arrow-light.png" }) {
           childImageSharp {
             fixed(width: 69, height: 69) {
               ...GatsbyImageSharpFixed
@@ -134,6 +134,7 @@ const HiringHeroesPage = () => {
                 url={'https://fast.wistia.net/embed/iframe/j9xeiqyw81'} 
                 playing={true}
                 loop={true}
+                modestBranding={true}
                 width='100%'
                 height='650px'
               />
@@ -328,6 +329,7 @@ const HiringHeroesPage = () => {
   const PageMain = styled.div`
     width: 100%;
     padding: 200px 0;
+    padding-bottom: 0;
     h1 {
       font-family: "Balboa Medium";
       font-size: 170px;
@@ -493,7 +495,7 @@ const HiringHeroesPage = () => {
   `
 
   const SectionThree = styled.section`
-    background-color: #1f1e1d;
+    background-color: #161614;
     padding: 45px 0;
     > div {
       max-width: 1200px;
@@ -501,20 +503,23 @@ const HiringHeroesPage = () => {
       margin: 0 auto;
       h2 {
         font-family: "Balboa Medium";
-        color: #25408f;
+        color: #d0d5d9;
         letter-spacing: 3px;
-        font-size: 50px;
+        font-size: 32px;
         line-height: 1.2;
-        margin-top: 35px;
-        margin-bottom: 35px;
+        text-align: center;
+        max-width: 650px;
+        margin: 35px auto;
       }
       p {
         font-family: "Kessel Light";
-        color: #25408f;
-        font-size: 40px;
-        color: #25408f;
-        font-weight: 600;
-        letter-spacing: 3px;
+        color: #fff;
+        font-size: 18px;
+        line-height: 1.5;
+        font-weight: 400;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
       }
       .gatsby-image-wrapper {
         max-width: 720px !important;
@@ -531,7 +536,7 @@ const HiringHeroesPage = () => {
   `
 
   const SectionFour = styled.section`
-    background-color: #231f20;
+    background-color: #0b283a;
     padding: 45px 0;
   `
 
@@ -544,7 +549,7 @@ const HiringHeroesPage = () => {
   const LeftBox = styled.div`
     border-style: solid;
     border-width: 5px 5px 5px 0px;
-    border-color: rgb(37, 64, 143);
+    border-color: #d0d5d9;
     width: 45%;
     height: 220px;
     padding: 35px 15px 15px 100px;
@@ -561,7 +566,7 @@ const HiringHeroesPage = () => {
     }
     h3 {
       font-family: "Balboa Medium";
-      color: #fff;
+      color: #d0d5d9;
       font-size: 120px;
       line-height: 1;
       margin-top: 0;
@@ -578,13 +583,13 @@ const HiringHeroesPage = () => {
   const RightBox = styled.div`
     position: relative;
     width: 58.4%;
-    background-color: rgb(37,64,143);
+    background-color: #d0d5d9;
     padding: 45px;
     margin-top: 120px;
     margin-left: -3%;
     p {
       font-family: "Balboa Medium";
-      color: #fff;
+      color: #0b283a;
       letter-spacing: 3px;
       font-size: 50px;
       line-height: 1.2;
@@ -593,7 +598,7 @@ const HiringHeroesPage = () => {
       max-width: 600px;
     }
     .arrow-line {
-      border: 5px solid #25408f;
+      border: 5px solid #d0d5d9;
       width: 500px;
       height: 40px;
       position: absolute;
@@ -613,7 +618,18 @@ const HiringHeroesPage = () => {
   `
 
   const SectionFive = styled.section`
-    background-color: #231f20;
+    background-color: #161614;
+    padding: 60px 20px;
+    h2 {
+      font-family: "Balboa Medium";
+      color: #d0d5d9;
+      letter-spacing: 3px;
+      font-size: 32px;
+      line-height: 1.2;
+      text-align: center;
+      max-width: 650px;
+      margin: 35px auto;
+    }
     .s5-main {
       max-width: 1200px;
       width: 88%;
@@ -661,16 +677,17 @@ const HiringHeroesPage = () => {
   `
 
   const SectionSix = styled.section`
-    background-color: #231f20;
+    background-color: #0b283a;
+    padding: 60px 0;
     .arrow-row {
       width: 100%;
       height: 280px;
       display: flex;
       p {
         font-family: "Kessel Light";
-        color: #fff;
+        color: #d0d5d9;
         font-size: 40px;
-        background: #231f20;
+        background: #0b283a;
         padding-left: 50px;
         font-weight: 600;
         letter-spacing: 1px;
@@ -690,7 +707,7 @@ const HiringHeroesPage = () => {
           top: 1rem;
           left: -100px;
           position: absolute;
-          border: 5px solid #25408f;
+          border: 5px solid #d0d5d9;
           width: 100vw;
           height: 70px;
           z-index: 0;
@@ -719,7 +736,7 @@ const HiringHeroesPage = () => {
           top: 1rem;
           right: -100px;
           position: absolute;
-          border: 5px solid #25408f;
+          border: 5px solid #d0d5d9;
           width: 100vw;
           height: 70px;
           z-index: 0;
@@ -747,7 +764,8 @@ const HiringHeroesPage = () => {
   `
 
   const SectionSeven = styled.section`
-    background-color: #231f20;
+    background-color: #161614;
+    padding-top: 60px;
     padding-bottom: 80px;
     .s7-main {
       width: 88%;
