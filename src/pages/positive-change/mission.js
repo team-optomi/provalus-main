@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
+import ImpactScrollingImages from "../../components/impact-scrolling-images"
 
 const MissionPage = () => {
 
@@ -46,6 +47,9 @@ const MissionPage = () => {
           <VideoSection>
             <div dangerouslySetInnerHTML={{ __html: post.node.MissionContent.mpCommunityImpactVideo }}/>
           </VideoSection>
+          <ScrollingImages>
+            <ImpactScrollingImages/>
+          </ScrollingImages>
         </Layout>
       ))
     )
@@ -128,5 +132,7 @@ const VideoSection = styled.section`
         }
     }
 `
+
+const ScrollingImages = styled.section``
   
 export default MissionPage

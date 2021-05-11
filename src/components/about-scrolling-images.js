@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import Slider from "react-slick"
 import styled from 'styled-components'
 
-class ScrollingImages extends Component {
+class AboutScrollingImages extends Component {
 
     render() {
 
@@ -127,7 +127,7 @@ export default props => (
     <StaticQuery
       query={graphql`
         query {
-            workPost: allWpScrollingImage(filter: {categories: {nodes: {elemMatch: {databaseId: {eq: 549}}}}}, sort: {fields: date, order: DESC}) {
+            workPost: allWpScrollingImage(filter: {categories: {nodes: {elemMatch: {databaseId: {eq: 552}}}}}, sort: {fields: date, order: DESC}) {
                 edges {
                     node {
                         title
@@ -147,6 +147,6 @@ export default props => (
             }
         }
       `}
-      render={data => <ScrollingImages data={data} {...props} />}
+      render={data => <AboutScrollingImages data={data} {...props} />}
     />
   );

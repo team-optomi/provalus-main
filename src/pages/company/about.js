@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
 import AboutVideo from '../../videos/provalus-outro-about-company.mp4'
+import AboutScrollingImages from "../../components/about-scrolling-images"
 
 const AboutPage = () => {
 
@@ -61,6 +62,9 @@ const AboutPage = () => {
             <ImageSection>
                 <Img sizes={post.node.featuredImage.node.localFile.childImageSharp.sizes} alt={post.node.title} />
             </ImageSection>
+            <ScrollingImages>
+              <AboutScrollingImages />
+            </ScrollingImages>
           </PageMain>
         </Layout>
       ))
@@ -72,6 +76,7 @@ const AboutPage = () => {
   const PageMain = styled.div`
     width: 100%;
     padding: 200px;
+    padding-bottom: 50px;
     h1 {
       font-family: "Madelyn";
       font-size: 185px;
@@ -106,6 +111,10 @@ const AboutPage = () => {
     width: 100%;
     margin: 35px auto;
     opacity: .22;
+  `
+
+  const ScrollingImages = styled.section`
+    padding-top: 50px;
   `
   
   export default AboutPage

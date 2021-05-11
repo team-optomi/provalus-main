@@ -2,6 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from "gatsby-image"
+import Slider from "react-slick"
 
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
@@ -10,6 +11,16 @@ import scrollTo from 'gatsby-plugin-smoothscroll';
 import { FaChevronDown } from 'react-icons/fa'
 
 const IndexPage = () => {
+
+  const settings = {
+    arrows: false,
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+  };
 
   const data = useStaticQuery(graphql`
     query {
@@ -135,6 +146,16 @@ const IndexPage = () => {
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
           </Statistics>
+          <MobileStatistics>
+            <Slider {...settings}>
+              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
+              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
+              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} />
+              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
+              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
+              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
+            </Slider>
+          </MobileStatistics>
           <button onClick={() => scrollTo('#home_section_two')}><FaChevronDown size={36}/></button>
         </HomeHero>
         <SectionTwo id="home_section_two">
@@ -231,6 +252,20 @@ const HomeHero = styled.section`
       cursor: pointer;
     }
   }
+  @media(max-width:767px) {
+    .hero-logo {
+      max-width: 400px;
+      margin: 20px auto;
+    }
+    .hero-sub {
+      h1 {
+        font-size: 20px;
+        span.madelyn {
+          font-size: 40px;
+        }
+      }
+    }
+  }
 `
 
 const Statistics = styled.div`
@@ -261,6 +296,70 @@ const Statistics = styled.div`
       }
     }
   }
+  @media(max-width:1460px) {
+    > div {
+      p {
+        font-size: 12px;
+        span.large {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  @media(max-width:1170px) {
+    flex-wrap: wrap;
+    > div {
+      width: 25%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+  }
+  @media(max-width:830px) {
+    > div {
+      width: 33.33%;
+    }
+  }
+  @media(max-width:767px) {
+    display: none;
+  }
+`
+
+const MobileStatistics = styled.div`
+  display: none;
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, .6);
+  padding: 20px;
+  p {
+    font-family: "Kessel Light";
+    color: rgb(210,35,42);
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 16px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span.large {
+      font-size: 28px;
+      margin-right: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+  }
+  @media(max-width:767px) {
+    display: block;
+  }
+  @media(max-width:500px) {
+    p {
+      font-size: 12px;
+      span.large {
+        font-size: 20px;
+      }
+    }
+  }
 `
 
 const SectionTwo = styled.section`
@@ -285,6 +384,15 @@ const SectionTwo = styled.section`
     color: #fff;
     max-width: 550px;
     font-weight: 400;
+  }
+  @media(max-width:1150px) {
+    h2 {
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      margin: 0 auto;
+    }
   }
 `
 
@@ -353,6 +461,30 @@ const SectionThree = styled.section`
       text-align: center;
     }
   }
+  @media(max-width:1150px) {
+    max-width: 800px;
+    .one-fourth-col {
+      width: 50%;
+      padding: 0 35px !important;
+      border-right: none;
+      margin-bottom: 35px;
+      .icon-block {
+        height: 100px;
+        .home-icon {
+          max-height: 100px;
+          max-width: 200px;
+        }
+      }
+    }
+  }
+  @media(max-width:767px) {
+    max-width: 700px;
+    width: 100%;
+    .one-fourth-col {
+      width: 100%;
+      padding: 0 20px !important;
+    }
+  }
 `
 
 const SectionFour = styled.section`
@@ -400,6 +532,16 @@ const SectionFour = styled.section`
         text-align: center;
         margin-top: 50px;
       }
+    }
+  }
+  @media(max-width:1150px) {
+    h2 {
+      text-align: center;
+    }
+    div:first-child p {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 `

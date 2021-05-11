@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../components/layout-v2"
+import HeroesScrollingImages from "../components/heroes-scrolling-image"
 
 import ReactPlayer from 'react-player'
 import CountUp from 'react-countup';
@@ -318,6 +319,9 @@ const HiringHeroesPage = () => {
                 <div dangerouslySetInnerHTML={{ __html: post.node.HiringHeroesContent.hhSectionSeven.contactInfo }} />
               </div>
             </SectionSeven>
+            <ScrollingSection>
+              <HeroesScrollingImages />
+            </ScrollingSection>
           </PageMain>
         </Layout>
       ))
@@ -832,4 +836,7 @@ const HiringHeroesPage = () => {
     }
   `
   
+  const ScrollingSection = styled.section``
+
+
   export default HiringHeroesPage

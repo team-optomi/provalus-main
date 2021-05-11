@@ -162,7 +162,7 @@ const MobileLogo = styled.div`
   visibility: hidden;
   padding-right: 15px;
   .gatsby-image-wrapper {
-    width: 90px;
+    width: 117px;
     height: 34px;
     img {
       margin-bottom: 0;
