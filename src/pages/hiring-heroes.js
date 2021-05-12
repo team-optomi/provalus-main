@@ -354,6 +354,35 @@ const HiringHeroesPage = () => {
     .countup-number {
       color: #fff;
     }
+    @media(max-width:1050px) {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      h1 {
+        font-size: 100px;
+        span {
+          font-size: 250px;
+        }
+      }
+    }
+    @media(max-width:767px) {
+      h1 {
+        font-size: 60px;
+        span {
+          font-size: 140px;
+        line-height: 140px;
+        margin-left: 0;
+        }
+      }
+    }
+    @media(max-width:500px) {
+      h1 {
+        font-size: 44px;
+        span {
+          font-size: 100px;
+          line-height: 100px;
+        }
+      }
+    }
   `
 
   const VideoSection = styled.section`
@@ -361,6 +390,11 @@ const HiringHeroesPage = () => {
     width: 100%;
     margin: 50px auto;
     margin-bottom: 100px;
+    @media(max-width:767px) {
+      .react-player {
+        height: 350px !important;
+      }
+    }
   `
   
   const SectionOne = styled.section`
@@ -384,13 +418,35 @@ const HiringHeroesPage = () => {
         line-height: 1;
       }
     }
-    
+    @media(max-width:1050px) {
+      h2 {
+        font-size: 28px;
+        max-width: 700px;
+        width: 100%;
+        span {
+          font-size: 72px;
+        }
+      }
+    }
+    @media(max-width:767px) {
+      h2 {
+        font-size: 18px;
+        padding: 0 20px;
+        max-width: 450px;
+        span {
+          font-size: 50px;
+        }
+      }
+    }
   `
 
   const PopSection = styled.div`
     width: 100%;
     display: flex;
     align-items: flex-end;
+    @media(max-width:767px) {
+      flex-wrap: wrap;
+    }
   `
 
   const PopLeft = styled.div`
@@ -436,6 +492,28 @@ const HiringHeroesPage = () => {
         top: 15px;
       }
     }
+    @media(max-width:1050px) {
+      p {
+        font-size: 42px;
+        max-width: 400px;
+        height: 100px;
+        margin-right: 0;
+        span {
+          font-size: 72px;
+        }
+      }
+    }
+    @media(max-width:767px) {
+      width: 100%;
+      margin-bottom: 0;
+      p {
+        margin-right: auto;
+        text-align: center;
+      }
+      .arrow-line {
+        display: none;
+      }
+    }
   `
 
   const PopRight = styled.div`
@@ -453,6 +531,18 @@ const HiringHeroesPage = () => {
       font-size: 100px;
       line-height: 1;
       margin-bottom: 0;
+    }
+    @media(max-width:1050px) {
+      p {
+        font-size: 72px;
+      }
+    }
+    @media(max-width:767px) {
+      width: 100%;
+      padding: 20px;
+      justify-content: center;
+      border-width: 5px;
+      height: auto;
     }
   `
 
@@ -495,6 +585,25 @@ const HiringHeroesPage = () => {
           margin-bottom: 0;
           text-transform: uppercase;
         }
+    }
+    @media(max-width:1050px) {
+      .four-col {
+        h3 {
+          font-size: 72px;
+        }
+      }
+    }
+    @media(max-width:767px) {
+      flex-wrap: wrap;
+      .four-col {
+        width: 50%;
+        margin-bottom: 35px;
+      }
+    }
+    @media(max-width:500px) {
+      .four-col {
+        width: 100%;
+      }
     }
   `
 
@@ -548,6 +657,9 @@ const HiringHeroesPage = () => {
     width: 100%;
     display: flex;
     align-items: flex-start;
+    @media(max-width:767px) {
+      flex-wrap: wrap;
+    }
   `
 
   const LeftBox = styled.div`
@@ -581,6 +693,16 @@ const HiringHeroesPage = () => {
       span:last-child {
         font-size: 50px;
       }
+    }
+    @media(max-width:1050px) {
+      h3 {
+        font-size: 72px;
+      }
+    }
+    @media(max-width:767px) {
+      padding: 20px;
+      height: auto;
+      width: 100%;
     }
   `
 
@@ -617,6 +739,20 @@ const HiringHeroesPage = () => {
         left: -38px;
         top: -25px;
         transform: rotate(180deg);
+      }
+    }
+    @media(max-width:1050px) {
+      p {
+        font-size: 36px;
+      }
+    }
+    @media(max-width:767px) {
+      width: 100%;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      .arrow-line {
+        display: none;
       }
     }
   `
@@ -675,6 +811,13 @@ const HiringHeroesPage = () => {
             margin: 0 auto 20px;
             border-top: 3px solid #25408f;
           }
+        }
+      }
+    }
+    @media(max-width:767px) {
+      .s5-main {
+        .half-col {
+          width: 100%;
         }
       }
     }
@@ -765,6 +908,74 @@ const HiringHeroesPage = () => {
         }
       }
     }
+    @media(max-width:850px) {
+      .arrow-row {
+        p {
+          font-size: 32px;
+        }
+      }
+    }
+    @media(max-width:550px) {
+      .arrow-row-one {
+        height: auto;
+        .arrow-line {
+          width: 100%;
+          height: auto;
+          padding: 20px;
+          p {
+            padding-left: 0;
+            text-align: center;
+            top: 0;
+            margin-bottom: 0;
+          }
+          &:before {
+            display: none;
+          }
+          .gatsby-image-wrapper {
+            display: none;
+          }
+        }
+      }
+      .arrow-row-two {
+        height: auto;
+        .arrow-line {
+          width: 100%;
+          padding: 20px;
+          p {
+            padding-right: 0;
+            text-align: center;
+            top: 0;
+            margin-bottom: 0;
+          }
+          &:before {
+            display: none;
+          }
+          .gatsby-image-wrapper {
+            display: none;
+          }
+        }
+      }
+      .arrow-row-three {
+        height: auto;
+        .arrow-line {
+          width: 100%;
+          height: auto;
+          padding: 20px;
+          p {
+            padding-left: 0;
+            text-align: center;
+            top: 0;
+            margin-bottom: 0;
+          }
+          &:before {
+            display: none;
+          }
+          .gatsby-image-wrapper {
+            display: none;
+          }
+        }
+      }
+    }
   `
 
   const SectionSeven = styled.section`
@@ -832,6 +1043,13 @@ const HiringHeroesPage = () => {
       .gatsby-image-wrapper {
         float: left;
         margin-right: 17px;
+      }
+    }
+    @media(max-width:500px) {
+      .s7-main {
+        a {
+          font-size: 72px;
+        }
       }
     }
   `
