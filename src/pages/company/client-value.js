@@ -221,6 +221,16 @@ const ClientValuePage = () => {
         color: #d2232a;
         text-align: center;
     }
+    @media(max-width:1000px) {
+      padding: 200px 20px;
+      padding-bottom: 50px;
+    }
+    @media(max-width:850px) {
+      padding-top: 100px;
+      h1 {
+        font-size: 100px;
+      }
+    }
   `
 
   const SectionContent = styled.section`
@@ -231,6 +241,11 @@ const ClientValuePage = () => {
         line-height: 25px;
         color: #fff;
         text-align: center;
+        @media(max-width:850px) {
+          br {
+            display: none;
+          }
+        }
     }
   `
 
@@ -241,6 +256,9 @@ const ClientValuePage = () => {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    @media(max-width:540px) {
+      opacity: 1 !important;
+    }
   `
 
   const IconCol = styled.div`
@@ -267,6 +285,16 @@ const ClientValuePage = () => {
         line-height: 25px;
         color: #fff;
         text-align: center;
+    }
+    @media(max-width:767px) {
+      width: 33.33%;
+      padding: 0 10px;
+    }
+    @media(max-width:540px) {
+      width: 50%;
+    }
+    @media(max-width:370px) {
+      width: 100%;
     }
   `
 

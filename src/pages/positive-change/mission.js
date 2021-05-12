@@ -115,6 +115,69 @@ const HeroImage = styled.section`
           }
       }
   }
+  @media(max-width:1000px) {
+    div.hero-content { 
+      top: auto;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,.5);
+      padding: 35px;
+      > div {
+        p.content1 {
+          color: #fff;
+        }
+        h1.redhead {
+          font-size: 125px;
+        }
+        p.content2 {
+          color: #fff;
+        }
+        p.subtitle {
+          color: #fff;
+          width: 100%;
+          margin-left: 0;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  @media(max-width:767px) {
+    div.hero-content { 
+      > div {
+        p.content1 {
+          font-size: 20px;
+        }
+        h1.redhead {
+          font-size: 75px;
+          line-height: 2.2;
+          margin-top: -30px;
+        }
+        p.content2 {
+          font-size: 20px;
+        }
+        p.subtitle {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  @media(max-width:500px) {
+    div.hero-content { 
+      padding: 0;
+      height: 100vh;
+      padding-top: 140px;
+      > div {
+        h1.redhead {
+          font-size: 60px;
+          margin-left: 0;
+        }
+        p.content2 {
+          margin-left: 20px;
+          margin-top: -40px;
+        }
+      }
+    }
+  }
 `
 
 const VideoSection = styled.section`
@@ -130,6 +193,24 @@ const VideoSection = styled.section`
             width: 100% !important;
             height: auto;
         }
+    }
+    @media(max-width: 1000px) {
+      .wp-video {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+    @media(max-width: 650px) {
+      .wp-video {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+    @media(max-width: 450px) {
+      .wp-video {
+        max-width: 300px;
+        margin: 0 auto;
+      }
     }
 `
 

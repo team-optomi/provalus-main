@@ -87,6 +87,16 @@ const AboutPage = () => {
       text-align: center;
       position: relative;
     }
+    @media(max-width:1000px) {
+      padding: 200px 20px;
+      padding-bottom: 50px;
+    }
+    @media(max-width:767px) {
+      padding-top: 100px;
+      h1 {
+        font-size: 100px;
+      }
+    }
   `
 
   const VideoSection = styled.section`
@@ -103,6 +113,9 @@ const AboutPage = () => {
         font-size: 18px;
         color: #fff;
         text-align: center;
+    }
+    @media(max-width:767px) {
+      opacity: 1 !important;
     }
   `
 

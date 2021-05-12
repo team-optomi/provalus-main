@@ -51,7 +51,11 @@ const OurWorkSlide = styled.div`
       }
     }
     @media(max-width:767px) {
-      padding: 25px 10px;
+      .work-image-bg {
+        height: 350px;
+      }
+    }  
+    @media(max-width:500px) {
       .work-image-bg {
         height: 250px;
       }
