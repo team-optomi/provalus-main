@@ -142,6 +142,19 @@ const PageMain = styled.div`
       margin-bottom: 0px;
       text-align: center;
     }
+    @media(max-width:1000px) {
+      max-width: 640px;
+      padding: 100px 20px;
+      margin: 0 auto;
+      h1 {
+        font-size: 100px;
+      }
+    }
+    @media(max-width:390px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
   `
 
   const SectionOne = styled.section`
@@ -271,6 +284,30 @@ const FormSection = styled.section`
         margin-bottom: 20px;
       }
     }
+    @media(max-width:1000px) {
+      form {
+        p {
+          &.two-thirds {
+            width: 100%;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    @media(max-width:600px) {
+      form {
+        p {
+          &.one-third {
+            width: 100%;
+            margin-right: 0;
+          }
+          &.one-half {
+            width: 100%;
+            margin-right: 0;
+          }
+        }
+      }
+    }
 `
 
 const ContactSection = styled.section`
@@ -311,6 +348,9 @@ const ContactSection = styled.section`
         width: 150px !important;
         float: left;
         margin-right: 17px;
+      }
+      @media(max-width:1000px) {
+        width: 100%;
       }
   `
 

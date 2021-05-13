@@ -16,6 +16,7 @@ const IndexPage = () => {
     arrows: false,
     dots: false,
     infinite: true,
+    fade: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -165,25 +166,33 @@ const IndexPage = () => {
           <h2 dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeSectionThreeTitle }} />
             <div class="one-fourth-col">
               <div class="icon-block">
-                <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
+                <Link to="/services/support/">
+                  <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
+                </Link>
               </div>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnOneContent }} />
             </div>
             <div class="one-fourth-col">
               <div class="icon-block">
-              <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.title} />
+              <Link to="/services/run/">
+                <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.title} />
+              </Link>
               </div>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnTwoContent }} />
             </div>
             <div class="one-fourth-col">
               <div class="icon-block">
-              <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
+                <Link to="/services/build/">
+                  <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
+                </Link>
               </div>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnThreeContent }} />
             </div>
             <div class="one-fourth-col">
               <div class="icon-block">
-              <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
+                <Link to="/services/security/">
+                  <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
+                </Link>
               </div>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFourContent }} />
             </div>
@@ -288,6 +297,12 @@ const Statistics = styled.div`
       margin-bottom: 0;
       display: flex;
       align-items: center;
+      &:nth-child(5) {
+        align-items: flex-start;
+      }
+      &:nth-child(6) {
+        align-items: flex-start;
+      }
       span.large {
         font-size: 28px;
         margin-right: 10px;
@@ -422,6 +437,9 @@ const SectionThree = styled.section`
     &:nth-child(2) {
       padding-left: 0;
     }
+    &:nth-child(4) {
+      padding-bottom: 20px;
+    }
     &:last-child {
       padding-right: 0;
       border-right: none;
@@ -432,6 +450,13 @@ const SectionThree = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
+      a {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
       .home-icon {
         width: 100%;
         max-height: 150px;

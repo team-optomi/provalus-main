@@ -12,7 +12,7 @@ class ImpactScrollingImages extends Component {
         const work = workPost.edges
     
           const settings = {
-            arrows: false,
+            arrows: true,
             dots: false,
             infinite: true,
             slidesToShow: 1,
@@ -67,6 +67,32 @@ const SliderContainer = styled.div`
     max-width: 100%;
     height: 450px;
     margin: 0 auto;
+    .slick-prev {
+      height: 35px;
+      width: 35px;
+      border-top: 8px solid #000;
+      border-left: 8px solid #000;
+      color: transparent;
+      z-index: 10;
+      transform: rotate(-45deg);
+      left: 0;
+      &:before {
+        display: none;
+      }
+    }
+    .slick-next {
+      height: 35px;
+      width: 35px;
+      border-top: 8px solid #000;
+      border-right: 8px solid #000;
+      color: transparent;
+      z-index: 10;
+      transform: rotate(45deg);
+      right: 0;
+      &:before {
+        display: none;
+      }
+    }
     .slick-slider {
       max-width: 770px;
       width: 100%;

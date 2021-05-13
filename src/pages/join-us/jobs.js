@@ -97,6 +97,19 @@ const JobsPage = () => {
       text-align: center;
       margin-bottom: 120px;
     }
+    @media(max-width:1000px) {
+      max-width: 640px;
+      padding: 100px 20px;
+      margin: 0 auto;
+      h1 {
+        font-size: 100px;
+      }
+    }
+    @media(max-width:390px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
   `
 
   const SectionOne = styled.section`
@@ -118,6 +131,13 @@ const JobsPage = () => {
         font-family: "Madelyn";
         font-size: 50px;
         margin-bottom: 80px;
+    }
+    @media(max-width:1000px) {
+      p {
+        br {
+          display: none;
+        }
+      }
     }
   `
 
@@ -173,16 +193,32 @@ const JobsPage = () => {
             color: #fff;
         }
     }
+    @media(max-width:1000px) {
+      flex-wrap: wrap;
+      p {
+        br {
+          display: none;
+        }
+      }
+    }
   `
 
   const SectionLeft = styled.div`
     width: 47.5%;
     margin-right: 2.5%;
+    @media(max-width:1000px) {
+      width: 100%;
+      margin-right: 0;
+    }
   `
 
   const SectionRight = styled.div`
     width: 47.5%;
     margin-left: 2.5%;
+    @media(max-width:1000px) {
+      width: 100%;
+      margin-left: 0;
+    }
   `
 
   const ContactSection = styled.section`
@@ -223,6 +259,9 @@ const JobsPage = () => {
         width: 150px !important;
         float: left;
         margin-right: 17px;
+      }
+      @media(max-width:1000px) {
+        width: 100%;
       }
   `
   

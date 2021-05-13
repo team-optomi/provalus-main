@@ -113,6 +113,18 @@ const SectionOne = styled.section`
         color: #d2232a;
         text-align: center;
     }
+    @media(max-width:767px) {
+      padding-top: 100px;
+      padding-bottom: 0px;
+      h1 {
+        font-size: 100px;
+      }
+    }
+    @media(max-width: 400px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
 `
 
 const SectionTwo = styled.section`
@@ -157,6 +169,22 @@ const SectionTwo = styled.section`
         font-weight: 400;
         text-align: center;
         margin-bottom: 0;
+      }
+    }
+    @media(max-width:1000px) {
+      .section-content {
+        p {
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+    @media(max-width:767px) {
+      padding: 30px 0;
+      .section-content {
+        position: relative;
+        padding: 30px 20px 0;
       }
     }
 `
@@ -206,6 +234,18 @@ const SectionThree = styled.section`
         }
         .location-content {
           margin-top: -30px;
+        }
+      }
+    }
+    @media(max-width: 767px) {
+      h2 {
+        font-size: 32px;
+      }
+      .location-flex {
+        flex-wrap: wrap;
+        > div {
+          width: 100%;
+          margin-bottom: 40px;
         }
       }
     }

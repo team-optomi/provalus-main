@@ -102,6 +102,19 @@ const TrainingPage = () => {
       text-align: center;
       margin-bottom: 120px;
     }
+    @media(max-width:1000px) {
+      max-width: 640px;
+      padding: 100px 20px;
+      margin: 0 auto;
+      h1 {
+        font-size: 100px;
+      }
+    }
+    @media(max-width:390px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
   `
 
   const SectionOne = styled.section`
@@ -134,6 +147,13 @@ const TrainingPage = () => {
         letter-spacing: 1px;
         line-height: 1.3;
         text-align: center;
+    }
+    @media(max-width:1000px) {
+      p {
+        br {
+          display: none;
+        }
+      }
     }
   `
 
@@ -170,6 +190,11 @@ const TrainingPage = () => {
         padding-top: 0;
         line-height: 1.7;
         letter-spacing: 1px;
+    }
+    @media(max-width:767px) {
+      h3 {
+        font-size: 28px;
+      }
     }
   `
   

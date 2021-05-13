@@ -102,6 +102,19 @@ const CoreValuesPage = () => {
       color: #d2232a;
       text-align: center;
     }
+    @media(max-width:1000px) {
+      max-width: 640px;
+      padding: 100px 20px;
+      margin: 0 auto;
+      h1 {
+        font-size: 100px;
+      }
+    }
+    @media(max-width:390px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
   `
 
   const SectionOne = styled.div`
@@ -122,6 +135,13 @@ const CoreValuesPage = () => {
         span {
           color: rgb(210,35,42);
           font-size: 35px;
+        }
+      }
+    }
+    @media(max-width:550px) {
+      p {
+        br {
+          display: none;
         }
       }
     }
@@ -176,6 +196,25 @@ const CoreValuesPage = () => {
       > div {
         width: 33.33%;
         text-align: center;
+      }
+    }
+    @media(max-width:550px) {
+      > div {
+        flex-wrap: wrap;
+        &.row-one {
+          padding-bottom: 0;
+        }
+        &.row-two {
+          padding-bottom: 0;
+          > div {
+            width: 100%;
+          }
+        }
+        &.row-three {
+          > div {
+            width: 100%;
+          }
+        }
       }
     }
   `

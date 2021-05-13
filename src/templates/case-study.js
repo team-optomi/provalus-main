@@ -48,7 +48,7 @@ const MainArticle = styled.article`
   width: 100%;
   padding: 0px;
   margin: 0 auto;
-  background-color: #eee;
+  background-color: #000;
   .case-study-icon {
     width: 192px;
     height: 128px;
@@ -94,6 +94,7 @@ const MainArticle = styled.article`
                 text-transform: uppercase;
                 margin-top: 0;
                 margin-bottom: 0;
+                color: #fff;
             }
         }
         .top-right {
@@ -106,6 +107,7 @@ const MainArticle = styled.article`
                 margin-top: 0;
                 margin-bottom: 10px;
                 text-align: center;
+                color: #fff;
             }
             img {
               object-fit: contain !important;
@@ -154,6 +156,7 @@ const MainArticle = styled.article`
             margin-top: 0;
             margin-bottom: 0px;
             text-transform: uppercase;
+            color: #fff;
             &.underlined {
                 text-decoration: underline;
             }
@@ -163,6 +166,7 @@ const MainArticle = styled.article`
             font-size: 18px;
             line-height: 1.3;
             margin-bottom: 20px;
+            color: #fff;
         }
         ul {
             margin-left: 20px;
