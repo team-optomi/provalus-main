@@ -42,7 +42,7 @@ const WellnessPostTemplate = ({ data: { previous, next, post } }) => {
 
         </MainArticle>
 
-        <nav className="blog-post-nav">
+        {/* <nav className="blog-post-nav">
           <ul
             style={{
               display: `flex`,
@@ -68,7 +68,7 @@ const WellnessPostTemplate = ({ data: { previous, next, post } }) => {
               )}
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </MainBackground>
 
     </Layout>
@@ -78,9 +78,7 @@ const WellnessPostTemplate = ({ data: { previous, next, post } }) => {
 const MainBackground = styled.div`
   width: 100%;
   background-color: #353431;
-  padding-top: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 100px 20px;
 `
 
 const MainArticle = styled.article`
@@ -126,6 +124,11 @@ const MainArticle = styled.article`
         max-width: 1000px !important;
         width: 100% !important;
         height: auto;
+    }
+  }
+  @media(max-width:767px) {
+    .entry-content {
+      padding: 20px;
     }
   }
 `

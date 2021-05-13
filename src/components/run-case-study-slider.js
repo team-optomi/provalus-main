@@ -20,45 +20,78 @@ class RunCaseStudySlider extends Component {
       };
     
       return (
-        <SliderContainer>
-            <div 
-            data-sal="slide-up"
+        <SliderRow>
+          <h2>Case Studies</h2>
+          <SliderContainer>
+              <div 
+              data-sal="slide-up"
+              data-sal-duration="1000"
+              data-sal-delay="600"
+              data-sal-easing="ease"
+              class="blue-block blue-block-1"></div>
+              <div 
+              data-sal="slide-up"
+              data-sal-duration="1000"
+              data-sal-delay="600"
+              data-sal-easing="ease"
+              class="blue-block blue-block-2"></div>
+            <div
+            data-sal="fade"
             data-sal-duration="1000"
-            data-sal-delay="600"
+            data-sal-delay="1200"
             data-sal-easing="ease"
-            class="blue-block blue-block-1"></div>
-            <div 
-            data-sal="slide-up"
-            data-sal-duration="1000"
-            data-sal-delay="600"
-            data-sal-easing="ease"
-            class="blue-block blue-block-2"></div>
-          <div
-          data-sal="fade"
-          data-sal-duration="1000"
-          data-sal-delay="1200"
-          data-sal-easing="ease"
-          >
-          <Slider {...settings}>
-            {data.allWpCaseStudy.edges.map(post => (
-              <Link
-                to={`/case-studies/${post.node.slug}`}
-              >
-                <CaseStudy>
-                <ImageThumb>
-                    <CaseImg fluid={post.node.featuredImage.node.localFile.childImageSharp.fluid} alt={post.node.featuredImage.node.title} />
-                </ImageThumb>
-                <Highlight dangerouslySetInnerHTML={{ __html: post.node.title }} className={"sliderFade"}/>
-                <Excerpt dangerouslySetInnerHTML={{ __html: post.node.excerpt }} className={"sliderFade"}/>
-              </CaseStudy>
-              </Link>
-            ))}          
-          </Slider>
-          </div>
-        </SliderContainer>
+            >
+            <Slider {...settings}>
+              {data.allWpCaseStudy.edges.map(post => (
+                <Link
+                  to={`/case-studies/${post.node.slug}`}
+                >
+                  <CaseStudy>
+                  <ImageThumb>
+                      <CaseImg fluid={post.node.featuredImage.node.localFile.childImageSharp.fluid} alt={post.node.featuredImage.node.title} />
+                  </ImageThumb>
+                  <Highlight dangerouslySetInnerHTML={{ __html: post.node.title }} className={"sliderFade"}/>
+                  <Excerpt dangerouslySetInnerHTML={{ __html: post.node.excerpt }} className={"sliderFade"}/>
+                </CaseStudy>
+                </Link>
+              ))}          
+            </Slider>
+            </div>
+          </SliderContainer>
+        </SliderRow>
       );
   }
 }
+
+const SliderRow = styled.div`
+  max-width: 1340px;
+  padding-right: 20px;
+  padding-left: 20px;
+  width: 100%;
+  margin: 0px auto;
+  position: relative;
+  h2 {
+    font-family: "Kessel Light";
+    color: rgb(210,35,42);
+    font-weight: 400;
+    line-height: 1.2;
+    font-size: 38px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  @media(max-width:1550px) {
+    max-width: 1140px;
+  }
+  @media(max-width: 1330px) {
+    max-width: 940px;
+  }
+  @media(max-width: 1150px) {
+    max-width: 740px;
+    padding: 0 30px;
+  }
+`
 
 const SliderContainer = styled.div`
     width: 100%;
@@ -185,6 +218,9 @@ const SliderContainer = styled.div`
       }
     }
     @media(max-width:1150px) {
+      .slick-list {
+        overflow: hidden;
+      }
       .blue-block-1 {
         left: auto;
         right: 0;
@@ -192,12 +228,32 @@ const SliderContainer = styled.div`
       .blue-block-2 {
         display: none;
       }
+      &:before {
+        display: none;
+      }
     }
     @media(max-width:940px) {
       .blue-block-1 {
         right: -100px;
       }
+      .slick-prev {
+        width: 50px;
+        right: -40px;
+        top: 50%;
+        bottom: auto;
+        &:before {
+          display: none;
+        }
+      }
+      .slick-next {
+        width: 50px;
+        left: -40px;
+        &:before {
+          display: none;
+        }
+      }
     }
+
 `
 
 const CaseStudy = styled.div`
@@ -237,7 +293,7 @@ const Highlight = styled.h3`
     overflow: hidden;
     transition-delay: .6s;
     @media(max-width:1150px) {
-      font-size: 20px;
+      font-size: 16px;
       top: 0px;
       right: 10px;
     }
@@ -267,10 +323,10 @@ const Excerpt = styled.div`
         max-height: 200px;
         overflow: hidden;
         @media(max-width:1330px) {
-          font-size: 18px;
+          font-size: 16px;
         }
         @media(max-width:1150px) {
-          font-size: 18px;
+          font-size: 13px;
           right: 10px;
         }
         @media(max-width:940px) {

@@ -74,7 +74,7 @@ const MainArticle = styled.article`
       span.bold {
         font-family: "Balboa Medium";
         text-transform: uppercase;
-        margin-right: 30px;
+        margin-right: 5px;
         font-size: 30px;
         position: relative;
         top: 2px;
@@ -189,6 +189,45 @@ const MainArticle = styled.article`
         max-width: 1000px !important;
         width: 100% !important;
         height: auto;
+    }
+  }
+  @media(max-width:767px) {
+    .case-study-icon {
+      display: none;
+    }
+    .entry-content {
+      padding: 20px;
+      padding-top: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      .top-row {
+        flex-wrap: wrap;
+        .top-left {
+          padding: 10px 25px;
+          background-color: #000;
+          box-shadow: none;
+          h2 {
+            text-align: center;
+          }
+        }
+        .top-right {
+          width: 100%;
+        }
+      }
+      .case-study-main {
+        flex-wrap: wrap;
+        .main-left {
+          width: 100%;
+        }
+        .main-right {
+          width: 100%;
+        }
+        h2 {
+          &.madelyn {
+            font-size: 44px;
+          }
+        }
+      }
     }
   }
 `

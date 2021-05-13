@@ -141,6 +141,23 @@ const SectionOne = styled.section`
       }
     }
   }
+  @media(max-width:767px) {
+    .row-2 {
+      flex-wrap: wrap;
+      > div {
+        &:first-child {
+          width: 100%;
+          order: 2;
+        }
+        &:last-child {
+          width: 100%;
+          order: 1;
+          padding-left: 0;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
 `
 
 const SectionTwo = styled.section`

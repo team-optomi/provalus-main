@@ -151,6 +151,18 @@ const MainLoop = styled.ol`
       }
     }
   }
+  @media( max-width: 1120px) {
+    max-width: 720px;
+    > li {
+      width: 50%;
+    }
+  }
+  @media( max-width: 760px) {
+    max-width: 360px;
+    > li {
+      width: 100%;
+    }
+  }
 `
 
 const Pagination = styled.div`

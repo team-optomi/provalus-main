@@ -47,7 +47,7 @@ const NewsPostTemplate = ({ data: { previous, next, post } }) => {
 
         </MainArticle>
 
-        <nav className="blog-post-nav">
+        {/* <nav className="blog-post-nav">
           <ul
             style={{
               display: `flex`,
@@ -73,7 +73,7 @@ const NewsPostTemplate = ({ data: { previous, next, post } }) => {
               )}
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </MainBackground>
 
     </Layout>
@@ -83,9 +83,7 @@ const NewsPostTemplate = ({ data: { previous, next, post } }) => {
 const MainBackground = styled.div`
   width: 100%;
   background-color: #353431;
-  padding-top: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 100px 20px;
 `
 
 const MainArticle = styled.article`
@@ -116,6 +114,11 @@ const MainArticle = styled.article`
         color: #d2232a;
         text-decoration: none;
       }
+    }
+  }
+  @media(max-width:767px) {
+    .entry-content {
+      padding: 20px;
     }
   }
 `
