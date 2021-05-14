@@ -4,7 +4,6 @@ import parse from "html-react-parser"
 import styled from 'styled-components'
 import Img from "gatsby-image"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
 
@@ -16,12 +15,12 @@ const BlogIndex = ({
   pageContext: { nextPagePath, previousPagePath },
 }) => {
   const posts = data.allWpPost.nodes
+  const seoMeta = data.allWpPage.edges
 
   if (!posts.length) {
     return (
       <Layout isHomePage>
         <SEO title="All posts" />
-        <Bio />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
           appear here!
@@ -32,8 +31,13 @@ const BlogIndex = ({
 
   return (
     <Layout isHomePage>
-      <SEO title="All posts" />
-
+      {seoMeta.map(page => (
+      <SEO 
+      title={page.node.seo.title} 
+      description={page.node.seo.metaDesc}
+      metaImage={page.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+      />
+      ))}
       <MainBackground>
         <MainLoop>
           {posts.map(post => {
@@ -200,6 +204,25 @@ export const pageQuery = graphql`
                 fluid(maxWidth: 1000) {
                   ...GatsbyImageSharpFluid_withWebp
               }
+              }
+            }
+          }
+        }
+      }
+    }
+    allWpPage(filter: {databaseId: {eq: 1605}}) {
+      edges {
+        node {
+          seo {
+            title
+            metaDesc
+            opengraphImage {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
               }
             }
           }

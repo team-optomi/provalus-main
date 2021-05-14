@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
+import SEO from "../../components/seo"
 
 const ClientValuePage = () => {
 
@@ -12,6 +13,19 @@ const ClientValuePage = () => {
         allWpPage(filter: {databaseId: {eq: 37}}) {
           edges {
             node {
+              seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+              }
               title
               content
               featuredImage {
@@ -141,6 +155,11 @@ const ClientValuePage = () => {
           
       data.allWpPage.edges.map(post => (
         <Layout>
+          <SEO 
+          title={post.node.seo.title} 
+          description={post.node.seo.metaDesc}
+          metaImage={post.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+          />
           <PageMain>
             <SectionContent 
             data-sal="fade"

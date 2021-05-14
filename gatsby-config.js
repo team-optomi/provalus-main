@@ -7,6 +7,12 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `IT Outsourcing Services | Technology Services | Technology Solutions`,
+    description: `We are elevating high-potential rural communities by creating technology, business and support careers for undiscovered talent in the U.S.`,
+    author: `Provalus`,
+    siteUrl: `http://provalus.com`,
+  },
   /**
    * Adding plugins to this array adds them to your Gatsby site.
    *

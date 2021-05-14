@@ -15,6 +15,7 @@ const NewsIndex = ({
   pageContext: { nextPagePath, previousPagePath },
 }) => {
   const posts = data.allWpNewsSingle.nodes
+  const seoMeta = data.allWpPage.edges
 
   if (!posts.length) {
     return (
@@ -30,8 +31,13 @@ const NewsIndex = ({
 
   return (
     <Layout isHomePage>
-      <SEO title="All posts" />
-
+      {seoMeta.map(page => (
+      <SEO 
+      title={page.node.seo.title} 
+      description={page.node.seo.metaDesc}
+      metaImage={page.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+      />
+      ))}
       <MainBackground>
         <MainLoop>
           {posts.map(post => {
@@ -195,6 +201,25 @@ export const pageQuery = graphql`
                 fluid(maxWidth: 1000) {
                   ...GatsbyImageSharpFluid_withWebp
               }
+              }
+            }
+          }
+        }
+      }
+    }
+    allWpPage(filter: {databaseId: {eq: 1608}}) {
+      edges {
+        node {
+          seo {
+            title
+            metaDesc
+            opengraphImage {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
               }
             }
           }

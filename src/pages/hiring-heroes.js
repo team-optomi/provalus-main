@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../components/layout-v2"
+import SEO from "../components/seo"
 import HeroesScrollingImages from "../components/heroes-scrolling-image"
 
 import ReactPlayer from 'react-player'
@@ -24,6 +25,19 @@ const HiringHeroesPage = () => {
         allWpPage(filter: {databaseId: {eq: 89}}) {
           edges {
             node {
+              seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+              }
               title
               content
               featuredImage {
@@ -127,6 +141,11 @@ const HiringHeroesPage = () => {
           
       data.allWpPage.edges.map(post => (
         <Layout>
+          <SEO 
+          title={post.node.seo.title} 
+          description={post.node.seo.metaDesc}
+          metaImage={post.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+          />
           <PageMain>
             <h1>Hiring <span>Heroes</span></h1>
             <VideoSection>

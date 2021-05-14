@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Layout from "../../components/layout-v2"
+import SEO from "../../components/seo"
 import Checkmark from "../../images/checkmark.png"
 
 const JobsPage = () => {
@@ -12,6 +13,19 @@ const JobsPage = () => {
         allWpPage(filter: {databaseId: {eq: 176}}) {
           edges {
             node {
+              seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+              }
               title
               featuredImage {
                 node {
@@ -40,6 +54,11 @@ const JobsPage = () => {
           
       data.allWpPage.edges.map(post => (
         <Layout>
+          <SEO 
+          title={post.node.seo.title} 
+          description={post.node.seo.metaDesc}
+          metaImage={post.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+          />
           <PageMain>
             <SectionOne>
                 <h1

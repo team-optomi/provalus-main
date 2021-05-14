@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Layout from "../../components/layout-v2"
+import SEO from "../../components/seo"
 
 const CoreValuesPage = () => {
 
@@ -11,6 +12,19 @@ const CoreValuesPage = () => {
         allWpPage(filter: {databaseId: {eq: 164}}) {
           edges {
             node {
+              seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+              }
               title
               content
               featuredImage {
@@ -42,6 +56,11 @@ const CoreValuesPage = () => {
           
       data.allWpPage.edges.map(post => (
         <Layout>
+          <SEO 
+          title={post.node.seo.title} 
+          description={post.node.seo.metaDesc}
+          metaImage={post.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+          />
           <PageMain>
             <h1>{post.node.title} </h1>
            <SectionOne>

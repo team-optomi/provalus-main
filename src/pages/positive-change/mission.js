@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
+import SEO from "../../components/seo"
 import ImpactScrollingImages from "../../components/impact-scrolling-images"
 
 const MissionPage = () => {
@@ -13,6 +14,19 @@ const MissionPage = () => {
         allWpPage(filter: {databaseId: {eq: 1262}}) {
           edges {
             node {
+              seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+              }
               title
               MissionContent {
                 mpCommunityImpactVideo
@@ -38,6 +52,11 @@ const MissionPage = () => {
           
       data.allWpPage.edges.map(post => (
         <Layout>
+          <SEO 
+          title={post.node.seo.title} 
+          description={post.node.seo.metaDesc}
+          metaImage={post.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+          />
           <HeroImage>
             <Img fluid={post.node.MissionContent.mpHeroImage.localFile.childImageSharp.fluid} alt={post.node.MissionContent.mpHeroImage.title} />
             <div class="hero-content">

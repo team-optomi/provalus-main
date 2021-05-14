@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
+import SEO from "../../components/seo"
 import AboutVideo from '../../videos/provalus-outro-about-company.mp4'
 import AboutScrollingImages from "../../components/about-scrolling-images"
 
@@ -14,6 +15,19 @@ const AboutPage = () => {
         allWpPage(filter: {databaseId: {eq: 34}}) {
           edges {
             node {
+              seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+              }
               title
               content
               featuredImage {
@@ -37,6 +51,11 @@ const AboutPage = () => {
           
       data.allWpPage.edges.map(post => (
         <Layout>
+          <SEO 
+          title={post.node.seo.title} 
+          description={post.node.seo.metaDesc}
+          metaImage={post.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+          />
           <PageMain>
             <h1>{post.node.title} </h1>
             <VideoSection>

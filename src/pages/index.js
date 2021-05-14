@@ -28,6 +28,19 @@ const IndexPage = () => {
       allWpPage(filter: {databaseId: {eq: 86}}) {
         edges {
           node {
+            seo {
+              title
+              metaDesc
+              opengraphImage {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1920) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
             HomePageContent {
               homeHeroSection {
                 homeBackgroundImage {
@@ -134,7 +147,11 @@ const IndexPage = () => {
         
     data.allWpPage.edges.map(post => (
       <Layout>
-        <SEO title="Home" />
+        <SEO 
+          title={post.node.seo.title} 
+          description={post.node.seo.metaDesc}
+          metaImage={post.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+          />
         <HomeHero>
           <Img className={"hero-bg"} fluid={post.node.HomePageContent.homeHeroSection.homeBackgroundImage.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeHeroSection.homeBackgroundImage.title} />
           <Img className={"hero-logo"} fluid={post.node.HomePageContent.homeHeroSection.homeVTwoLogoImage.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeHeroSection.homeVTwoLogoImage.title} />

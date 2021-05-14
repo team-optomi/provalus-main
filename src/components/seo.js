@@ -10,27 +10,31 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title }) => {
-  const { wp, wpUser } = useStaticQuery(
+const SEO = ({ description, lang, meta, title, metaImage }) => {
+  const { site } = useStaticQuery(
     graphql`
       query {
-        wp {
-          generalSettings {
+        site {
+          siteMetadata {
             title
             description
+            author
+            siteUrl
           }
-        }
-
-        # if there's more than one user this would need to be filtered to the main user
-        wpUser {
-          twitter: name
         }
       }
     `
   )
 
-  const metaDescription = description || wp.generalSettings?.description
-  const defaultTitle = wp.generalSettings?.title
+  const metaDescription = description || site.siteMetadata?.description
+  const og_image =
+    metaImage && metaImage.src
+      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
+      : null
+  const twitter_image =
+    metaImage && metaImage.src
+      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
+      : null
 
   return (
     <Helmet
@@ -38,7 +42,6 @@ const SEO = ({ description, lang, meta, title }) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
@@ -62,7 +65,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           name: `twitter:creator`,
-          content: wpUser?.twitter || ``,
+          content: site.siteMetadata.author,
         },
         {
           name: `twitter:title`,
@@ -72,7 +75,62 @@ const SEO = ({ description, lang, meta, title }) => {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]
+      .concat(
+        metaImage
+          ? [
+              {
+                property: "og:image",
+                content: og_image,
+              },
+              {
+                property: "og:image:width",
+                content: metaImage.width,
+              },
+              {
+                property: "og:image:height",
+                content: metaImage.height,
+              },
+              {
+                name: "twitter:card",
+                content: "summary_large_image",
+              },
+            ]
+          : [
+              {
+                name: "twitter:card",
+                content: "summary",
+              },
+            ]
+      )
+      .concat(
+        metaImage
+          ? [
+              {
+                property: "twitter:image",
+                content: twitter_image,
+              },
+              {
+                property: "twitter:image:width",
+                content: metaImage.width,
+              },
+              {
+                property: "twitter:image:height",
+                content: metaImage.height,
+              },
+              {
+                name: "twitter:card",
+                content: "summary_large_image",
+              },
+            ]
+          : [
+              {
+                name: "twitter:card",
+                content: "summary",
+              },
+            ]
+      )
+      .concat(meta)}
     />
   )
 }
@@ -88,6 +146,21 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  ogTitle: PropTypes.string.isRequired,
+  ogDescription: PropTypes.string,
+  ogImage: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
+  }),
+  twitterTitle: PropTypes.string.isRequired,
+  twitterDescription: PropTypes.string,
+  twitterImage: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
+  }),
+  pathname: PropTypes.string,
 }
 
 export default SEO
