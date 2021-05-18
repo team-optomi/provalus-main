@@ -131,6 +131,36 @@ const ClientValuePage = () => {
                         }
                       }
                     colNineCopy
+                    colTenImage {
+                      localFile {
+                          childImageSharp {
+                              fluid(maxWidth: 100) {
+                                  ...GatsbyImageSharpFluid
+                              }
+                          }
+                      }
+                    }
+                  colTenCopy
+                  colElevenImage {
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 100) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
+                  }
+                  colElevenCopy
+                  colTwelveImage {
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 100) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
+                  }
+                  colTwelveCopy
                 }
                 sectionTwo {
                     sectionCopy
@@ -206,6 +236,18 @@ const ClientValuePage = () => {
                 <IconCol>
                     <Img fluid={post.node.ClientValueContent.sectionOne.colNineImage.localFile.childImageSharp.fluid} alt={post.node.title} />
                     <p dangerouslySetInnerHTML={{ __html: post.node.ClientValueContent.sectionOne.colNineCopy }} />
+                </IconCol>
+                <IconCol>
+                    <Img fluid={post.node.ClientValueContent.sectionOne.colTenImage.localFile.childImageSharp.fluid} alt={post.node.title} />
+                    <p dangerouslySetInnerHTML={{ __html: post.node.ClientValueContent.sectionOne.colTenCopy }} />
+                </IconCol>
+                <IconCol>
+                    <Img fluid={post.node.ClientValueContent.sectionOne.colElevenImage.localFile.childImageSharp.fluid} alt={post.node.title} />
+                    <p dangerouslySetInnerHTML={{ __html: post.node.ClientValueContent.sectionOne.colElevenCopy }} />
+                </IconCol>
+                <IconCol>
+                    <Img fluid={post.node.ClientValueContent.sectionOne.colTwelveImage.localFile.childImageSharp.fluid} alt={post.node.title} />
+                    <p dangerouslySetInnerHTML={{ __html: post.node.ClientValueContent.sectionOne.colTwelveCopy }} />
                 </IconCol>
             </IconSection>
             <SectionContent 
@@ -283,6 +325,7 @@ const ClientValuePage = () => {
   const IconCol = styled.div`
     width: 20%;
     height: 200px;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;

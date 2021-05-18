@@ -424,16 +424,16 @@ const HiringHeroesPage = () => {
       font-family: "Kessel Light";
       color: #d0d5d9;
       font-weight: bold;
-      font-size: 50px;
+      font-size: 36px;
       text-align: center;
-      max-width: 1200px;
+      max-width: 900px;
       width: 88%;
       margin: 20px auto;
       margin-bottom: 80px;
       span {
         font-family: "Madelyn";
         font-weight: 100;
-        font-size: 110px;
+        font-size: 90px;
         line-height: 1;
       }
     }
@@ -547,7 +547,7 @@ const HiringHeroesPage = () => {
     p {
       font-family: "Balboa Medium";
       color: #d0d5d9;
-      font-size: 100px;
+      font-size: 80px;
       line-height: 1;
       margin-bottom: 0;
     }
@@ -580,7 +580,7 @@ const HiringHeroesPage = () => {
         h3 {
           font-family: "Balboa Medium";
           color: #fff;
-          font-size: 100px;
+          font-size: 80px;
           line-height: 1;
           letter-spacing: 3px;
           margin-top: 0;
@@ -702,7 +702,7 @@ const HiringHeroesPage = () => {
     h3 {
       font-family: "Balboa Medium";
       color: #d0d5d9;
-      font-size: 120px;
+      font-size: 100px;
       line-height: 1;
       margin-top: 0;
       margin-bottom: 0;
@@ -852,7 +852,7 @@ const HiringHeroesPage = () => {
       p {
         font-family: "Kessel Light";
         color: #d0d5d9;
-        font-size: 40px;
+        font-size: 36px;
         background: #0b283a;
         padding-left: 50px;
         font-weight: 600;
@@ -1009,11 +1009,11 @@ const HiringHeroesPage = () => {
         max-width: 780px;
         margin: 0 auto;
         font-family: "Kessel Light";
-        font-size: 25px;
+        font-size: 18px;
         color: #fff;
         text-align: center;
         span.large-text {
-          font-size: 50px;
+          font-size: 36px;
         }
       }
       a {
@@ -1031,7 +1031,8 @@ const HiringHeroesPage = () => {
       max-width: 1200px;
       margin: 0 auto;
       > div {
-        max-width: 500px;
+        max-width: 700px;
+        min-height: 350px;
         margin: 0 auto;
         padding-bottom: 100px;
       }
