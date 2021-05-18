@@ -1,7 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
 import SEO from "../../components/seo"
@@ -78,9 +77,9 @@ const AboutPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             dangerouslySetInnerHTML={{ __html: post.node.content }}/>
-            <ImageSection>
+            {/* <ImageSection>
                 <Img sizes={post.node.featuredImage.node.localFile.childImageSharp.sizes} alt={post.node.title} />
-            </ImageSection>
+            </ImageSection> */}
             <ScrollingImages>
               <AboutScrollingImages />
             </ScrollingImages>
@@ -94,7 +93,7 @@ const AboutPage = () => {
   
   const PageMain = styled.div`
     width: 100%;
-    padding: 200px;
+    padding: 200px 0;
     padding-bottom: 50px;
     h1 {
       font-family: "Madelyn";
@@ -119,12 +118,15 @@ const AboutPage = () => {
   `
 
   const VideoSection = styled.section`
-    max-width: 1000px;
+    max-width: 100%;
     width: 100%;
     margin: 50px auto;
   `
 
   const SectionContent = styled.section`
+    max-width: 1040px;
+    padding: 0 20px;
+    margin: 0 auto;
     p {
         font-family: "Kessel Light";
         line-height: 1.5;
@@ -138,12 +140,12 @@ const AboutPage = () => {
     }
   `
 
-  const ImageSection = styled.section`
-    max-width: 600px;
-    width: 100%;
-    margin: 35px auto;
-    opacity: .22;
-  `
+  // const ImageSection = styled.section`
+  //   max-width: 600px;
+  //   width: 100%;
+  //   margin: 35px auto;
+  //   opacity: .22;
+  // `
 
   const ScrollingImages = styled.section`
     padding-top: 50px;

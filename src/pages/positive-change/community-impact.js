@@ -84,15 +84,15 @@ const HeroImage = styled.section`
       height: 100vh;
       width: 100%;
       img {
-          object-position: top center;
+          object-position: top center !important;
       }
   }
   div.hero-content {
       position: absolute;
-      top: 25vh;
+      top: 145px;
       width: 100%;
       > div {
-          max-width: 1200px;
+          max-width: 1300px;
           width: 100%;
           padding: 0 20px;
           margin: 0 auto;
@@ -203,9 +203,25 @@ const VideoSection = styled.section`
     max-width: 1000px;
     width: 100%;
     margin: 50px auto;
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      > div {
+        width: calc(50% - 15px);
+        p {
+          font-family: "Kessel Light";
+          line-height: 1.5;
+          font-size: 18px;
+          color: #fff;
+          max-width: 550px;
+          font-weight: 400;
+        }
+      }
+    }
     .wp-video {
         max-width: 1000px;
-        width: 100%;
+        width: 100% !important;
         height: auto;
         video {
             max-width: 1000px !important;

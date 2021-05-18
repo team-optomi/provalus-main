@@ -181,7 +181,7 @@ const SectionOne = styled.section`
 
 const SectionTwo = styled.section`
   padding: 50px 20px;
-  background-color: rgb(210,35,42);
+  background-color: #0b283a;
   > div {
     max-width: 1140px;
     padding: 0 20px;

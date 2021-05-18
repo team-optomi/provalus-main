@@ -94,9 +94,9 @@ class SideMainMenu extends Component {
                 </MenuItem> */}
                 <MenuItem>
                     <Link
-                    to="/positive-change/mission/"
+                    to="/positive-change/community-impact/"
                     >
-                    Mission
+                    Community Impact
                     </Link>
                 </MenuItem>
                 <MenuItem>

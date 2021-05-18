@@ -330,6 +330,9 @@ const HiringHeroesPage = () => {
               data-sal-easing="ease"
               class="arrow-row arrow-row-three"><div class="arrow-line"><Img fluid={data.arrowImage.childImageSharp.fixed} /><p>{post.node.HiringHeroesContent.hhSectionSix.arrowThree}</p></div></div>
             </SectionSix>
+            <ScrollingSection>
+              <HeroesScrollingImages />
+            </ScrollingSection>
             <SectionSeven>
               <div class="s7-main">
                 <div dangerouslySetInnerHTML={{ __html: post.node.HiringHeroesContent.hhSectionSeven.applyContent }} />
@@ -338,9 +341,6 @@ const HiringHeroesPage = () => {
                 <div dangerouslySetInnerHTML={{ __html: post.node.HiringHeroesContent.hhSectionSeven.contactInfo }} />
               </div>
             </SectionSeven>
-            <ScrollingSection>
-              <HeroesScrollingImages />
-            </ScrollingSection>
           </PageMain>
         </Layout>
       ))

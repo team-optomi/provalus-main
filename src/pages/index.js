@@ -182,36 +182,36 @@ const IndexPage = () => {
         <SectionThree>
           <h2 dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeSectionThreeTitle }} />
             <div class="one-fourth-col">
-              <div class="icon-block">
-                <Link to="/services/support/">
-                  <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
-                </Link>
-              </div>
-              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnOneContent }} />
-            </div>
-            <div class="one-fourth-col">
-              <div class="icon-block">
-              <Link to="/services/run/">
-                <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.title} />
+              <Link to="/services/support/">
+                <div class="icon-block">
+                    <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnOneContent }} />
               </Link>
-              </div>
-              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnTwoContent }} />
             </div>
             <div class="one-fourth-col">
-              <div class="icon-block">
-                <Link to="/services/build/">
-                  <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
-                </Link>
-              </div>
-              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnThreeContent }} />
+              <Link to="/services/run/">
+                <div class="icon-block">
+                  <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.title} />
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnTwoContent }} />
+              </Link>
             </div>
             <div class="one-fourth-col">
-              <div class="icon-block">
-                <Link to="/services/security/">
-                  <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
-                </Link>
-              </div>
-              <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFourContent }} />
+              <Link to="/services/build/">
+                <div class="icon-block">
+                    <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnThreeContent }} />
+              </Link>
+            </div>
+            <div class="one-fourth-col">
+              <Link to="/services/security/">
+                <div class="icon-block">
+                    <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFourContent }} />
+              </Link>
             </div>
         </SectionThree>
         <SectionFour>
@@ -244,7 +244,7 @@ const HomeHero = styled.section`
   }
   .hero-logo {
     position: relative;
-    max-width: 600px;
+    max-width: 650px;
     width: 100%;
     margin: 0 auto;
   }
@@ -255,7 +255,7 @@ const HomeHero = styled.section`
       color: rgb(210,35,42);
       font-weight: 700;
       line-height: 1.2;
-      font-size: 28px;
+      font-size: 26px;
       text-align: center;
       margin-top: 20px;
       span.madelyn {
@@ -446,6 +446,9 @@ const SectionThree = styled.section`
     margin-bottom: 35px;
     width: 100%;
     text-align: center;
+  }
+  a {
+    text-decoration: none;
   }
   .one-fourth-col {
     width: 25%;

@@ -104,7 +104,7 @@ const ContactUsPage = () => {
 
 const SectionOne = styled.section`
     width: 100%;
-    padding: 200px 0 100px;
+    padding: 200px 0 20px;
     h1 {
         font-family: "Madelyn";
         font-size: 185px;
@@ -131,7 +131,7 @@ const SectionTwo = styled.section`
     width: 100%;
     position: relative;
     overflow: hidden;
-    padding: 100px 0;
+    padding: 40px 0;
     .background-image {
       position: relative;
       width: 100%;
@@ -163,7 +163,7 @@ const SectionTwo = styled.section`
       justify-content: center;
       p {
         font-family: "Kessel Light";
-        line-height: 1.5;
+        line-height: 2;
         font-size: 18px;
         color: #fff;
         font-weight: 400;
