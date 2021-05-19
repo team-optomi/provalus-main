@@ -278,10 +278,16 @@ const HomeHero = styled.section`
       cursor: pointer;
     }
   }
+  @media(max-width: 1000px) {
+    .hero-logo {
+      margin-top: 100px;
+    }
+  }
   @media(max-width:767px) {
     .hero-logo {
       max-width: 400px;
       margin: 20px auto;
+      margin-top: 20px;
     }
     .hero-sub {
       h1 {

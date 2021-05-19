@@ -351,11 +351,11 @@ const HiringHeroesPage = () => {
   
   const PageMain = styled.div`
     width: 100%;
-    padding: 200px 0;
+    padding: 100px 0;
     padding-bottom: 0;
     h1 {
       font-family: "Balboa Medium";
-      font-size: 170px;
+      font-size: 100px;
       text-transform: uppercase;
       vertical-align: middle;
       font-weight: normal;
@@ -363,7 +363,7 @@ const HiringHeroesPage = () => {
       text-align: center;
       span {
         font-family: "Madelyn";
-        font-size: 400px;
+        font-size: 240px;
         font-weight: 100;
         margin-left: -20px;
         line-height: 200px;
@@ -424,16 +424,16 @@ const HiringHeroesPage = () => {
       font-family: "Kessel Light";
       color: #d0d5d9;
       font-weight: bold;
-      font-size: 36px;
+      font-size: 28px;
       text-align: center;
-      max-width: 900px;
+      max-width: 700px;
       width: 88%;
       margin: 20px auto;
       margin-bottom: 80px;
       span {
         font-family: "Madelyn";
         font-weight: 100;
-        font-size: 90px;
+        font-size: 72px;
         line-height: 1;
       }
     }
@@ -477,19 +477,19 @@ const HiringHeroesPage = () => {
     margin-right: -4%;
     p {
       font-family: "Kessel Light";
-      font-size: 87px;
+      font-size: 42px;
       font-weight: bold;
       color: #0b283a;
       line-height: 0;
-      max-width: 500px;
-      height: 200px;
+      max-width: 400px;
+      height: 100px;
+      margin-right: 0;
       margin-bottom: 0;
       margin-left: auto;
-      margin-right: 120px;
       span {
         font-family: "Madelyn";
         font-weight: 100;
-        font-size: 150px;
+        font-size: 72px;
         line-height: 1;
         margin-bottom: -87px;
       }
@@ -547,7 +547,7 @@ const HiringHeroesPage = () => {
     p {
       font-family: "Balboa Medium";
       color: #d0d5d9;
-      font-size: 80px;
+      font-size: 72px;
       line-height: 1;
       margin-bottom: 0;
     }
@@ -580,24 +580,24 @@ const HiringHeroesPage = () => {
         h3 {
           font-family: "Balboa Medium";
           color: #fff;
-          font-size: 80px;
+          font-size: 72px;
           line-height: 1;
           letter-spacing: 3px;
           margin-top: 0;
           margin-bottom: 20px;
         }
         .gatsby-image-wrapper {
-          max-height: 125px;
+          max-height: 100px;
+          max-width: 100px;
           width: 100%;
           img {
             object-fit: contain !important;
-
           }
         }
         h4 {
           font-family: "Balboa Medium";
           color: #fff;
-          font-size: 30px;
+          font-size: 24px;
           line-height: 1;
           letter-spacing: 1px;
           margin-top: 20px;
@@ -702,10 +702,10 @@ const HiringHeroesPage = () => {
     h3 {
       font-family: "Balboa Medium";
       color: #d0d5d9;
-      font-size: 100px;
+      font-size: 72px;
       line-height: 1;
       margin-top: 0;
-      margin-bottom: 0;
+      margin-bottom: 30px;
       margin-left: 50px;
       display: flex;
       letter-spacing: 3px;
@@ -736,11 +736,11 @@ const HiringHeroesPage = () => {
       font-family: "Balboa Medium";
       color: #0b283a;
       letter-spacing: 3px;
-      font-size: 50px;
+      font-size: 36px;
       line-height: 1.2;
       margin-top: 35px;
       margin-bottom: 35px;
-      max-width: 600px;
+      max-width: 450px;
     }
     .arrow-line {
       border: 5px solid #d0d5d9;
@@ -788,6 +788,7 @@ const HiringHeroesPage = () => {
       text-align: center;
       max-width: 650px;
       margin: 35px auto;
+      text-transform: uppercase;
     }
     .s5-main {
       max-width: 1200px;
@@ -852,14 +853,14 @@ const HiringHeroesPage = () => {
       p {
         font-family: "Kessel Light";
         color: #d0d5d9;
-        font-size: 36px;
+        font-size: 24px;
         background: #0b283a;
-        padding-left: 50px;
+        padding-left: 60px;
         font-weight: 600;
         letter-spacing: 1px;
         z-index: 1;
         position: relative;
-        top: 50px;
+        top: 60px;
       }
     }
     .arrow-row-one,
@@ -910,7 +911,7 @@ const HiringHeroesPage = () => {
         }
         p {
           padding-left: 0;
-          padding-right: 50px;
+          padding-right: 60px;
           text-align: right;
         }
         .gatsby-image-wrapper {
@@ -1009,7 +1010,6 @@ const HiringHeroesPage = () => {
         max-width: 780px;
         margin: 0 auto;
         font-family: "Kessel Light";
-        font-size: 18px;
         color: #fff;
         text-align: center;
         span.large-text {
@@ -1020,7 +1020,7 @@ const HiringHeroesPage = () => {
         font-family: "Madelyn";
         color: #d2232a;
         font-weight: 100;
-        font-size: 150px;
+        font-size: 100px;
         line-height: 2;
         text-transform: none;
         text-decoration: none !important;
