@@ -107,6 +107,7 @@ const MainSection = styled.section`
           font-size: 40px;
           margin-top: 0;
           margin-bottom: 0;
+          text-transform: capitalize;
         }
         h3 {
           font-family: "Balboa Medium";
@@ -148,6 +149,12 @@ const MainSection = styled.section`
         > div {
           display: flex;
           align-items: center;
+          margin-bottom: 10px;
+          .gatsby-image-wrapper {
+            img {
+              object-fit: contain !important;
+            }
+          }
         }
       }
     }
@@ -189,6 +196,10 @@ const MainSection = styled.section`
       ul {
         margin-left: 20px;
       }
+      .gatsby-image-wrapper {
+        margin: 0 auto;
+        display: block;
+      }
     }
   }
   .section-three {
@@ -228,6 +239,18 @@ const MainSection = styled.section`
       .gatsby-image-wrapper {
         margin: 0 auto;
         display: block;
+      }
+    }
+  }
+  @media(max-width:767px) {
+    .section-one {
+      .flex-row {
+        flex-wrap: wrap;
+        .overview,
+        .services {
+          width: 100%;
+          padding-right: 0;
+        }
       }
     }
   }

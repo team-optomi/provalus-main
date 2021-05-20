@@ -112,7 +112,7 @@ const SliderContainer = styled.div`
     .slick-dots {
         display: none !important;
     }
-    .slick-prev {
+    .slick-next {
         width: 200px;
         height: 80px;
         background-color: transparent;
@@ -120,39 +120,6 @@ const SliderContainer = styled.div`
         left: auto;
         top: auto;
         bottom: -80px;
-        z-index: 3;
-        transition-duration: .3s;
-    }
-    .slick-prev:hover {
-        z-index: 3;
-        opacity: .75;
-        background-color: transparent;
-    }
-    .slick-prev:before {
-        content: '';
-        position: absolute;
-        top: 40px;
-        left: 0;
-        height: 1px;
-        width: 200px;
-        background-color: #fff;
-    }
-    .slick-prev:after {
-        content: '';
-        position: absolute;
-        top: 20px;
-        right: 6px;
-        height: 40px;
-        width: 40px;
-        border-top: 1px solid #fff;
-        border-left: 1px solid #fff;
-        transform: rotate(135deg);
-    }
-    .slick-next {
-        width: 200px;
-        height: 80px;
-        background-color: transparent;
-        left: -100px;
         z-index: 3;
         transition-duration: .3s;
     }
@@ -171,6 +138,40 @@ const SliderContainer = styled.div`
         background-color: #fff;
     }
     .slick-next:after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        right: 6px;
+        height: 40px;
+        width: 40px;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        transform: rotate(135deg);
+    }
+
+    .slick-prev {
+        width: 200px;
+        height: 80px;
+        background-color: transparent;
+        left: -100px;
+        z-index: 3;
+        transition-duration: .3s;
+    }
+    .slick-prev:hover {
+        z-index: 3;
+        opacity: .75;
+        background-color: transparent;
+    }
+    .slick-prev:before {
+        content: '';
+        position: absolute;
+        top: 40px;
+        left: 0;
+        height: 1px;
+        width: 200px;
+        background-color: #fff;
+    }
+    .slick-prev:after {
         content: '';
         position: absolute;
         top: 20px;
@@ -236,7 +237,7 @@ const SliderContainer = styled.div`
       .blue-block-1 {
         right: -100px;
       }
-      .slick-prev {
+      .slick-next {
         width: 50px;
         right: -40px;
         top: 50%;
@@ -245,7 +246,7 @@ const SliderContainer = styled.div`
           display: none;
         }
       }
-      .slick-next {
+      .slick-prev {
         width: 50px;
         left: -40px;
         &:before {
