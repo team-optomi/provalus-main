@@ -140,7 +140,7 @@ const SectionTwo = styled.section`
       left: 0;
       &:after {
         content: '';
-        background-color: rgba(0,0,0,.3);
+        background-color: rgba(0,0,0,.75);
         position: absolute;
         height: 100%;
         width: 100%;

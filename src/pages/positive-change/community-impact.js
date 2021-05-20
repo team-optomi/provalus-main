@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
 import SEO from "../../components/seo"
+import ImpactVideo from '../../videos/Impact_Infographic.mp4'
 import ImpactScrollingImages from "../../components/impact-scrolling-images"
 
 const MissionPage = () => {
@@ -64,7 +65,23 @@ const MissionPage = () => {
             </div>
           </HeroImage>
           <VideoSection>
-            <div dangerouslySetInnerHTML={{ __html: post.node.MissionContent.mpCommunityImpactVideo }}/>
+            <div class="col-left">
+              <video
+                className="video-player"
+                height="100%"
+                width="100%"
+                loop
+                autoPlay
+                >
+                <source
+                    src={ImpactVideo}
+                    type="video/mp4"
+                />
+              </video>
+            </div>
+            <div class="col-right">
+              <div dangerouslySetInnerHTML={{ __html: post.node.MissionContent.mpCommunityImpactVideo }}/>
+            </div>
           </VideoSection>
           <ScrollingImages>
             <ImpactScrollingImages/>
@@ -200,23 +217,23 @@ const HeroImage = styled.section`
 `
 
 const VideoSection = styled.section`
-    max-width: 1000px;
+    max-width: 1240px;
     width: 100%;
-    margin: 50px auto;
+    padding: 0 20px;
+    margin: 70px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     > div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      > div {
-        width: calc(50% - 15px);
-        p {
-          font-family: "Kessel Light";
-          line-height: 1.5;
-          font-size: 18px;
-          color: #fff;
-          max-width: 550px;
-          font-weight: 400;
-        }
+      width: calc(50% - 15px);
+      p {
+        font-family: "Kessel Light";
+        line-height: 1.5;
+        font-size: 18px;
+        color: #fff;
+        max-width: 550px;
+        font-weight: 400;
+        text-align: right;
       }
     }
     .wp-video {
@@ -230,6 +247,14 @@ const VideoSection = styled.section`
         }
     }
     @media(max-width: 1000px) {
+      flex-wrap: wrap;
+      > div {
+        width: 100%;
+        p {
+          text-align: center;
+          margin: 20px auto;
+        }
+      }
       .wp-video {
         max-width: 600px;
         margin: 0 auto;

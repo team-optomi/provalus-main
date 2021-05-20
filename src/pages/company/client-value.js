@@ -323,12 +323,13 @@ const ClientValuePage = () => {
   `
 
   const IconCol = styled.div`
-    width: 20%;
+    width: 25%;
     height: 200px;
     padding: 0 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
     .gatsby-image-wrapper {
         max-width: 100px;
         width: 100%;
@@ -342,11 +343,12 @@ const ClientValuePage = () => {
     }
     p {
         font-family: "Kessel Light";
-        padding-top: 30px;
+        padding-top: 10px;
         font-size: 18px;
         line-height: 25px;
         color: #fff;
         text-align: center;
+        margin-bottom: 0;
     }
     @media(max-width:767px) {
       width: 33.33%;

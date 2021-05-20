@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Layout from "../../components/layout-v2"
 import SEO from "../../components/seo"
-import AboutVideo from '../../videos/provalus-outro-about-company.mp4'
+import AboutVideo from '../../videos/fullwidth-video.mp4'
 import AboutScrollingImages from "../../components/about-scrolling-images"
 
 const AboutPage = () => {
