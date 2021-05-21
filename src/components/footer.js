@@ -55,12 +55,12 @@ const Footer = () => {
     return(
         <FooterFull>
             <FooterMain>
-              <div class="socials-row">
-                <a href="#" target="_blank" rel="noreferrer"><FaFacebookSquare size={36}/></a>
-                <a href="#" target="_blank" rel="noreferrer"><FaTwitter size={36}/></a>
-                <a href="#" target="_blank" rel="noreferrer"><FaLinkedin size={36}/></a>
-              </div>
               <div class="footer-flex">
+                <div class="socials-row">
+                  <a href="#" target="_blank" rel="noreferrer"><FaFacebookSquare size={36}/></a>
+                  <a href="#" target="_blank" rel="noreferrer"><FaTwitter size={36}/></a>
+                  <a href="#" target="_blank" rel="noreferrer"><FaLinkedin size={36}/></a>
+                </div>
                 <div class="footer-left">
                   <h4><Img fluid={data.footerIcon.childImageSharp.fixed} />about us</h4>
                   <p>Provalus is purpose-driven… elevating under-served communities by creating technology, business and support careers for undiscovered talent in the U.S.  Provalus offers Support, BPO and ITO services. We hire and develop the best and brightest untapped talent in our small towns and rural communities to deliver a remarkable experience for clients and end-users alike. By creating opportunities where there were none; with companies that believe in America’s future, Provalus is generating a dedicated superior workforce. We are fueling a new era of technology talent equipped to strengthen America’s future.… PROVIDING OUTSOURCING VALUE FROM THE U.S.</p>
@@ -141,6 +141,7 @@ const Footer = () => {
     }
     .footer-flex {
       display: flex;
+      flex-wrap: wrap;
       .footer-left {
         width: 50%;
         h4 {
@@ -215,12 +216,17 @@ const Footer = () => {
     @media(max-width:1250px) {
       .footer-flex {
         flex-wrap: wrap;
+        .socials-row {
+          order: 2;
+        }
         .footer-left {
           width: 100%;
+          order: 1;
         }
         .footer-right {
           width: 100%;
           align-items: flex-start;
+          order: 3;
         }
       }
     }

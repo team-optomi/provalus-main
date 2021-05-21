@@ -161,6 +161,17 @@ const TeamVuePage = () => {
             line-height: 1;
         }
     }
+    @media(max-width:767px) {
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
   `
 
   const SectionTwo = styled.section``

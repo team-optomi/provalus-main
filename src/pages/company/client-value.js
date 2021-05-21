@@ -308,6 +308,17 @@ const ClientValuePage = () => {
           }
         }
     }
+    @media(max-width:767px) {
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
   `
 
   const IconSection = styled.section`
@@ -353,6 +364,17 @@ const ClientValuePage = () => {
     @media(max-width:767px) {
       width: 33.33%;
       padding: 0 10px;
+    }
+    @media(max-width:767px) {
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
     }
     @media(max-width:540px) {
       width: 50%;

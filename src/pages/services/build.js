@@ -177,6 +177,17 @@ const SectionOne = styled.section`
       }
     }
   }
+  @media(max-width:767px) {
+    h2 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 14px;
+      br {
+        display: none;
+      }
+    }
+  }
 `
 
 const SectionTwo = styled.section`
@@ -190,7 +201,7 @@ const SectionTwo = styled.section`
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       p {
         font-family: "Kessel Light";
         line-height: 1.5;
@@ -203,13 +214,30 @@ const SectionTwo = styled.section`
         display: flex;
         align-items: center;
         justify-content: center;
-        max-width: 30px;
+        max-width: 30px !important;
         max-height: 30px;
+        margin-right: 20px;
         img {
           object-fit: contain !important;
           max-width: 30px;
           max-height: 30px;
         }
+      }
+    }
+  }
+  @media(max-width:767px) {
+    > div {
+      > div {
+        align-items: flex-start;
+      }
+    }
+    h2 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 14px;
+      br {
+        display: none;
       }
     }
   }
@@ -219,6 +247,17 @@ const SectionThree = styled.section`
   max-width: 1140px;
   padding: 0 20px;
   margin: 80px auto;
+  @media(max-width:767px) {
+    h2 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 14px;
+      br {
+        display: none;
+      }
+    }
+  }
 `
   
 export default RunPage

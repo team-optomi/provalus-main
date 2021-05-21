@@ -174,6 +174,21 @@ const TrainingPage = () => {
         }
       }
     }
+    @media(max-width:767px) {
+      > div {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
   `
 
   const SectionTwo = styled.section`
@@ -213,6 +228,21 @@ const TrainingPage = () => {
     @media(max-width:767px) {
       h3 {
         font-size: 28px;
+      }
+    }
+    @media(max-width:767px) {
+      > div {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
       }
     }
   `

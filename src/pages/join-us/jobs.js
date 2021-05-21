@@ -158,6 +158,21 @@ const JobsPage = () => {
         }
       }
     }
+    @media(max-width:767px) {
+      > div {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
   `
 
   const SectionTwo = styled.section`
@@ -220,6 +235,21 @@ const JobsPage = () => {
         }
       }
     }
+    @media(max-width:767px) {
+      > div {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
   `
 
   const SectionLeft = styled.div`
@@ -229,6 +259,21 @@ const JobsPage = () => {
       width: 100%;
       margin-right: 0;
     }
+    @media(max-width:767px) {
+      > div {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
   `
 
   const SectionRight = styled.div`
@@ -237,6 +282,21 @@ const JobsPage = () => {
     @media(max-width:1000px) {
       width: 100%;
       margin-left: 0;
+    }
+    @media(max-width:767px) {
+      > div {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
     }
   `
 
@@ -281,6 +341,21 @@ const JobsPage = () => {
       }
       @media(max-width:1000px) {
         width: 100%;
+      }
+      @media(max-width:767px) {
+        > div {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        h2 {
+          font-size: 28px;
+        }
+        p {
+          font-size: 14px;
+          br {
+            display: none;
+          }
+        }
       }
   `
   

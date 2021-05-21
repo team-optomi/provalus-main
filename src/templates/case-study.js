@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import styled from 'styled-components'
 import parse from "html-react-parser"
@@ -7,7 +7,7 @@ import parse from "html-react-parser"
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
 
-const CaseStudyTemplate = ({ data: { caseStudy, caseStudyIcon } }) => {
+const CaseStudyTemplate = ({ data: { caseStudy } }) => {
 
   return (
     <Layout>
@@ -240,6 +240,20 @@ const MainSection = styled.section`
         margin: 0 auto;
         display: block;
       }
+      .back-button {
+        a {
+          display: block;
+          font-family: "Kessel Light";
+          width: 180px;
+          text-align: center;
+          margin: 20px auto;
+          background-color: #0b283a;
+          color: #fff;
+          text-decoration: none;
+          padding: 10px 0;
+          letter-spacing: 1px;
+        }
+      }
     }
   }
   @media(max-width:767px) {
@@ -281,6 +295,12 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+      }
+      categories {
+        nodes {
+          slug
+          databaseId
         }
       }
       CaseStudy {

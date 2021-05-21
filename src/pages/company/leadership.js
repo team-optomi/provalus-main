@@ -77,6 +77,13 @@ const LeadershipPage = () => {
       text-align: center;
       margin-bottom: 100px;
     }
+    @media(max-width:767px) {
+      padding-top: 100px;
+      h1 {
+        font-size: 85px;
+        margin-bottom: 50px;
+      }
+    }
   `
   
   export default LeadershipPage

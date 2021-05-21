@@ -115,6 +115,17 @@ const AboutPage = () => {
         font-size: 100px;
       }
     }
+    @media(max-width:767px) {
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
   `
 
   const VideoSection = styled.section`
@@ -137,6 +148,17 @@ const AboutPage = () => {
     }
     @media(max-width:767px) {
       opacity: 1 !important;
+    }
+    @media(max-width:767px) {
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
     }
   `
 

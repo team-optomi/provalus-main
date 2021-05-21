@@ -157,6 +157,20 @@ const CoreValuesPage = () => {
         }
       }
     }
+    @media(max-width:767px) {
+      > div {
+        opacity: 1 !important;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
     @media(max-width:550px) {
       p {
         br {

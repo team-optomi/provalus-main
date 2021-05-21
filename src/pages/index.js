@@ -432,6 +432,17 @@ const SectionTwo = styled.section`
       margin: 0 auto;
     }
   }
+  @media(max-width:767px) {
+    h2 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 14px;
+      br {
+        display: none;
+      }
+    }
+  }
 `
 
 const SectionThree = styled.section`
@@ -536,6 +547,17 @@ const SectionThree = styled.section`
       padding: 0 20px !important;
     }
   }
+  @media(max-width:767px) {
+    h2 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 14px;
+      br {
+        display: none;
+      }
+    }
+  }
 `
 
 const SectionFour = styled.section`
@@ -593,6 +615,17 @@ const SectionFour = styled.section`
       text-align: center;
       margin-left: auto;
       margin-right: auto;
+    }
+  }
+  @media(max-width:767px) {
+    h2 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 14px;
+      br {
+        display: none;
+      }
     }
   }
 `

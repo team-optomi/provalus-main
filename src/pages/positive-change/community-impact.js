@@ -260,6 +260,22 @@ const VideoSection = styled.section`
         margin: 0 auto;
       }
     }
+    @media(max-width:767px) {
+      h2 {
+        font-size: 28px;
+      }
+      > div {
+        p {
+          font-size: 14px;
+        }
+      }
+      p {
+        font-size: 14px;
+        br {
+          display: none;
+        }
+      }
+    }
     @media(max-width: 650px) {
       .wp-video {
         max-width: 400px;

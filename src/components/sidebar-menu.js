@@ -224,6 +224,7 @@ const SubMenu = styled.ul`
     height: 0;
     overflow: hidden;
     transition-duration: .5s;
+    list-style: none;
     &.subMenuOne {
         &.menuOpen {
             left: 20px;
