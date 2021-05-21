@@ -54,14 +54,14 @@ const NewsIndex = ({
                   <div class="entry-wrap">
                     <header>
                       <h2>
-                        <Link to={post.uri} itemProp="url">
+                        <Link to={`/${post.slug}`} itemProp="url">
                           <span itemProp="headline">{parse(title)}</span>
                         </Link>
                       </h2>
                     </header>
                     <section itemProp="description">{parse(post.excerpt)}</section>
                     <div class="bottom-flex">
-                      <p><Link to={post.uri} itemProp="url">Read More</Link></p>
+                      <p><Link to={`/${post.slug}`} itemProp="url">Read More</Link></p>
                       <p>{post.date}</p>
                     </div>
                   </div>
@@ -191,6 +191,7 @@ export const pageQuery = graphql`
       nodes {
         excerpt
         uri
+        slug
         date(formatString: "MMMM DD, YYYY")
         title
         excerpt
