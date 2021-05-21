@@ -20,7 +20,7 @@ const IndexPage = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 4000,
   };
 
   const data = useStaticQuery(graphql`
@@ -390,7 +390,7 @@ const MobileStatistics = styled.div`
   @media(max-width:767px) {
     display: block;
   }
-  @media(max-width:500px) {
+  @media(max-width:320px) {
     p {
       font-size: 12px;
       span.large {

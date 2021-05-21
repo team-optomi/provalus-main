@@ -124,6 +124,16 @@ const HeaderSection = styled.header`
       margin-bottom: 0;
     }
   }
+  @media(max-width: 767px) {
+    > div {
+      h1 {
+        font-size: 36px;
+      }
+      .gatsby-image-wrapper {
+        max-width: 140px;
+      }
+    }
+  }
 `
   
 const SectionOne = styled.section`

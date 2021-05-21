@@ -414,6 +414,12 @@ const HiringHeroesPage = () => {
         height: 350px !important;
       }
     }
+    @media(max-width:450px) {
+      margin-bottom: 50px;
+      .react-player {
+        height: 250px !important;
+      }
+    }
   `
   
   const SectionOne = styled.section`
