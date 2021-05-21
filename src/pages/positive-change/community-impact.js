@@ -72,6 +72,7 @@ const MissionPage = () => {
                 width="100%"
                 loop
                 autoPlay
+                playsInline
                 >
                 <source
                     src={ImpactVideo}

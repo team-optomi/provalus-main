@@ -65,6 +65,7 @@ const AboutPage = () => {
                 loop
                 muted
                 autoPlay
+                playsInline
                 >
                 <source
                     src={AboutVideo}

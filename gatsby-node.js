@@ -116,7 +116,7 @@ Promise.all(
     gatsbyUtilities.actions.createPage({
       // Use the WordPress uri as the Gatsby page path
       // This is a good idea so that internal links and menus work 👍
-      path: `/news/${newsPost.slug}`,
+      path: `${newsPost.slug}`,
 
       // use the blog post template as the page component
       component: path.resolve(`./src/templates/news-post.js`),

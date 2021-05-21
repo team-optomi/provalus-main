@@ -2,4 +2,4 @@
 /services/ito       /services/security      301
 /services/bpo       /services/support       301
 /blog/              /insights/              301
-/blog/*             /insights/*             301
+/blog/*             /insights/             301
