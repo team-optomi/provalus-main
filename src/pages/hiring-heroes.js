@@ -463,6 +463,15 @@ const HiringHeroesPage = () => {
         }
       }
     }
+    @media(max-width: 500px) {
+      h2 {
+        font-size: 16px;
+        line-height: 2;
+        span {
+          line-height: 1.5;
+        }
+      }
+    }
   `
 
   const PopSection = styled.div`
@@ -539,6 +548,14 @@ const HiringHeroesPage = () => {
         display: none;
       }
     }
+    @media(max-width: 500px) {
+      p {
+        font-size: 32px;
+        span {
+          font-size: 60px;
+        }
+      }
+    }
   `
 
   const PopRight = styled.div`
@@ -568,6 +585,14 @@ const HiringHeroesPage = () => {
       justify-content: center;
       border-width: 5px;
       height: auto;
+    }
+    @media(max-width: 500px) {
+      p {
+        font-size: 60px;
+        span {
+          font-size: 60px;
+        }
+      }
     }
   `
 
@@ -628,6 +653,9 @@ const HiringHeroesPage = () => {
     @media(max-width:500px) {
       .four-col {
         width: 100%;
+        h3 {
+          font-size: 60px;
+        }
       }
     }
   `
@@ -668,6 +696,17 @@ const HiringHeroesPage = () => {
         display: block;
         img {
           object-fit: contain !important;
+        }
+      }
+    }
+    @media(max-width:500px) {
+      > div {
+        opacity: 1 !important;
+        h2 {
+          font-size: 24px;
+        }
+        p {
+          font-size: 16px;
         }
       }
     }
@@ -729,6 +768,11 @@ const HiringHeroesPage = () => {
       height: auto;
       width: 100%;
     }
+    @media(max-width:500px) {
+      h3 {
+        font-size: 60px;
+      }
+    }
   `
 
   const RightBox = styled.div`
@@ -778,6 +822,11 @@ const HiringHeroesPage = () => {
       text-align: center;
       .arrow-line {
         display: none;
+      }
+    }
+    @media(max-width: 500px) {
+      p {
+        font-size: 24px;
       }
     }
   `
@@ -845,6 +894,11 @@ const HiringHeroesPage = () => {
         .half-col {
           width: 100%;
         }
+      }
+    }
+    @media(max-width:500px) {
+      h2 {
+        font-size: 24px;
       }
     }
   `
@@ -1002,6 +1056,13 @@ const HiringHeroesPage = () => {
         }
       }
     }
+    @media(max-width:500px) {
+      .arrow-row {
+        p {
+          font-size: 24px;
+        }
+      }
+    }
   `
 
   const SectionSeven = styled.section`
@@ -1075,6 +1136,14 @@ const HiringHeroesPage = () => {
       .s7-main {
         a {
           font-size: 72px;
+        }
+      }
+      .s7-contact {
+        h3 {
+          font-size: 24px;
+        }
+        p {
+          font-size: 16px;
         }
       }
     }
