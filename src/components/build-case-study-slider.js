@@ -190,7 +190,7 @@ const SliderContainer = styled.div`
     }
     .blue-block-1 {
         top: -20px;
-        left: calc(50% - 300px);
+        left: calc(50% - 200px);
     }
     .blue-block-2 {
         bottom: -60px;

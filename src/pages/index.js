@@ -523,7 +523,7 @@ const SectionThree = styled.section`
       text-align: center;
     }
   }
-  @media(max-width:1150px) {
+  @media(max-width:1160px) {
     max-width: 800px;
     .one-fourth-col {
       width: 50%;

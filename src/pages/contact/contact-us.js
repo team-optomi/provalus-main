@@ -77,16 +77,22 @@ const ContactUsPage = () => {
                     <h2>Locations</h2>
                     <div class="location-flex">
                         <div>
+                          <a href="https://goo.gl/maps/UmhVNFV67BGUz2xg7" target="_blank">
                             <Img fluid={data.locationImage.childImageSharp.fixed} />
                             <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationOne }} />
+                          </a>
                         </div>
                         <div>
+                          <a href="https://g.page/Provalus?share" target="_blank">
                             <Img fluid={data.locationImage.childImageSharp.fixed} />
                             <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationTwo }} />
+                          </a>
                         </div>
                         <div>
+                          <a href="https://goo.gl/maps/kMCGGCgVdb31pMKz6" target="_blank">
                             <Img fluid={data.locationImage.childImageSharp.fixed} />
                             <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationThree }} />
+                          </a>
                         </div>
                     </div>
                 </SectionThree>
@@ -225,6 +231,9 @@ const SectionThree = styled.section`
       width: 100%;
       display: flex;
       margin: 0 auto;
+      a {
+        text-decoration: none;
+      }
       > div {
         width: 33.33%;
         text-align: center;

@@ -21,6 +21,15 @@ class ScrollingImages extends Component {
             autoplaySpeed: 6000,
             focusOnSelect: true,
             centerMode: true,
+            responsive: [
+              {
+                breakpoint: 500,
+                settings: {
+                  focusOnSelect: false,
+                  centerMode: false,
+                }
+              }
+            ]
           };
         
           return (
@@ -149,6 +158,18 @@ const SliderContainer = styled.div`
           }
         }
       }
+    }
+  } 
+  @media(max-width:500px) {
+    .slick-list{
+      padding: 0 !important;
+      overflow: visible;
+    }
+    .slick-prev {
+      left: 10px;
+    }
+    .slick-next {
+      right: 10px;
     }
   }  
 `
