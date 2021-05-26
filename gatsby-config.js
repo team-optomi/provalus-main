@@ -11,7 +11,7 @@ module.exports = {
     title: `IT Outsourcing Services | Technology Services | Technology Solutions`,
     description: `We are elevating high-potential rural communities by creating technology, business and support careers for undiscovered talent in the U.S.`,
     author: `Provalus`,
-    siteUrl: `http://provalus.com`,
+    siteUrl: `https://provalus.com`,
   },
   /**
    * Adding plugins to this array adds them to your Gatsby site.
@@ -34,7 +34,7 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `http://provalus-v2.theremotecreative.com/graphql`,
+          `https://provalus.wpengine.com/graphql`,
       },
     },
 

@@ -132,7 +132,7 @@ const AboutPage = () => {
   const VideoSection = styled.section`
     max-width: 100%;
     width: 100%;
-    margin: 50px auto;
+    margin: 0px auto;
   `
 
   const SectionContent = styled.section`
@@ -142,7 +142,7 @@ const AboutPage = () => {
     p {
         font-family: "Kessel Light";
         line-height: 1.5;
-        padding-top: 30px;
+        padding-top: 0px;
         font-size: 18px;
         color: #fff;
         text-align: center;
