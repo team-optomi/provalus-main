@@ -475,7 +475,7 @@ const SectionThree = styled.section`
       padding-left: 0;
     }
     &:nth-child(4) {
-      padding-bottom: 20px;
+      padding-bottom: 62px;
     }
     &:last-child {
       padding-right: 0;

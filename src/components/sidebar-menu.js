@@ -80,6 +80,13 @@ class SideMainMenu extends Component {
                     </SubMenu>
                 <MenuItem>
                     <Link
+                    to="/case-studies/"
+                    >
+                    Case Studies
+                    </Link>
+                </MenuItem>
+                <MenuItem>
+                    <Link
                     to="/company/client-value/"
                     >
                     Client Value
