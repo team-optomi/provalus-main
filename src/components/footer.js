@@ -14,6 +14,26 @@ import { FaPhoneAlt } from 'react-icons/fa'
 const Footer = () => {
     const data = useStaticQuery(graphql`
       query {
+        footerSocials: wpFooterSection(databaseId: {eq: 1814}) {
+          FooterSocialsContent {
+            footerFacebookLink
+            footerTwitterLink
+            footerLinkedinLink
+          }
+        }
+        footerBottom: wpFooterSection(databaseId: {eq: 1820}) {
+          FooterBottomContent {
+            footerEmailLink
+            footerLocationsContent
+            footerPhoneNumber
+          }
+        }
+        footerLeft: wpFooterSection(databaseId: {eq: 1826}) {
+          content
+        }
+        footerRight: wpFooterSection(databaseId: {eq: 1828}) {
+          content
+        }
         footerIcon: file(relativePath: { eq: "provalus-footer.png" }) {
           childImageSharp {
             fixed(width: 38, height: 33) {
@@ -57,41 +77,32 @@ const Footer = () => {
             <FooterMain>
               <div class="footer-flex">
                 <div class="socials-row">
-                  <a href="#" target="_blank" rel="noreferrer"><FaFacebookSquare size={36}/></a>
-                  <a href="#" target="_blank" rel="noreferrer"><FaTwitter size={36}/></a>
-                  <a href="#" target="_blank" rel="noreferrer"><FaLinkedin size={36}/></a>
+                  <a href={data.footerSocials.FooterSocialsContent.footerFacebookLink} target="_blank" rel="noreferrer"><FaFacebookSquare size={36}/></a>
+                  <a href={data.footerSocials.FooterSocialsContent.footerTwitterLink} target="_blank" rel="noreferrer"><FaTwitter size={36}/></a>
+                  <a href={data.footerSocials.FooterSocialsContent.footerLinkedinLink} target="_blank" rel="noreferrer"><FaLinkedin size={36}/></a>
                 </div>
                 <div class="footer-left">
                   <h4><Img fluid={data.footerIcon.childImageSharp.fixed} />about us</h4>
-                  <p>Provalus is purpose-driven… elevating under-served communities by creating technology, business and support careers for undiscovered talent in the U.S.  Provalus offers Support, BPO and ITO services. We hire and develop the best and brightest untapped talent in our small towns and rural communities to deliver a remarkable experience for clients and end-users alike. By creating opportunities where there were none; with companies that believe in America’s future, Provalus is generating a dedicated superior workforce. We are fueling a new era of technology talent equipped to strengthen America’s future.… PROVIDING OUTSOURCING VALUE FROM THE U.S.</p>
+                  <div dangerouslySetInnerHTML={{ __html: data.footerLeft.content }} />
                 </div>
-                <div class="footer-right">
-                  <div class="icons">
-                    <Img fluid={data.socIcon.childImageSharp.fixed} />
-                    <Img fluid={data.militaryIcon.childImageSharp.fixed} />
-                  </div>
-                  <p>Optomi has been recognized with multiple awards :</p>
-                  <Img fluid={data.footerAwards.childImageSharp.fixed} className={"footer-awards"} />
-                  <Img fluid={data.footerLogo.childImageSharp.fixed} className={"footer-logo"} />
-                </div>
+                <div 
+                class="footer-right"
+                dangerouslySetInnerHTML={{ __html: data.footerRight.content }}
+                />
               </div>
             </FooterMain>
             <FooterContact>
               <div class="contact-left">
                 <FaRegEnvelope size={28}/>
-                <a href="mailto:info@provalus.com">info@provalus.com</a>
+                <a href={`mailto:${data.footerBottom.FooterBottomContent.footerEmailLink}`}>{data.footerBottom.FooterBottomContent.footerEmailLink}</a>
               </div>
               <div class="contact-center">
                 <FaBriefcase size={28}/>
-                <p class="contact-links">
-                  <Link to="/contact/contact-us/">Alabama</Link>|
-                  <Link to="/contact/contact-us/">Texas</Link>|
-                  <Link to="/contact/contact-us/">South Carolina</Link>
-                </p>
+                <div dangerouslySetInnerHTML={{ __html: data.footerBottom.FooterBottomContent.footerLocationsContent }} />
               </div>
               <div class="contact-right">
                 <FaPhoneAlt size={28}/>
-                <p>888.689.0872</p>
+                <p>{data.footerBottom.FooterBottomContent.footerPhoneNumber}</p>
               </div>
             </FooterContact>
             <FooterCopyright>
@@ -142,6 +153,7 @@ const Footer = () => {
     .footer-flex {
       display: flex;
       flex-wrap: wrap;
+      width: 100%;
       .footer-left {
         width: 50%;
         h4 {
@@ -179,7 +191,7 @@ const Footer = () => {
           display: flex;
           justify-content: flex-end;
           .gatsby-image-wrapper {
-            width: 62px;
+            width: 62px !important;
             height: 62px;
             img {
               object-fit: contain !important;
@@ -194,9 +206,13 @@ const Footer = () => {
           margin-top: 10px;
           margin-bottom: 10px;
         }
+        .award-imgs {
+          width: 100%;
+          text-align: right;
+        }
         .gatsby-image-wrapper {
           &.footer-awards {
-            width: 471px;
+            width: 471px !important;
             height: 38px;
             margin-bottom: 20px;
             img {
@@ -204,7 +220,7 @@ const Footer = () => {
             }
           }
           &.footer-logo {
-            width: 500px;
+            width: 500px !important;
             height: 145px;
             img {
               object-fit: contain !important;
@@ -227,6 +243,9 @@ const Footer = () => {
           width: 100%;
           align-items: flex-start;
           order: 3;
+          .award-imgs {
+            text-align: left;
+          }
         }
       }
     }
@@ -249,6 +268,9 @@ const Footer = () => {
         }
         .footer-right {
           align-items: center;
+          .award-imgs {
+            text-align: center;
+          }
         }
       }
     }
@@ -313,6 +335,7 @@ const Footer = () => {
         color: #fff;
         margin-top: 5px;
         margin-bottom: 0;
+        display: flex;
       }
       a {
         font-family: "Kessel Light";
