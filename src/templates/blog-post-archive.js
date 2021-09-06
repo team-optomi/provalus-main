@@ -155,6 +155,11 @@ const MainLoop = styled.ol`
       }
     }
   }
+  .post-list-item {
+    .gatsby-image-wrapper {
+      height: 250px;
+    }
+  }
   @media( max-width: 1120px) {
     max-width: 720px;
     > li {
