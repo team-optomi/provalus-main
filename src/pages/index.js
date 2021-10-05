@@ -564,6 +564,21 @@ const SectionFour = styled.section`
   max-width: 1140px;
   padding: 0 20px;
   margin: 100px auto;
+  .video-section {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
   .home-map {
     max-width: 800px;
     margin: 0 auto;
