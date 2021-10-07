@@ -214,6 +214,9 @@ const IndexPage = () => {
               </Link>
             </div>
         </SectionThree>
+        <VideoSection>
+
+        </VideoSection>
         <SectionFour>
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourFirstContent }} />
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourMiddleContent }} />
@@ -559,6 +562,8 @@ const SectionThree = styled.section`
     }
   }
 `
+
+const VideoSection = styled.section``
 
 const SectionFour = styled.section`
   max-width: 1140px;
