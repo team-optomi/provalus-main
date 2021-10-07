@@ -6,6 +6,7 @@ import Slider from "react-slick"
 
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
+import HomeVideo from '../videos/home-fullwidth.mp4'
 
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { FaChevronDown } from 'react-icons/fa'
@@ -215,7 +216,20 @@ const IndexPage = () => {
             </div>
         </SectionThree>
         <VideoSection>
-
+          <video
+            className="video-player"
+            height="100%"
+            width="100%"
+            loop
+            muted
+            autoPlay
+            playsInline
+            >
+            <source
+                src={HomeVideo}
+                type="video/mp4"
+            />
+          </video>
         </VideoSection>
         <SectionFour>
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourFirstContent }} />
@@ -563,7 +577,16 @@ const SectionThree = styled.section`
   }
 `
 
-const VideoSection = styled.section``
+const VideoSection = styled.section`
+    max-width: 100%;
+    width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    margin: 0px auto;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+  `
 
 const SectionFour = styled.section`
   max-width: 1140px;
