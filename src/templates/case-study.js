@@ -239,6 +239,9 @@ const MainSection = styled.section`
       .gatsby-image-wrapper {
         margin: 0 auto;
         display: block;
+        img {
+          object-fit: contain !important;
+        }
       }
       .back-button {
         a {
