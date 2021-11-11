@@ -197,6 +197,11 @@ const Footer = () => {
               object-fit: contain !important;
             }
           }
+          @media(max-width:600px) {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+          }
         }
         p {
           font-family: "Kessel Light";
