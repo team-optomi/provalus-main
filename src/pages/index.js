@@ -440,6 +440,16 @@ const SectionTwo = styled.section`
     max-width: 550px;
     font-weight: 400;
   }
+  a {
+    padding: 12px 35px 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #c01e2e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+  }
   @media(max-width:1150px) {
     h2 {
       text-align: center;
@@ -463,7 +473,7 @@ const SectionTwo = styled.section`
 `
 
 const SectionThree = styled.section`
-  max-width: 1140px;
+  max-width: 1340px;
   padding: 0 20px;
   margin: 50px auto;
   display: flex;
