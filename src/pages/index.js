@@ -6,7 +6,7 @@ import Slider from "react-slick"
 
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
-import HomeVideo from '../videos/home-fullwidth.mp4'
+import HomeVideo from '../videos/provalus-home.mp4'
 
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { FaChevronDown } from 'react-icons/fa'
