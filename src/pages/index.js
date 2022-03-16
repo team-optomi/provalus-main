@@ -157,15 +157,7 @@ const IndexPage = () => {
           <Img className={"hero-bg"} fluid={post.node.HomePageContent.homeHeroSection.homeBackgroundImage.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeHeroSection.homeBackgroundImage.title} />
           <Img className={"hero-logo"} fluid={post.node.HomePageContent.homeHeroSection.homeVTwoLogoImage.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeHeroSection.homeVTwoLogoImage.title} />
           <div className={"hero-sub"} dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeHeroSection.homeHeroSubheader }} />
-          <Statistics>
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
-          </Statistics>
-          <MobileStatistics>
+          {/* <MobileStatistics>
             <Slider {...settings}>
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
@@ -174,11 +166,19 @@ const IndexPage = () => {
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
               <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
             </Slider>
-          </MobileStatistics>
+          </MobileStatistics> */}
           <button onClick={() => scrollTo('#home_section_two')}><FaChevronDown size={36}/></button>
         </HomeHero>
         <SectionTwo id="home_section_two">
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionTwoContent }} />
+          <Statistics>
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
+          </Statistics>
         </SectionTwo>
         <SectionThree>
           <h2 dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeSectionThreeTitle }} />
@@ -318,65 +318,49 @@ const HomeHero = styled.section`
 `
 
 const Statistics = styled.div`
-  position: absolute;
-  bottom: 100px;
+  position: relative;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, .6);
   padding: 20px;
   > div {
-    margin: 0 20px;
+    width: 33.33%;
+    padding: 20px;
     p {
       font-family: "Kessel Light";
       color: rgb(210,35,42);
       font-weight: 700;
-      line-height: 1.2;
-      font-size: 16px;
+      line-height: 1.5;
+      font-size: 20px;
       margin-bottom: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      &:nth-child(5) {
-        align-items: flex-start;
-      }
-      &:nth-child(6) {
-        align-items: flex-start;
-      }
+      justify-content: center;
+      text-align: center;
       span.large {
-        font-size: 28px;
-        margin-right: 10px;
-        line-height: 1;
+        font-size: 36px;
+        margin-right: 0px;
+        line-height: 2;
         text-transform: uppercase;
       }
     }
   }
-  @media(max-width:1460px) {
-    > div {
-      p {
-        font-size: 12px;
-        span.large {
-          font-size: 20px;
-        }
-      }
-    }
-  }
-  @media(max-width:1170px) {
+  @media(max-width:1000px) {
     flex-wrap: wrap;
     > div {
-      width: 25%;
+      width: 50%;
       display: flex;
       justify-content: center;
       margin-bottom: 10px;
     }
   }
-  @media(max-width:830px) {
-    > div {
-      width: 33.33%;
-    }
-  }
   @media(max-width:767px) {
-    display: none;
+    > div {
+      width: 100%;
+    }
   }
 `
 
@@ -431,6 +415,7 @@ const SectionTwo = styled.section`
     text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 10px;
+    text-align: center;
   }
   p {
     font-family: "Kessel Light";
@@ -439,6 +424,9 @@ const SectionTwo = styled.section`
     color: #fff;
     max-width: 550px;
     font-weight: 400;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   a {
     padding: 12px 35px 10px;
@@ -449,15 +437,6 @@ const SectionTwo = styled.section`
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 5px;
-  }
-  @media(max-width:1150px) {
-    h2 {
-      text-align: center;
-    }
-    p {
-      text-align: center;
-      margin: 0 auto;
-    }
   }
   @media(max-width:767px) {
     h2 {
@@ -637,6 +616,16 @@ const SectionFour = styled.section`
     font-size: 18px;
     color: #fff;
     font-weight: 400;
+  }
+  a.linkedin-button {
+    padding: 12px 35px 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #c01e2e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
   }
   div {
     &:first-child {
