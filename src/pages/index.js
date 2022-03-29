@@ -172,10 +172,10 @@ const IndexPage = () => {
         <SectionTwo id="home_section_two">
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionTwoContent }} />
           <Statistics>
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} /> 
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
           </Statistics>
@@ -264,6 +264,7 @@ const HomeHero = styled.section`
     max-width: 650px;
     width: 100%;
     margin: 0 auto;
+    margin-top: 100px;
   }
   .hero-sub {
     position: relative;
@@ -326,7 +327,20 @@ const Statistics = styled.div`
   justify-content: center;
   padding: 20px;
   > div {
-    width: 33.33%;
+    &:nth-child(1) {
+      width: 20%;
+    }
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4) {
+      width: 16%;
+    }
+    &:nth-child(5) {
+      width: 25%;
+    }
+    &:nth-child(6) {
+      width: 100%;
+    }
     padding: 20px;
     p {
       font-family: "Kessel Light";
@@ -348,10 +362,10 @@ const Statistics = styled.div`
       }
     }
   }
-  @media(max-width:1000px) {
+  @media(max-width:1100px) {
     flex-wrap: wrap;
     > div {
-      width: 50%;
+      width: 50% !important;
       display: flex;
       justify-content: center;
       margin-bottom: 10px;
@@ -359,7 +373,7 @@ const Statistics = styled.div`
   }
   @media(max-width:767px) {
     > div {
-      width: 100%;
+      width: 100% !important;
     }
   }
 `
@@ -402,7 +416,8 @@ const MobileStatistics = styled.div`
 `
 
 const SectionTwo = styled.section`
-  max-width: 1140px;
+  max-width: 1340px;
+  width: 100%;
   padding: 0 20px;
   margin: 0 auto;
   padding-top: 70px;
