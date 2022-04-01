@@ -232,6 +232,22 @@ const GrillChillPage = () => {
             }
         }
     }
+    @media(max-width:1000px) {
+        .hero-banner {
+            h1 {
+                font-size: 44px;
+            }
+        }
+    }
+    @media(max-width:767px) {
+        padding-top: 150px;
+        .hero-banner {
+            h1 {
+                font-size: 32px;
+                letter-spacing: 3px;
+            }
+        }
+    }
   `
 
   const MainSection = styled.section`
@@ -274,6 +290,18 @@ const GrillChillPage = () => {
             letter-spacing: 1px;
             margin-top: 10px;
         }
+        @media(max-width:1000px) {
+            h2 {
+                font-size: 140px;
+                margin-top: -60px;
+            }
+            h3 {
+                font-size: 44px;
+            }
+            h4 {
+                font-size: 24px;
+            }
+        }
     }
     .row-two {
         padding-top: 200px;
@@ -284,13 +312,24 @@ const GrillChillPage = () => {
             letter-spacing: 1px;
             text-align: center;
             position: relative;
+            @media(max-width:1300px) {
+                max-width: 900px;
+                margin: 0 auto;
+                margin-bottom: 40px;
+            }
             span {
                 font-family: Madelyn;
                 font-size: 200px;
                 font-weight: 100;
                 position: absolute;
                 top: -200px;
-                left: -80px;            
+                left: -80px;  
+                @media(max-width:1100px) {
+                    font-size: 140px;
+                    width: 100%;
+                    left: 0;
+                    top: -150px;
+                }          
             }
         }
         p:last-child {
@@ -307,6 +346,14 @@ const GrillChillPage = () => {
                 font-style: normal;
             }
         }
+        @media(max-width:1000px) {
+            p:last-child {
+                font-size: 32px;
+                span {
+                    font-size: 32px;
+                }
+            }
+        }
     }
     .row-three {
         padding-top: 30px;
@@ -317,6 +364,13 @@ const GrillChillPage = () => {
             line-height: 1.1;
             &:last-child {
                 text-align: center;
+            }
+        }
+        @media(max-width:1000px) {
+            p {
+                text-align: center;
+                font-size: 28px;
+                line-height: 1.2;
             }
         }
     }
@@ -332,6 +386,11 @@ const GrillChillPage = () => {
             color: #d2232a;
             span {
                 color: #fff;
+            }
+        }
+        @media(max-width:1000px) {
+            p {
+                font-size: 44px;
             }
         }
     }
@@ -364,6 +423,38 @@ const GrillChillPage = () => {
             margin-top: 50px;
             color: #fff;
         }
+        @media(max-width:1000px) {
+            h3 {
+                font-size: 100px;
+                span {
+                    right: -105px;
+                    top: 60px;
+                }
+            }
+            p {
+                font-size: 44px;
+            }
+        }
+        @media(max-width:767px) {
+            flex-wrap: wrap;
+            .gatsby-image-wrapper {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            > div {
+                width: 100%;
+            }
+            h3 {
+                font-size: 70px;
+                text-align: center;
+                margin-bottom: 0px;
+                span {
+                    position: relative;
+                    right: auto;
+                    top: auto;
+                }
+            }
+        }
     }
     .row-six {
         padding-top: 60px;
@@ -386,6 +477,37 @@ const GrillChillPage = () => {
                 font-size: 160px;
                 font-weight: 100;
                 color: #fff;
+            }
+        }
+        @media(max-width:1000px) {
+            p {
+                font-size: 28px;
+                margin-left: 20px;
+                span {
+                    font-size: 100px;
+                }
+            }
+        }
+        @media(max-width:767px) {
+            flex-wrap: wrap;
+            .gatsby-image-wrapper {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            > div {
+                width: 100%;
+            }
+            > div:first-child {
+                order: 2;
+            }
+            > div:last-child {
+                order: 1;
+            }
+            p {
+                text-align: center;
+                span {
+                    font-size: 80px;
+                }
             }
         }
     }
@@ -412,6 +534,30 @@ const GrillChillPage = () => {
             color: #fff;
             font-size: 32px;
             line-height: 1.2;
+        }
+        @media(max-width:1000px) {
+            h3 {
+                font-size: 32px;
+            }
+            p {
+                font-size: 28px;
+            }
+        }
+        @media(max-width:767px) {
+            flex-wrap: wrap;
+            .gatsby-image-wrapper {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            > div {
+                width: 100%;
+            }
+            h3 {
+                text-align: center;
+            }
+            p {
+                text-align: center;
+            }
         }
     }
     .row-eight {
@@ -449,6 +595,24 @@ const GrillChillPage = () => {
             height: 300px;
             background-color: #460c0f;
             border-radius: 50%;
+        }
+        @media(max-width:1000px) {
+            h2 {
+                font-size: 72px;
+                text-align: center;
+            }
+            h3 {
+                font-size: 44px;
+                margin-top: 0px;
+            }
+        }
+        @media(max-width:767px) {
+            h2 {
+                font-size: 60px;
+            }
+            h3 {
+                font-size: 32px;
+            }
         }
     }
   `
