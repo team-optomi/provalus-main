@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from "gatsby-image"
 
@@ -154,7 +154,48 @@ const GrillChillPage = () => {
                     <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowEightContent }} />
                </div>
            </MainSection>
-           
+           <FormSection>
+               <h2>Pre-Register <br/><span>Optional</span></h2>
+                <form name="Grill and Chill Registration" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
+                    <input type="hidden" name="form-name" value="Apply" aria-label="Input" />
+                    <p class="hidden">
+                        <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
+                    </p>
+                    <p class="full-row">
+                        <label htmlFor="name">Full Name* <input type="text" name="name" aria-label="Input" required/></label>   
+                    </p>
+                    <p  class="full-row">
+                        <label htmlFor="phone">Phone* <input type="text" name="phone" aria-label="Input" required/></label>   
+                    </p>
+                    <p class="full-row">
+                        <label htmlFor="email">Email Address* <input type="email" name="email" aria-label="Input" required/></label>   
+                    </p>
+                    <p class="full-row">
+                        <label htmlFor="address">Street Address* <input type="text" name="address" aria-label="Input" required/></label>
+                    </p>
+                    <p class="one-third">
+                        <label htmlFor="city">City* <input type="text" name="city" aria-label="Input" required/></label>   
+                    </p>
+                    <p class="one-third">
+                        <label htmlFor="state">State* <input type="text" name="state" aria-label="Input" required/></label>   
+                    </p>
+                    <p class="one-third">
+                        <label htmlFor="zip">Zip* <input type="text" name="zip" aria-label="Input" required/></label>   
+                    </p>
+                    <p class="full-row">
+                        <label htmlFor="your-message">DO YOU KNOW ANYONE CURRENTLY WORKING AT PROVALUS?
+                            <textarea name="your-message" cols="40" rows="10" maxLength="140" minLength="0" aria-label="Input"/>
+                        </label>   
+                    </p>
+                    <p class={"button"}>
+                        <button type="submit" name="submit" class={"submit"}  aria-label="Send">Submit</button>
+                    </p>
+                </form>
+                <div class="apply">
+                    <h2>Apply Now</h2>
+                    <Link to={"/apply/"}>Here</Link>
+                </div>
+           </FormSection>
           </PageMain>
         </Layout>
       ))
@@ -597,5 +638,184 @@ const GrillChillPage = () => {
         }
     }
   `
+
+ 
+const FormSection = styled.section`
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    h2 {
+        font-family: Madelyn;
+        font-size: 200px;
+        font-weight: 100;
+        color: #d2232a;
+        position: relative;
+        max-width: 700px;
+        margin: 50px auto;
+        text-align: center;
+        span {
+            font-family: "Balboa Medium";
+            font-size: 76px;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            text-align: center;
+            margin-bottom: 0px;
+            margin-top: 50px;
+            color: #fff;
+            position: absolute;
+            right: -30px;
+            bottom: -20px;
+        }
+    }
+    a {
+        font-family: "Balboa Medium";
+        font-size: 76px;
+        letter-spacing: 3px;
+        line-height: 1.1;
+        text-align: center;
+        margin-bottom: 0px;
+        margin-top: 50px;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    div.apply {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    form {
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+    p {
+    label {
+        font-family: "Kessel Light";
+        color: #fff;
+        font-size: 20px;
+        padding-bottom: 10px;
+        padding-top: 22px;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+    }
+    input,
+    select,
+    textarea {
+        font-size: 22px;
+        padding: 0 0.65em;
+        color: #555;
+        height: 60px;
+        margin-top: 10px;
+        outline: 0;
+    }
+    textarea {
+        height: 300px;
+        padding: 15px;
+    }
+    input[type="file"] {
+        padding: 0;
+        font-size: 16px;
+        color: #fff;
+    }
+    &.button {
+        text-align: center;
+        width: 100%;
+    }
+    button[type="submit"] {
+        font-family: "Madelyn";
+        font-size: 130px;
+        color: #d2232a;
+        padding: 25px 20px 0;
+        text-align: center;
+        text-transform: capitalize;
+        background: transparent;
+        border: none;
+        outline: 0;
+        &:hover {
+        cursor: pointer;
+        }
+    }
+    &.hidden {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 0;
+        z-index: -1;
+    }
+    &.two-thirds {
+        width: calc(66.66% - 15px);
+    }
+    &.one-third {
+        width: calc(33.33% - 15px);
+    }
+    &.one-half {
+        width: 47.5%;
+        margin-right: 5%;
+        &.last {
+        margin-right: 0;
+        }
+    }
+    &.full-row {
+        width: 100%;
+    }
+    }
+    .optional {
+    width: 100%;
+    p {
+        font-family: "Kessel Light";
+        text-transform: uppercase;
+        color: rgb(210,35,42);
+        font-size: 24px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        padding-top: 20px;
+        border-bottom: 1px solid;
+        margin-bottom: 20px;
+    }
+    }
+    @media(max-width:1000px) {
+        h2 {
+            font-size: 100px;
+            span {
+                position: relative;
+                right: auto;
+                top: auto;
+                font-size: 36px;
+            }
+        }
+        a {
+            font-size: 36px;
+        }
+    form {
+        p {
+        &.two-thirds {
+            width: 100%;
+            margin-right: 0;
+        }
+        }
+    }
+    }
+    @media(max-width:600px) {
+    form {
+        p {
+        &.one-third {
+            width: 100%;
+            margin-right: 0;
+        }
+        &.one-half {
+            width: 100%;
+            margin-right: 0;
+        }
+        }
+    }
+    }
+`
 
   export default GrillChillPage
