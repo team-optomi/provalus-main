@@ -120,6 +120,13 @@ class SideMainMenu extends Component {
                     Core Values
                     </Link>
                 </MenuItem>
+                <MenuItem>
+                    <Link
+                    to="/hiring/"
+                    >
+                    Grill & Chill
+                    </Link>
+                </MenuItem>
                 <SubMenuToggle onClick={() => this.toggleMenuTwo()} ><p>Join Us <FaCaretDown size={12}/></p></SubMenuToggle>
                     <SubMenu className={menuTwoName}>
                         <MenuItem>

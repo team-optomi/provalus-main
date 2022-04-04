@@ -88,6 +88,14 @@ const GrillChillPage = () => {
                         }
                     }
                 }
+                chillRowOneContent
+                chillRowTwoContent
+                chillRowThreeContent
+                chillRowFourContent
+                chillRowFiveContent
+                chillRowSixContent
+                chillRowSevenContent
+                chillRowEightContent
               }
             }
           }
@@ -119,58 +127,31 @@ const GrillChillPage = () => {
            <MainSection>
                <div class="row-one row">
                     <Img fluid={data.iconThree.childImageSharp.fixed} />
-                    <h2>join us</h2>
-                    <h3>April 21<span> | </span>2- 6pm <br/>Provalus Facility Courtyard</h3>
-                    <h4>206 St. Nicholas Ave. Brewton, AL 36426</h4>
+                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowOneContent }} />
                </div>
                <div class="row-two row">
-                   <p><span>We hire</span> and develop the best and brightest undiscovered talent to support Fortune-listed clients with I.T. services such as customer experience, helpdesk, network operations, and more!</p>
-                   <p><span>NO EXPERIENCE REQUIRED.</span> Just aptitude.</p>
+                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowTwoContent }} />
                </div>
                <div class="row-three row">
-                   <p>Interviewing onsite for dozens of job openings:<br/>
-                    Customer Experience<br/>
-                    I.T. Helpdesk Analyst<br/>
-                    Cybersecurity Analyst<br/>
-                    Network Operations<br/>
-                    I.T. Managers<br/>
-                    AND MORE</p>
-                    <p>All positions with fully-funded healthcare. <br/>
-                    Stop by the Provalus Career tent upon arrival.</p>
+                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowThreeContent }} />
                </div>
                <div class="row-four row">
-                    <p>WE PROVIDE <span>SPECIALIZED TRAINING</span> TO ENSURE SUCCESS</p>
+                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowFourContent }} />
                </div>
                <div class="row-five row">
                     <Img fluid={data.iconFour.childImageSharp.fixed} />
-                    <div>
-                        <h3>Courtyard <span>Cookout</span></h3>
-                        <p>2- 6pm</p>
-                    </div>
+                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowFiveContent }} />
                </div>
                <div class="row-six row">
-                   <div>
-                       <p><span>inflatable fun</span><br/>
-                        for children</p>
-                   </div>
+                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowSixContent }} />
                    <Img fluid={data.iconOne.childImageSharp.fixed} />
                </div>
                <div class="row-seven row">
                     <Img fluid={data.iconWheel.childImageSharp.fixed} />
-                    <div>
-                        <h3>Register for our <br/>
-                        PRIZE WHEEL with giveaways such as:</h3>
-                        <p>a TV<br/>
-                        tablet<br/>
-                        microwave<br/>
-                        blender<br/>
-                        coffee maker</p>
-                    </div>
+                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowSevenContent }} />
                </div>
                <div class="row-eight row">
-                   <h2>We are honored to have in attendance</h2>
-                   <h3>Secretary of Labor Fitzgerald Washington and 
-                    Brewton Mayor Yank Lovelace</h3>
+                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowEightContent }} />
                </div>
            </MainSection>
            
