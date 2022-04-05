@@ -323,7 +323,7 @@ const Statistics = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 20px;
   > div {
@@ -340,6 +340,13 @@ const Statistics = styled.div`
     }
     &:nth-child(6) {
       width: 100%;
+      p {
+        flex-direction: row;
+        span.large {
+          margin-right: 20px;
+          margin-bottom: 6px;
+        }
+      }
     }
     padding: 20px;
     p {
@@ -369,6 +376,15 @@ const Statistics = styled.div`
       display: flex;
       justify-content: center;
       margin-bottom: 10px;
+      &:nth-child(6) {
+        width: 100%;
+        p {
+          flex-direction: column;
+          span.large {
+            margin-right: 0px;
+          }
+        }
+      }
     }
   }
   @media(max-width:767px) {
@@ -416,7 +432,7 @@ const MobileStatistics = styled.div`
 `
 
 const SectionTwo = styled.section`
-  max-width: 1340px;
+  max-width: 1540px;
   width: 100%;
   padding: 0 20px;
   margin: 0 auto;
@@ -437,7 +453,7 @@ const SectionTwo = styled.section`
     line-height: 1.5;
     font-size: 18px;
     color: #fff;
-    max-width: 550px;
+    max-width: 1050px;
     font-weight: 400;
     text-align: center;
     margin-left: auto;
