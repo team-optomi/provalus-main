@@ -178,6 +178,14 @@ const HomePageTest = () => {
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
           </Statistics>
+          <StatisticsV2>
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} /> 
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
+            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
+          </StatisticsV2>
         </SectionTwo>
         <SectionThree>
           <h2 dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeSectionThreeTitle }} />
@@ -353,6 +361,87 @@ const Statistics = styled.div`
     p {
       font-family: "Kessel Light";
       color: #fff;
+      font-weight: 700;
+      line-height: 1.5;
+      font-size: 20px;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      span.large {
+        font-size: 48px;
+        margin-right: 0px;
+        line-height: 2;
+        text-transform: uppercase;
+      }
+    }
+  }
+  @media(max-width:1100px) {
+    flex-wrap: wrap;
+    > div {
+      width: 50% !important;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      &:nth-child(6) {
+        width: 100%;
+        p {
+            font-size: 32px;
+          flex-direction: column;
+          span.large {
+              font-size: 32px;
+            margin-right: 0px;
+          }
+        }
+      }
+    }
+  }
+  @media(max-width:767px) {
+    > div {
+      width: 100% !important;
+    }
+  }
+`
+
+
+const StatisticsV2 = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  background-color: #999;
+  margin-top: 70px;
+  > div {
+    &:nth-child(1) {
+      width: 20%;
+    }
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4) {
+      width: 16%;
+    }
+    &:nth-child(5) {
+      width: 25%;
+    }
+    &:nth-child(6) {
+      width: 100%;
+      p {
+        font-size: 48px;
+        flex-direction: row;
+        span.large {
+          margin-right: 20px;
+        }
+      }
+    }
+    padding: 20px;
+    p {
+      font-family: "Kessel Light";
+      color: #000;
       font-weight: 700;
       line-height: 1.5;
       font-size: 20px;
