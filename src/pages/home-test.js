@@ -325,7 +325,8 @@ const Statistics = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 20px;
-  background-color: #c01e2e;
+  background-color: #222;
+  margin-top: 70px;
   > div {
     &:nth-child(1) {
       width: 20%;
@@ -351,7 +352,7 @@ const Statistics = styled.div`
     padding: 20px;
     p {
       font-family: "Kessel Light";
-      color: #000;
+      color: #fff;
       font-weight: 700;
       line-height: 1.5;
       font-size: 20px;
