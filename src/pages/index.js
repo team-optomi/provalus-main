@@ -341,10 +341,10 @@ const Statistics = styled.div`
     &:nth-child(6) {
       width: 100%;
       p {
+        font-size: 48px;
         flex-direction: row;
         span.large {
           margin-right: 20px;
-          margin-bottom: 6px;
         }
       }
     }
@@ -362,7 +362,7 @@ const Statistics = styled.div`
       justify-content: center;
       text-align: center;
       span.large {
-        font-size: 36px;
+        font-size: 48px;
         margin-right: 0px;
         line-height: 2;
         text-transform: uppercase;
