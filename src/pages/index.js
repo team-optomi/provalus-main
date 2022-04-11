@@ -326,6 +326,8 @@ const Statistics = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 20px;
+  background-color: #999;
+  margin-top: 70px;
   > div {
     &:nth-child(1) {
       width: 20%;
@@ -351,7 +353,7 @@ const Statistics = styled.div`
     padding: 20px;
     p {
       font-family: "Kessel Light";
-      color: rgb(210,35,42);
+      color: #000;
       font-weight: 700;
       line-height: 1.5;
       font-size: 20px;
@@ -379,8 +381,10 @@ const Statistics = styled.div`
       &:nth-child(6) {
         width: 100%;
         p {
+            font-size: 32px;
           flex-direction: column;
           span.large {
+              font-size: 32px;
             margin-right: 0px;
           }
         }
@@ -434,7 +438,7 @@ const MobileStatistics = styled.div`
 const SectionTwo = styled.section`
   max-width: 1540px;
   width: 100%;
-  padding: 0 20px;
+  padding: 0px;
   margin: 0 auto;
   padding-top: 70px;
   h2 {
