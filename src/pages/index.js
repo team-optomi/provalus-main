@@ -171,15 +171,31 @@ const IndexPage = () => {
         </HomeHero>
         <SectionTwo id="home_section_two">
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionTwoContent }} />
-          <Statistics>
+        </SectionTwo>
+        <Statistics>
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} /> 
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
             <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
-          </Statistics>
-        </SectionTwo>
+        </Statistics>
+        <VideoSection>
+          <video
+            className="video-player"
+            height="100%"
+            width="100%"
+            loop
+            muted
+            autoPlay
+            playsInline
+            >
+            <source
+                src={HomeVideo}
+                type="video/mp4"
+            />
+          </video>
+        </VideoSection>
         <SectionThree>
           <h2 dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeSectionThreeTitle }} />
             <div class="one-fourth-col">
@@ -215,22 +231,6 @@ const IndexPage = () => {
               </Link>
             </div>
         </SectionThree>
-        <VideoSection>
-          <video
-            className="video-player"
-            height="100%"
-            width="100%"
-            loop
-            muted
-            autoPlay
-            playsInline
-            >
-            <source
-                src={HomeVideo}
-                type="video/mp4"
-            />
-          </video>
-        </VideoSection>
         <SectionFour>
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourFirstContent }} />
           <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourMiddleContent }} />
@@ -436,7 +436,7 @@ const MobileStatistics = styled.div`
 `
 
 const SectionTwo = styled.section`
-  max-width: 1540px;
+  max-width: 100%;
   width: 100%;
   padding: 0px;
   margin: 0 auto;
@@ -607,7 +607,6 @@ const VideoSection = styled.section`
     max-height: 80vh;
     overflow: hidden;
     margin: 0px auto;
-    margin-top: 100px;
     display: flex;
     align-items: center;
   `
