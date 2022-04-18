@@ -170,15 +170,49 @@ const IndexPage = () => {
           <button onClick={() => scrollTo('#home_section_two')}><FaChevronDown size={36}/></button>
         </HomeHero>
         <SectionTwo id="home_section_two">
-          <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionTwoContent }} />
+          <div 
+          data-sal="slide-up"
+          data-sal-duration="1000"
+          data-sal-easing="ease"
+          dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionTwoContent }} />
         </SectionTwo>
         <Statistics>
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} /> 
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
-            <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="stat-one" 
+            dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFourthStat }} />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="stat-two" 
+            dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFirstStat }} />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="stat-three" 
+            dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSecondStat }} />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="stat-four" 
+            dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeThirdStat }} /> 
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="stat-five" 
+            dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeFifthStat }} />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="stat-six" 
+            dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeStatisticsSection.homeSixthStat }} />
         </Statistics>
         <VideoSection>
           <video
@@ -197,8 +231,16 @@ const IndexPage = () => {
           </video>
         </VideoSection>
         <SectionThree>
-          <h2 dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeSectionThreeTitle }} />
-            <div class="one-fourth-col">
+          <h2 
+          data-sal="slide-up"
+          data-sal-duration="1000"
+          data-sal-easing="ease"
+          dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeSectionThreeTitle }} />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="one-fourth-col">
               <Link to="/services/support/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
@@ -206,7 +248,11 @@ const IndexPage = () => {
                 <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnOneContent }} />
               </Link>
             </div>
-            <div class="one-fourth-col">
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="one-fourth-col">
               <Link to="/services/run/">
                 <div class="icon-block">
                   <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.title} />
@@ -214,7 +260,11 @@ const IndexPage = () => {
                 <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnTwoContent }} />
               </Link>
             </div>
-            <div class="one-fourth-col">
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="one-fourth-col">
               <Link to="/services/build/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
@@ -222,7 +272,11 @@ const IndexPage = () => {
                 <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnThreeContent }} />
               </Link>
             </div>
-            <div class="one-fourth-col">
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="one-fourth-col">
               <Link to="/services/security/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
@@ -232,12 +286,28 @@ const IndexPage = () => {
             </div>
         </SectionThree>
         <SectionFour>
-          <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourFirstContent }} />
-          <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourMiddleContent }} />
-          <Link to="/contact/contact-us/" className={"home-map"}>
+          <div 
+          data-sal="slide-up"
+          data-sal-duration="1000"
+          data-sal-easing="ease"
+          dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourFirstContent }} />
+          <div 
+          data-sal="slide-up"
+          data-sal-duration="1000"
+          data-sal-easing="ease"
+          dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourMiddleContent }} />
+          <Link 
+          data-sal="slide-up"
+          data-sal-duration="1000"
+          data-sal-easing="ease"
+          to="/contact/contact-us/" className={"home-map"}>
             <Img className={"home-map"} fluid={post.node.HomePageContent.homeSectionFour.homeFourImage.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionFour.homeFourImage.title} />
           </Link>
-          <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourBottomContent }} />
+          <div 
+          data-sal="slide-up"
+          data-sal-duration="1000"
+          data-sal-easing="ease"
+          dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionFour.homeFourBottomContent }} />
         </SectionFour>
       </Layout>
     ))
@@ -329,6 +399,24 @@ const Statistics = styled.div`
   background-color: #999;
   margin-top: 70px;
   > div {
+    &.stat-one {
+      transition-delay: 0s;
+    }
+    &.stat-two {
+      transition-delay: .3s;
+    }
+    &.stat-three {
+      transition-delay: .6s;
+    }
+    &.stat-four {
+      transition-delay: .9s;
+    }
+    &.stat-five {
+      transition-delay: 1.2s;
+    }
+    &.stat-six {
+      transition-delay: 1.5s;
+    }
     &:nth-child(1) {
       width: 20%;
     }
