@@ -88,12 +88,53 @@ const GrillChillPage = () => {
                         }
                     }
                 }
+                chillBannerCopy
+                chillRowOneIcon {
+                    title
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 500) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
+                }
                 chillRowOneContent
                 chillRowTwoContent
                 chillRowThreeContent
                 chillRowFourContent
+                chillRowFiveIcon {
+                    title
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 500) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
+                }
                 chillRowFiveContent
+                chillRowSixIcon {
+                    title
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 500) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
+                }
                 chillRowSixContent
+                chillRowSevenIcon {
+                    title
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 500) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
+                }
                 chillRowSevenContent
                 chillRowEightContent
               }
@@ -120,13 +161,11 @@ const GrillChillPage = () => {
                 <div class="hero-icon">
                     <Img fluid={post.node.grillChill.chillHeroIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillHeroIcon.title} />
                 </div>
-                <div class="hero-banner">
-                    <h1>Hiring Fair<span> | </span>Family Fun</h1>
-                </div>
+                <div class="hero-banner" dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillBannerCopy }} />
             </HeroSection>
            <MainSection>
                <div class="row-one row">
-                    <Img fluid={data.iconThree.childImageSharp.fixed} />
+                    <Img fluid={post.node.grillChill.chillRowOneIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillRowOneIcon.title} />
                     <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowOneContent }} />
                </div>
                <div class="row-two row">
@@ -139,15 +178,15 @@ const GrillChillPage = () => {
                     <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowFourContent }} />
                </div>
                <div class="row-five row">
-                    <Img fluid={data.iconFour.childImageSharp.fixed} />
+                    <Img fluid={post.node.grillChill.chillRowFiveIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillRowFiveIcon.title} />
                     <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowFiveContent }} />
                </div>
                <div class="row-six row">
                     <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowSixContent }} />
-                   <Img fluid={data.iconOne.childImageSharp.fixed} />
+                    <Img fluid={post.node.grillChill.chillRowSixIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillRowSixIcon.title} />
                </div>
                <div class="row-seven row">
-                    <Img fluid={data.iconWheel.childImageSharp.fixed} />
+                    <Img fluid={post.node.grillChill.chillRowSevenIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillRowSevenIcon.title} />
                     <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowSevenContent }} />
                </div>
                <div class="row-eight row">
