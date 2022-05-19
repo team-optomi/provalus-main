@@ -179,6 +179,9 @@ class SideMainMenu extends Component {
                     Contact Us
                     </Link>
                 </MenuItem>
+                <MenuItem>
+                    <a href="https://thetgbfoundation.org/" target="_blank" rel="noopener noreferrer" aria-label="Link">TGB Foundation</a>
+                </MenuItem>
             </MainMenu>
         );
     }
