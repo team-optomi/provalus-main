@@ -137,6 +137,12 @@ const IndexPage = () => {
                 }
                 homeFourBottomContent
               }
+              homeVideoSrc {
+                mediaItemUrl
+                localFile {
+                  publicURL
+                }
+              }
             }
           }
         }
@@ -225,7 +231,7 @@ const IndexPage = () => {
             playsInline
             >
             <source
-                src={HomeVideo}
+                src={post.node.HomePageContent.homeVideoSrc.localFile.publicURL}
                 type="video/mp4"
             />
           </video>

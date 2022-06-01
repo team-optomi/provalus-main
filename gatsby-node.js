@@ -71,6 +71,20 @@ exports.createPages = async gatsbyUtilities => {
    await createIndividualCaseStudyPages({ caseStudies, gatsbyUtilities })
 
 
+
+
+   // Career blog setup
+   const careerPosts = await getCareerPosts(gatsbyUtilities)
+
+   // If there are career posts, create pages for them
+  //await createIndividualCareerPostPages({ careerPosts, gatsbyUtilities })
+
+  // And a paginated archive
+  await createCareerPostArchive({ careerPosts, gatsbyUtilities })
+
+  // And a monthly archive
+  await createCareerPostMonthlyArchive({ careerPosts, gatsbyUtilities })
+
 }
 
 /**
@@ -377,6 +391,104 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
   )
 }
 
+
+/**
+ * This function creates the career post archive pages
+ */
+ async function createCareerPostArchive({ careerPosts, gatsbyUtilities }) {
+  const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
+    {
+      wp {
+        readingSettings {
+          postsPerPage
+        }
+      }
+    }
+  `)
+
+  const { postsPerPage } = graphqlResult.data.wp.readingSettings
+
+  const postsChunkedIntoArchivePages = chunk(careerPosts, postsPerPage)
+  const totalPages = postsChunkedIntoArchivePages.length
+
+  return Promise.all(
+    postsChunkedIntoArchivePages.map(async (_careerPosts, index) => {
+      const pageNumber = index + 1
+
+      const getPagePath = page => {
+        if (page > 0 && page <= totalPages) {
+          // slug for archive and pagination
+          // "/career-blog/2" for example
+          return page === 1 ? `/career-blog/` : `/career-blog/${page}`
+        }
+
+        return null
+      }
+
+      // createPage is an action passed to createPages
+      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+      await gatsbyUtilities.actions.createPage({
+        path: getPagePath(pageNumber),
+
+        // use the blog post archive template as the page component
+        component: path.resolve(`./src/templates/career-blog-archive.js`),
+
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          // the index of our loop is the offset of which posts we want to display
+          // so for page 1, 0 * 10 = 0 offset, for page 2, 1 * 10 = 10 posts offset,
+          // etc
+          offset: index * postsPerPage,
+
+          // We need to tell the template how many posts to display too
+          postsPerPage,
+
+          nextPagePath: getPagePath(pageNumber + 1),
+          previousPagePath: getPagePath(pageNumber - 1),
+        },
+      })
+    })
+  )
+}
+
+/**
+ * This function creates the career post monthly archive pages
+ */
+async function createCareerPostMonthlyArchive({ careerPosts, gatsbyUtilities }) {
+  const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
+    {
+      allWpCareerPost {
+        edges {
+          node {
+            MonthlyArchive {
+              archiveLabel
+              archiveSlug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const postMap = graphqlResult.data.allWpCareerPost.edges
+
+  return Promise.all(
+    postMap.map(async (archivePage) => {
+      await gatsbyUtilities.actions.createPage({
+        path: `/career-blog/${archivePage.node.MonthlyArchive.archiveSlug}`,
+        component: path.resolve(`./src/templates/career-blog-monthly-archive.js`),
+        context: {
+          pubTitle: archivePage.node.MonthlyArchive.archiveLabel,
+          pubDate: archivePage.node.MonthlyArchive.archiveSlug,
+        }
+      })
+    })
+  )
+
+}
+
+
 /**
  * This function queries Gatsby's GraphQL server and asks for
  * All WordPress blog posts. If there are any GraphQL error it throws an error
@@ -533,4 +645,37 @@ async function getPosts({ graphql, reporter }) {
   }
 
   return graphqlResult.data.allWpCaseStudy.edges
+}
+
+/**
+ * This function pulls all the career posts from graphql
+ */
+
+ async function getCareerPosts({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query WpCareerPost {
+      # Query all WordPress career posts sorted by date
+      allWpCareerPost(sort: { fields: [date], order: DESC }) {
+        edges {
+          # note: this is a GraphQL alias. It renames "node" to "caseStudy" for this query
+          # We're doing this because this "node" is a post! It makes our code more readable further down the line.
+          careerPost: node {
+            id
+            uri
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      graphqlResult.errors
+    )
+    return
+  }
+
+  return graphqlResult.data.allWpCareerPost.edges
 }
