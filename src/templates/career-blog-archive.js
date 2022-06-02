@@ -6,6 +6,7 @@ import Img from "gatsby-image"
 
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
+import CareerBlogSidebar from "../components/career-blog-sidebar"
 
 import { FaChevronLeft } from 'react-icons/fa'
 import { FaChevronRight } from 'react-icons/fa'
@@ -30,7 +31,7 @@ const CareerBlogArchive = ({
             <MainPage>
                 <h1>Career Blog</h1>
                 <Sidebar>
-
+                    <CareerBlogSidebar/>
                 </Sidebar>
                 <BlogLoop>
                     {posts.map(post => {
@@ -43,20 +44,17 @@ const CareerBlogArchive = ({
                             itemScope
                             itemType="http://schema.org/Article"
                             >
-                            <Img fluid={post.featuredImage.node.localFile.childImageSharp.fluid} alt={post.title} />
-                            <div class="entry-wrap">
-                                <header>
-                                <h2>
-                                    <Link to={`/insights/${post.slug}`} itemProp="url">
-                                    <span itemProp="headline">{parse(title)}</span>
-                                    </Link>
-                                </h2>
-                                </header>
-                                <div class="bottom-flex">
-                                <p><Link to={`/insights/${post.slug}`} itemProp="url">Read More</Link></p>
-                                <p>{post.date}</p>
+                            <Link to={`/career-blog/${post.slug}`} itemProp="url">
+                                <Img fluid={post.featuredImage.node.localFile.childImageSharp.fluid} alt={post.title} />
+                                <div class="entry-wrap">
+                                    <header>
+                                        <h2><span itemProp="headline">{parse(title)}</span></h2>
+                                    </header>
+                                    <div class="bottom-flex">
+                                        <p>{post.date}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                             </article>
                         </li>
                         )
@@ -78,11 +76,90 @@ const CareerBlogArchive = ({
 
 }
 
-const MainPage = styled.div``
+const MainPage = styled.div`
+    background-image: url(../images/blog-bg.png);
+    background-size: 100%;
+    background-position: top center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-top: 100px;
+    h1 {
+        width: 100%;
+        font-family: Madelyn;
+        font-size: 145px;
+        font-weight: normal;
+        line-height: 1;
+        color: rgb(210, 35, 42);
+        text-align: center;
+        position: relative;
+        margin-bottom: 80px;
+    }
+`
 
-const Sidebar = styled.div``
+const Sidebar = styled.div`
+    max-width: 350px;
+    width: 100%;
+`
 
-const BlogLoop = styled.div``
+const BlogLoop = styled.ul`
+    max-width: calc(100% - 350px);
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    > li {
+        width: 33.33%;
+        margin: 0;
+        article {
+            margin: 0;
+        }
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            .entry-wrap {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,.5);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 30px;
+                transition-duration: .3s;
+                h2 {
+                    font-family: "Kessel Light";
+                    color: #fff;
+                    font-weight: 400;
+                    line-height: 1.3;
+                    font-size: 20px;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    margin-top: 0px;
+                }
+                p {
+                    font-family: Madelyn;
+                    font-size: 28px;
+                    font-weight: 100;
+                    line-height: 1;
+                    color: #fff;
+                }
+            }
+        }
+        &:hover {
+            a {
+                .entry-wrap {
+                    background-color: rgba(210, 35, 42, .5);
+                }
+            }
+        }
+    }
+`
 
 const Pagination = styled.div``
 
