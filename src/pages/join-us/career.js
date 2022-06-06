@@ -8,6 +8,7 @@ import SEO from "../../components/seo"
 import CareerScrollingImages from "../../components/career-scrolling-images"
 import CareerTestimonialSlider from "../../components/career-testimonial-slider"
 import CareerScrollingBlog from "../../components/career-scrolling-blog"
+import CareerMapSection from "../../components/career-map-section"
 
 const CareerPage = () => {
 
@@ -135,6 +136,19 @@ const CareerPage = () => {
                     }
                     careerBenefitsIconLink
                 }
+                careerMapLocations {
+                  careerMapIcon {
+                    title
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 1920) {
+                                ...GatsbyImageSharpFluid_withWebp
+                            }
+                        }
+                    }
+                  }
+                  careerMapLocation
+                }
               }
             }
           }
@@ -251,9 +265,7 @@ const CareerPage = () => {
               ))}
             </div>
           </BenefitsSection>
-          <MapSection>
-            <p>Map section here</p>
-          </MapSection>
+          <CareerMapSection />
         </Layout>
       ))
     )
@@ -634,6 +646,23 @@ const BenefitsSection = styled.section`
   }
 `
 
-const MapSection = styled.section``
+const MapSection = styled.section`
+  h2 {
+    font-family: "Kessel Light";
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 50px;
+    span.fancy {
+      font-family: Madelyn;
+      font-size: 100px;
+      color: rgb(210,35,42);
+      line-height: 0;
+    }
+  }
+`
   
 export default CareerPage
