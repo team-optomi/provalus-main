@@ -130,6 +130,12 @@ const HiringHeroesPage = () => {
                     applyContent
                     contactInfo
                   }
+                  hiringHeroesVideoSrc {
+                    mediaItemUrl
+                    localFile {
+                      publicURL
+                    }
+                  }
               }
             }
           }
@@ -149,15 +155,20 @@ const HiringHeroesPage = () => {
           <PageMain>
             <h1>Hiring <span>Heroes</span></h1>
             <VideoSection>
-              <ReactPlayer 
-                className={'react-player'}
-                url={'https://fast.wistia.net/embed/iframe/j9xeiqyw81'} 
-                playing={true}
-                loop={true}
-                modestBranding={true}
-                width='100%'
-                height='650px'
-              />
+              <video
+                className="video-player"
+                height="100%"
+                width="100%"
+                loop
+                autoPlay
+                playsInline
+                controls
+                >
+                <source
+                    src={post.node.HiringHeroesContent.hiringHeroesVideoSrc.localFile.publicURL}
+                    type="video/mp4"
+                />
+              </video>
             </VideoSection>
             <SectionOne>
                 <h2 

@@ -2,11 +2,11 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from "gatsby-image"
-import Slider from "react-slick"
+// import Slider from "react-slick"
 
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
-import HomeVideo from '../videos/provalus-home.mp4'
+// import HomeVideo from '../videos/provalus-home.mp4'
 
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { FaChevronDown } from 'react-icons/fa'
