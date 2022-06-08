@@ -18,6 +18,20 @@ class CareerScrollingBlog extends Component {
             slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: false,
+            responsive: [
+              {
+                breakpoint: 960,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 640,
+                settings: {
+                  slidesToShow: 1,
+                }
+              }
+            ]
           };
         
           return (

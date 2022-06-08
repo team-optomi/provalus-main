@@ -20,22 +20,38 @@ class CareerMapSection extends Component {
 
         return(
             <MapSection>
-                <h2>WE’RE IN A COMMUNITY <span class="fancy">Near You</span></h2>
+                <h2
+                data-sal="slide-up"
+                data-sal-duration="1000"
+                data-sal-easing="ease"
+                >WE’RE IN A COMMUNITY <span class="fancy">Near You</span></h2>
                 <div class="map-images">
                 {data.wpPage.CareerPage.careerMapLocations.map((locationSrc, i) => (
-                    <button id={"selector_" + i} class={"map-selector"} onClick={() => this.clickSelector(i)} className= {i === this.state.activeSlide ? "active" : "inactive"} aria-label="Selector">
+                    <button 
+                    data-sal="slide-up"
+                    data-sal-duration="1000"
+                    data-sal-easing="ease"
+                    id={"selector_" + i} class={"map-selector"} onClick={() => this.clickSelector(i)} className= {i === this.state.activeSlide ? "active" : "inactive"} aria-label="Selector">
                         <Img fluid={locationSrc.careerMapIcon.localFile.childImageSharp.fluid} alt={locationSrc.careerMapIcon.title} />
                     </button>
                 ))}
                 </div>
                 <div class="map-locations">
                 {data.wpPage.CareerPage.careerMapLocations.map((locationSrc, i) => (
-                    <div id={"location_" + i} className= {i === this.state.activeSlide ? "active" : "inactive"}>
+                    <div 
+                    data-sal="slide-up"
+                    data-sal-duration="1000"
+                    data-sal-easing="ease"
+                    id={"location_" + i} className= {i === this.state.activeSlide ? "active" : "inactive"}>
                         <div dangerouslySetInnerHTML={{ __html: locationSrc.careerMapLocation }}  />
                     </div>
                 ))}
                 </div>
-                <div class="map-buttons">
+                <div 
+                data-sal="slide-up"
+                data-sal-duration="1000"
+                data-sal-easing="ease"
+                class="map-buttons">
                     <p><span class="fancy">Virtually</span> <Link to={"#"}>Visit our Facilities</Link> <Link to={"#"}>Job Opportunities</Link></p>
                 </div>
             </MapSection>
@@ -144,6 +160,90 @@ const MapSection = styled.section`
             border-radius: 10px;
             &:nth-child(2) {
                 margin-left: -10px;
+            }
+        }
+    }
+    @media(max-width:1440px) {
+        .map-images {
+            max-width: 1200px;
+            button {
+                height: 330px;
+            }
+        }
+    }
+    @media(max-width:1240px) {
+        .map-images {
+            max-width: 1000px;
+            button {
+                height: 275px;
+            }
+        }
+    }
+    @media(max-width:1040px) {
+        .map-images {
+            max-width: 800px;
+            button {
+                height: 220px;
+            }
+        }
+    }
+    @media(max-width:840px) {
+        .map-images {
+            max-width: 600px;
+            button {
+                height: 160px;
+            }
+        }
+    }
+    @media(max-width:767px) {
+        .map-images {
+            max-width: 100%;
+            flex-wrap: wrap;
+            button {
+                width: 50% !important;
+                height: auto;
+                padding: 25px;
+            }
+        }
+    }
+    @media(max-width:620px) {
+        h2 {
+            font-size: 24px;
+            span.fancy {
+                font-size: 72px;
+                line-height: 1;
+            }
+        }
+        .map-locations {
+            height: 350px;
+            iframe {
+                width: 100% !important;
+                height: 350px !important;
+            }
+        }
+        .map-buttons {
+            padding-top: 20px;
+            p {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                span.fancy {
+                    margin-bottom: 40px;
+                }
+                a {
+                    max-width: 300px;
+                    width: 100%;
+                    margin: 0 !important;
+                    margin-bottom: 20px !important;
+                }
+            }
+        }
+    }
+    @media(max-width:440px) {
+        .map-images {
+            button {
+                width: 100% !important;
             }
         }
     }

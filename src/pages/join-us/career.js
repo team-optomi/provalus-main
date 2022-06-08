@@ -229,37 +229,87 @@ const CareerPage = () => {
               </div>
           </SectionTwo>
           <ScrollingImages>
-            <CareerScrollingImages />
+            <div
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            >
+              <CareerScrollingImages />
+            </div>
           </ScrollingImages>
           <TestimonialSection>
-            <div class="testimonial-header" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerTestimonialsHeader }} />
-            <CareerTestimonialSlider />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="testimonial-header" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerTestimonialsHeader }} />
+            <div
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            >
+              <CareerTestimonialSlider />
+            </div>
           </TestimonialSection>
           <WordsSection>
-            <div class="words-header" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerLargeWordsHeader }} />
+            <div
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="words-header" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerLargeWordsHeader }} />
             <div class="words-relative">
               {post.node.CareerPage.careerLargeWordSection.map(imgSrc => (
-              <div className={`word-image-${imgSrc.careerWordImage.title}`}>
+              <div 
+              data-sal="slide-up"
+              data-sal-duration="1000"
+              data-sal-easing="ease"
+              className={`word-image-${imgSrc.careerWordImage.title}`}>
                 <Img fluid={imgSrc.careerWordImage.localFile.childImageSharp.fluid} alt={imgSrc.careerWordImage.title} />
               </div>
               ))}
             </div>
           </WordsSection>
           <BlogSection>
-            <h2>OUR TEAM'S <span class="fancy">Stories</span></h2>
+            <h2
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            >OUR TEAM'S <span class="fancy">Stories</span></h2>
+            <div
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            >
             <CareerScrollingBlog />
-            <div class="blog-button">
+            </div>
+            <div
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="blog-button">
               <Link to={'/career-blog/'}>See Blog</Link>
             </div>
           </BlogSection>
           <MilitarySection>
-            <div class="military-content" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerMilitarySection }} />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="military-content" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerMilitarySection }} />
           </MilitarySection>
           <BenefitsSection>
-            <div class="benefits-content" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerBenefitsHeader }} />
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="benefits-content" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerBenefitsHeader }} />
             <div class="benefits-flex">
               {post.node.CareerPage.careerBenefitsIcons.map(iconSrc => (
-              <Link to={iconSrc.careerBenefitsIconLink}>
+              <Link 
+              data-sal="slide-up"
+              data-sal-duration="1000"
+              data-sal-easing="ease"
+              to={iconSrc.careerBenefitsIconLink}>
                 <Img fluid={iconSrc.careerBenefitsIcon.localFile.childImageSharp.fluid} alt={iconSrc.careerBenefitsIcon.title} />
               </Link>
               ))}
@@ -300,6 +350,14 @@ const SectionOne = styled.section`
         font-size: 40px;
         line-height: 0;
         color: rgb(210, 35, 42);
+      }
+    }
+  }
+  @media(max-width:620px) {
+    > div {
+      h1 {
+        font-size: 100px;
+        margin-bottom: 50px;
       }
     }
   }
@@ -438,12 +496,19 @@ const TestimonialSection = styled.section`
       letter-spacing: 2px;
       line-height: 1.1;
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 0px;
       span.fancy {
         font-family: Madelyn;
         font-size: 100px;
-        line-height: 0;
+        line-height: 1;
         color: rgb(210, 35, 42);
+      }
+    }
+  }
+  @media(max-width:700px) {
+    .testimonial-header {
+      h2 {
+        font-size: 24px;
       }
     }
   }
@@ -518,6 +583,150 @@ const WordsSection = styled.section`
     top: 294px;
     right: 90px;
   }
+  @media(max-width:1260px) {
+    .words-relative {
+      max-width: 1000px;
+      height: 350px;
+    }
+    .word-image-dedicated {
+      max-width: 550px;
+      top: -25px;
+    }
+    .word-image-innovative {
+      max-width: 438px;
+      top: -2px;
+    }
+    .word-image-unique-v2 {
+      max-width: 330px;
+      top: 109px;
+      left: 108px;
+    }
+    .word-image-connected {
+      max-width: 628px;
+      top: 151px;
+    }
+    .word-image-passionate {
+      max-width: 543px;
+      top: 197px;
+    }
+    .word-image-genuine {
+      max-width: 282px;
+      top: 214px;
+    }
+  }
+  @media(max-width:1060px) {
+    .words-relative {
+      max-width: 800px;
+      height: 250px;
+    }
+    .word-image-dedicated {
+      max-width: 450px;
+      top: -25px;
+    }
+    .word-image-innovative {
+      max-width: 321px;
+      top: -2px;
+    }
+    .word-image-unique-v2 {
+      max-width: 257px;
+      top: 75px;
+      left: 108px;
+    }
+    .word-image-connected {
+      max-width: 489px;
+      top: 105px;
+    }
+    .word-image-passionate {
+      max-width: 446px;
+      top: 139px;
+    }
+    .word-image-genuine {
+      max-width: 195px;
+      top: 156px;
+      right: 78px;
+    }
+  }
+  @media(max-width:860px) {
+    .words-relative {
+      max-width: 600px;
+      height: 190px;
+    }
+    .word-image-dedicated {
+      max-width: 350px;
+      top: -25px;
+    }
+    .word-image-innovative {
+      max-width: 258px;
+      top: -10px;
+      right: 10px;
+    }
+    .word-image-unique-v2 {
+      max-width: 210px;
+      top: 50px;
+      left: 86px;
+    }
+    .word-image-connected {
+      max-width: 345px;
+      top: 76px;
+    }
+    .word-image-passionate {
+      max-width: 356px;
+      top: 97px;
+    }
+    .word-image-genuine {
+      max-width: 155px;
+      top: 111px;
+      right: 50px;
+    }
+  }
+  @media(max-width:767px) {
+    .words-relative {
+      max-width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .word-image-dedicated {
+      position: relative;
+      max-width: 350px;
+      left: auto;
+      top: auto;;
+    }
+    .word-image-innovative {
+      position: relative;
+      max-width: 258px;
+      top: auto;
+      right: auto;
+      margin-bottom: 20px;
+    }
+    .word-image-unique-v2 {
+      position: relative;
+      max-width: 210px;
+      top: auto;
+      left: auto;
+      margin-bottom: 20px;
+    }
+    .word-image-connected {
+      position: relative;
+      max-width: 345px;
+      right: auto;
+      top: auto;
+    }
+    .word-image-passionate {
+      position: relative;
+      max-width: 356px;
+      top: auto;
+      left: auto;
+      margin-bottom: -40px;
+    }
+    .word-image-genuine {
+      position: relative;
+      max-width: 155px;
+      top: auto;
+      right: auto;
+    }
+  }
 `
 
 const BlogSection = styled.section`
@@ -529,11 +738,11 @@ const BlogSection = styled.section`
     letter-spacing: 2px;
     line-height: 1.1;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     span.fancy {
       font-family: Madelyn;
       font-size: 100px;
-      line-height: 0;
+      line-height: 1;
     }
   }
   .blog-button {
@@ -613,6 +822,44 @@ const MilitarySection = styled.section`
       }
     }
   }
+  @media(max-width:1160px) {
+    .mil-flex-row {
+      flex-wrap: wrap;
+      .left-col {
+        width: 100%;
+        padding-right: 0px;
+        margin-bottom: 35px;
+      }
+      .right-col {
+        width: 100%;
+        padding-left: 0px;
+      }
+    }
+  }
+  @media(max-width:767px) {
+    .mil-flex-row {
+      .left-col {
+        flex-direction: column;
+        .gatsby-image-wrapper {
+          margin-bottom: 20px;
+        }
+        p {
+          width: 100% !important;
+          margin-left: 0 !important;
+        }
+      }
+      .right-col {
+        flex-direction: column;
+        .gatsby-image-wrapper {
+          margin-bottom: 20px;
+        }
+        p {
+          width: 100% !important;
+          margin-left: 0 !important;
+        }
+      }
+    }
+  }
 `
 
 const BenefitsSection = styled.section`
@@ -642,6 +889,27 @@ const BenefitsSection = styled.section`
     margin: 0 auto;
     > a {
       width: 20%;
+    }
+  }
+  @media(max-width:767px) {
+    h2 {
+      font-size: 24px;
+      span.fancy {
+        font-size: 72px;
+      }
+    }
+    .benefits-flex {
+      flex-wrap: wrap;
+      > a {
+        width: 33.33%;
+      }
+    }
+  }
+  @media(max-width:420px) {
+    .benefits-flex {
+      > a {
+        width: 50%;
+      }
     }
   }
 `

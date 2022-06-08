@@ -61,6 +61,18 @@ const SliderContainer = styled.div`
       display: none;
     }
   }
+  @media(max-width:900px) {
+    max-width: 500px;
+  }
+  @media(max-width:700px) {
+    max-width: 300px;
+    .slick-prev {
+      left: -30px;
+    }
+    .slick-next {
+      right: -30px;
+    }
+  }
 `
 
 const TestimonialSlide = styled.div`
@@ -76,6 +88,11 @@ const TestimonialSlide = styled.div`
       font-size: 44px;
       line-height: 0;
       color: rgb(210, 35, 42);
+    }
+  }
+  @media(max-width:700px) {
+    p {
+      font-size: 18px;
     }
   }
 `

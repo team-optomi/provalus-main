@@ -18,7 +18,26 @@ class CareerScrollingImages extends Component {
             slidesToShow: 4,
             slidesToScroll: 1,
             autoplay: false,
-            autoplaySpeed: 6000,
+            responsive: [
+              {
+                breakpoint: 1200,
+                settings: {
+                  slidesToShow: 3,
+                }
+              },
+              {
+                breakpoint: 960,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 640,
+                settings: {
+                  slidesToShow: 1,
+                }
+              }
+            ]
           };
         
           return (
