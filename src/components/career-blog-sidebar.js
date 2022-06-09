@@ -94,6 +94,11 @@ const ArchiveList = styled.div`
             }
         }
     }
+    @media(max-width:1080px) {
+        ul {
+            text-align: center;
+        }
+    }
 `
 
 export default CareerBlogSidebar

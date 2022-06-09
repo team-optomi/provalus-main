@@ -82,11 +82,21 @@ const MainPage = styled.div`
         position: relative;
         margin-bottom: 80px;
     }
+    @media(max-width:540px) {
+      h1 {
+        font-size: 100px;
+        margin-bottom: 40px;
+      }
+    }
 `
 
 const Sidebar = styled.div`
     max-width: 350px;
     width: 100%;
+    @media(max-width:1080px) {
+      order: 2;
+      max-width: 100%;
+    }
 `
 
 const BlogLoop = styled.ul`
@@ -144,6 +154,29 @@ const BlogLoop = styled.ul`
                 }
             }
         }
+    }
+    @media(max-width:1200px) {
+      > li {
+        width: 50%;
+      }
+    }
+    @media(max-width:1080px) {
+      order: 1;
+      max-width: 100%;
+      width: 100%;
+      > li {
+        width: 33.33%;
+      }
+    }
+    @media(max-width:980px) {
+      > li {
+        width: 50%;
+      }
+    }
+    @media(max-width:660px) {
+      > li {
+        width: 100%;
+      }
     }
 `
 
