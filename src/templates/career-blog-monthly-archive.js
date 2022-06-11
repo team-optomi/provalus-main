@@ -23,7 +23,7 @@ const CareerBlogMonthlyArchive = ({data}) => {
             />
             ))}
             <MainPage>
-                <h1>Career Blog</h1>
+                <h1><Link to={"/career-blog/"}>Career Blog</Link></h1>
                 <Sidebar>
                     <CareerBlogSidebar/>
                 </Sidebar>

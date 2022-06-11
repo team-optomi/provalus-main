@@ -98,6 +98,9 @@ const BlogSlide = styled.div`
         margin-bottom: 0px;
       }
     }
+    &:hover {
+      background-color: rgba(210,35,42,.5);
+    }
   }
 `
 

@@ -91,6 +91,10 @@ const ArchiveList = styled.div`
                 font-size: 18px;
                 letter-spacing: 1px;
                 text-decoration: none;
+                transition-duration: .3s;
+                &:hover {
+                    color: rgb(210,35,42);
+                }
             }
         }
     }

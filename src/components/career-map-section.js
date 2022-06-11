@@ -52,7 +52,7 @@ class CareerMapSection extends Component {
                 data-sal-duration="1000"
                 data-sal-easing="ease"
                 class="map-buttons">
-                    <p><span class="fancy">Virtually</span> <Link to={"#"}>Visit our Facilities</Link> <Link to={"#"}>Job Opportunities</Link></p>
+                    <p><span class="fancy">Virtually</span> <Link to={"/contact/contact-us/"}>Visit our Facilities</Link> <Link to={"/join-us/jobs/"}>Job Opportunities</Link></p>
                 </div>
             </MapSection>
         )

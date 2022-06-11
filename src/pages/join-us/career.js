@@ -258,13 +258,14 @@ const CareerPage = () => {
             data-sal-easing="ease"
             class="words-header" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerLargeWordsHeader }} />
             <div class="words-relative">
-              {post.node.CareerPage.careerLargeWordSection.map(imgSrc => (
+              {post.node.CareerPage.careerLargeWordSection.map((imgSrc, i) => (
               <div 
-              data-sal="slide-up"
+              data-sal={i % 2 == 0 ? "slide-right" : "slide-left"}
               data-sal-duration="1000"
               data-sal-easing="ease"
               className={`word-image-${imgSrc.careerWordImage.title}`}>
                 <Img fluid={imgSrc.careerWordImage.localFile.childImageSharp.fluid} alt={imgSrc.careerWordImage.title} />
+                <p>{i}</p>
               </div>
               ))}
             </div>
@@ -287,7 +288,7 @@ const CareerPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             class="blog-button">
-              <Link to={'/career-blog/'}>See Blog</Link>
+              <a href='/career-blog/' target="_blank">See Blog</a>
             </div>
           </BlogSection>
           <MilitarySection>
@@ -547,6 +548,7 @@ const WordsSection = styled.section`
     width: 100%;
     top: 0;
     left: 30px;
+    transition-delay: .3s;
   }
   .word-image-innovative {
     position: absolute;
@@ -554,6 +556,7 @@ const WordsSection = styled.section`
     width: 100%;
     top: 27px;
     right: 60px;
+    transition-delay: .6s;
   }
   .word-image-unique-v2 {
     position: absolute;
@@ -561,6 +564,7 @@ const WordsSection = styled.section`
     width: 100%;
     top: 154px;
     left: 137px;
+    transition-delay: .9s;
   }
   .word-image-connected {
     position: absolute;
@@ -568,6 +572,7 @@ const WordsSection = styled.section`
     width: 100%;
     top: 229px;
     right: 0px;
+    transition-delay: 1.2s;
   }
   .word-image-passionate {
     position: absolute;
@@ -575,6 +580,7 @@ const WordsSection = styled.section`
     width: 100%;
     top: 271px;
     left: 0px;
+    transition-delay: 1.5s;
   }
   .word-image-genuine {
     position: absolute;
@@ -582,6 +588,7 @@ const WordsSection = styled.section`
     width: 100%;
     top: 294px;
     right: 90px;
+    transition-delay: 1.8s;
   }
   @media(max-width:1260px) {
     .words-relative {
@@ -910,25 +917,6 @@ const BenefitsSection = styled.section`
       > a {
         width: 50%;
       }
-    }
-  }
-`
-
-const MapSection = styled.section`
-  h2 {
-    font-family: "Kessel Light";
-    color: rgb(255, 255, 255);
-    font-size: 32px;
-    font-weight: 100;
-    letter-spacing: 2px;
-    line-height: 1.1;
-    text-align: center;
-    margin-bottom: 50px;
-    span.fancy {
-      font-family: Madelyn;
-      font-size: 100px;
-      color: rgb(210,35,42);
-      line-height: 0;
     }
   }
 `
