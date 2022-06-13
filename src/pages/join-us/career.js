@@ -135,6 +135,7 @@ const CareerPage = () => {
                         }
                     }
                     careerBenefitsIconLink
+                    careerIconTitle
                 }
                 careerMapLocations {
                   careerMapIcon {
@@ -265,7 +266,6 @@ const CareerPage = () => {
               data-sal-easing="ease"
               className={`word-image-${imgSrc.careerWordImage.title}`}>
                 <Img fluid={imgSrc.careerWordImage.localFile.childImageSharp.fluid} alt={imgSrc.careerWordImage.title} />
-                <p>{i}</p>
               </div>
               ))}
             </div>
@@ -312,6 +312,7 @@ const CareerPage = () => {
               data-sal-easing="ease"
               to={iconSrc.careerBenefitsIconLink}>
                 <Img fluid={iconSrc.careerBenefitsIcon.localFile.childImageSharp.fluid} alt={iconSrc.careerBenefitsIcon.title} />
+                <p class="tooltip">{iconSrc.careerIconTitle}</p>
               </Link>
               ))}
             </div>
@@ -558,7 +559,7 @@ const WordsSection = styled.section`
     right: 60px;
     transition-delay: .6s;
   }
-  .word-image-unique-v2 {
+  .word-image-respectful {
     position: absolute;
     max-width: 470px;
     width: 100%;
@@ -603,7 +604,7 @@ const WordsSection = styled.section`
       max-width: 438px;
       top: -2px;
     }
-    .word-image-unique-v2 {
+    .word-image-respectful {
       max-width: 330px;
       top: 109px;
       left: 108px;
@@ -634,7 +635,7 @@ const WordsSection = styled.section`
       max-width: 321px;
       top: -2px;
     }
-    .word-image-unique-v2 {
+    .word-image-respectful {
       max-width: 257px;
       top: 75px;
       left: 108px;
@@ -667,7 +668,7 @@ const WordsSection = styled.section`
       top: -10px;
       right: 10px;
     }
-    .word-image-unique-v2 {
+    .word-image-respectful {
       max-width: 210px;
       top: 50px;
       left: 86px;
@@ -707,7 +708,7 @@ const WordsSection = styled.section`
       right: auto;
       margin-bottom: 20px;
     }
-    .word-image-unique-v2 {
+    .word-image-respectful {
       position: relative;
       max-width: 210px;
       top: auto;
@@ -895,7 +896,42 @@ const BenefitsSection = styled.section`
     max-width: 1200px;
     margin: 0 auto;
     > a {
+      position: relative;
       width: 20%;
+      color: #fff;
+      text-decoration: none;
+      p.tooltip {
+        position: absolute;
+        top: -50px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        font-family: "Kessel Light";
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-align: center;
+        padding: 20px;
+        background-color: #8e9191;
+        border-radius: 10px;
+        opacity: 0;
+        transition-duration: .3s;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -50px;
+          left: calc(50% - 25px);
+          width: 50px;
+          height: 50px;
+          border-top: 25px solid #8e9191;
+          border-left: 25px solid transparent;
+          border-right: 25px solid transparent;
+        }
+      }
+      &:hover {
+        p.tooltip {
+          opacity: 1;
+        }
+      }
     }
   }
   @media(max-width:767px) {

@@ -84,6 +84,7 @@ const MapSection = styled.section`
       margin: 0 auto;
       margin-bottom: 50px;
       display: flex;
+      justify-content: center;
       button {
             background-color: transparent;
             border: none;

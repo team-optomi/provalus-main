@@ -131,6 +131,13 @@ class SideMainMenu extends Component {
                     <SubMenu className={menuTwoName}>
                         <MenuItem>
                             <Link
+                            to="/join-us/career/"
+                            >
+                            Career
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link
                             to="/join-us/jobs/"
                             >
                             Jobs
@@ -156,6 +163,13 @@ class SideMainMenu extends Component {
                     to="/company/leadership/"
                     >
                     Leadership
+                    </Link>
+                </MenuItem>
+                <MenuItem>
+                    <Link
+                    to="/career-blog/"
+                    >
+                    Blog
                     </Link>
                 </MenuItem>
                 <MenuItem>
