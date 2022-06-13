@@ -28,9 +28,6 @@ class CareerMapSection extends Component {
                 <div class="map-images">
                 {data.wpPage.CareerPage.careerMapLocations.map((locationSrc, i) => (
                     <button 
-                    data-sal="slide-up"
-                    data-sal-duration="1000"
-                    data-sal-easing="ease"
                     id={"selector_" + i} class={"map-selector"} onClick={() => this.clickSelector(i)} className= {i === this.state.activeSlide ? "active" : "inactive"} aria-label="Selector">
                         <Img fluid={locationSrc.careerMapIcon.localFile.childImageSharp.fluid} alt={locationSrc.careerMapIcon.title} />
                     </button>
@@ -39,9 +36,6 @@ class CareerMapSection extends Component {
                 <div class="map-locations">
                 {data.wpPage.CareerPage.careerMapLocations.map((locationSrc, i) => (
                     <div 
-                    data-sal="slide-up"
-                    data-sal-duration="1000"
-                    data-sal-easing="ease"
                     id={"location_" + i} className= {i === this.state.activeSlide ? "active" : "inactive"}>
                         <div dangerouslySetInnerHTML={{ __html: locationSrc.careerMapLocation }}  />
                     </div>
