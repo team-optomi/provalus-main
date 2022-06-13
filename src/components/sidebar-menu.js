@@ -269,7 +269,7 @@ const SubMenu = styled.ul`
             left: 20px;
             opacity: 1;
             visibility: visible;
-            height: 110px;
+            height: 150px;
         }
     }
 `
