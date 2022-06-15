@@ -10,8 +10,8 @@ import SEO from "../components/seo"
 const CareerBlogPost = ({ data: { post } }) => {
 
     const featuredImage = {
-        fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-        alt: post.featuredImage?.node?.alt || ``,
+        fluid: post.CareerPostSingle?.careerSingleHeaderImage?.localFile?.childImageSharp?.fluid,
+        alt: post.CareerPostSingle?.careerSingleHeaderImage?.alt || ``,
     }
 
     return (
@@ -121,9 +121,9 @@ export const pageQuery = graphql`
       content
       title
       date(formatString: "MMMM DD, YYYY")
-      featuredImage {
-        node {
-          altText
+      CareerPostSingle {
+        careerSingleHeaderImage {
+          title
           localFile {
             childImageSharp {
               fluid(maxWidth: 1000, quality: 100) {
