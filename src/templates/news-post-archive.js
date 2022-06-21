@@ -29,7 +29,7 @@ const NewsBlogArchive = ({
             />
             ))}
             <MainPage>
-                <h1><Link to={"/news/"}>Insights</Link></h1>
+                <h1><Link to={"/news/"}>News</Link></h1>
                 <Sidebar>
                     <NewsBlogSidebar/>
                 </Sidebar>
