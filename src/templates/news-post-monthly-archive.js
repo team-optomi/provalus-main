@@ -8,13 +8,7 @@ import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
 import NewsBlogSidebar from "../components/news-blog-sidebar"
 
-import { FaChevronLeft } from 'react-icons/fa'
-import { FaChevronRight } from 'react-icons/fa'
-
-const NewsBlogArchive = ({
-    data,
-    pageContext: { nextPagePath, previousPagePath },
-  }) => {
+const NewsMonthlyArchive = ({data}) => {
 
     const posts = data.allWpNewsSingle.nodes
     const seoMeta = data.allWpPage.edges
@@ -29,7 +23,7 @@ const NewsBlogArchive = ({
             />
             ))}
             <MainPage>
-                <h1><Link to={"/news/"}>Insights</Link></h1>
+                <h1><Link to={"/news/"}>News</Link></h1>
                 <Sidebar>
                     <NewsBlogSidebar/>
                 </Sidebar>
@@ -60,21 +54,13 @@ const NewsBlogArchive = ({
                         )
                     })}
 
-                    <Pagination>
-                        {previousPagePath && (
-                            <>
-                            <Link to={previousPagePath}><FaChevronLeft size={36}/></Link>
-                            <br />
-                            </>
-                        )}
-                        {nextPagePath && <Link to={nextPagePath}><FaChevronRight size={36}/></Link>}
-                    </Pagination>
                 </BlogLoop>
             </MainPage>
         </Layout>
     )
 
 }
+
 
 const MainPage = styled.div`
     background-image: url(../images/blog-bg.png);
@@ -133,12 +119,12 @@ const BlogLoop = styled.ul`
             height: 100%;
             position: relative;
             .gatsby-image-wrapper {
-              height: 350px;
-            }
-            img {
-              height: 350px !important;
-              object-fit: cover;
-            }
+                height: 350px;
+              }
+              img {
+                height: 350px !important;
+                object-fit: cover;
+              }
             .entry-wrap {
                 position: absolute;
                 top: 0;
@@ -203,25 +189,13 @@ const BlogLoop = styled.ul`
     }
 `
 
-const Pagination = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    a {
-      color: #fff;
-    }
-`
-
-export default NewsBlogArchive
+export default NewsMonthlyArchive
 
 export const pageQuery = graphql`
-  query WordPressNewsArchive($offset: Int!, $postsPerPage: Int!) {
+  query WordPressNewsMonthlyArchive($pubDate: String) {
     allWpNewsSingle(
+      filter: {MonthlyArchive: {archiveSlug: {eq: $pubDate}}}
       sort: { fields: [date], order: DESC }
-      limit: $postsPerPage
-      skip: $offset
     ) {
       nodes {
         uri

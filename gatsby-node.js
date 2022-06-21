@@ -26,6 +26,8 @@ exports.createPages = async gatsbyUtilities => {
   // And a paginated archive
   await createBlogPostArchive({ posts, gatsbyUtilities })
 
+  // Monthly Archives
+  await createBlogPostMonthlyArchive({ posts, gatsbyUtilities })
 
 
    // Query our news posts from the GraphQL server
@@ -42,6 +44,8 @@ exports.createPages = async gatsbyUtilities => {
    // And a paginated archive
    await createNewsPostArchive({ newsPosts, gatsbyUtilities })
 
+   // Monthly Archives
+   await createNewsPostMonthlyArchive({ newsPosts, gatsbyUtilities })
 
 
    // Query our wellness posts from the GraphQL server
@@ -301,6 +305,43 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
   )
 }
 
+
+/**
+ * This function creates the blog post monthly archive pages
+ */
+ async function createBlogPostMonthlyArchive({ posts, gatsbyUtilities }) {
+  const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
+    {
+      allWpPost {
+        edges {
+          node {
+            MonthlyArchive {
+              archiveLabel
+              archiveSlug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const postMap = graphqlResult.data.allWpPost.edges
+
+  return Promise.all(
+    postMap.map(async (archivePage) => {
+      await gatsbyUtilities.actions.createPage({
+        path: `/insights/${archivePage.node.MonthlyArchive.archiveSlug}`,
+        component: path.resolve(`./src/templates/blog-post-monthly-archive.js`),
+        context: {
+          pubTitle: archivePage.node.MonthlyArchive.archiveLabel,
+          pubDate: archivePage.node.MonthlyArchive.archiveSlug,
+        }
+      })
+    })
+  )
+
+}
+
 /**
  * This function creates the news archive pages
  */
@@ -359,6 +400,43 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
       })
     })
   )
+}
+
+
+/**
+ * This function creates the blog post monthly archive pages
+ */
+ async function createNewsPostMonthlyArchive({ newsPosts, gatsbyUtilities }) {
+  const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
+    {
+      allWpNewsSingle {
+        edges {
+          node {
+            MonthlyArchive {
+              archiveLabel
+              archiveSlug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const postMap = graphqlResult.data.allWpNewsSingle.edges
+
+  return Promise.all(
+    postMap.map(async (archivePage) => {
+      await gatsbyUtilities.actions.createPage({
+        path: `/news/${archivePage.node.MonthlyArchive.archiveSlug}`,
+        component: path.resolve(`./src/templates/news-post-monthly-archive.js`),
+        context: {
+          pubTitle: archivePage.node.MonthlyArchive.archiveLabel,
+          pubDate: archivePage.node.MonthlyArchive.archiveSlug,
+        }
+      })
+    })
+  )
+
 }
 
 /**

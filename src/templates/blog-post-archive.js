@@ -6,187 +6,215 @@ import Img from "gatsby-image"
 
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
+import InsightBlogSidebar from "../components/insight-blog-sidebar"
 
 import { FaChevronLeft } from 'react-icons/fa'
 import { FaChevronRight } from 'react-icons/fa'
 
-const BlogIndex = ({
-  data,
-  pageContext: { nextPagePath, previousPagePath },
-}) => {
-  const posts = data.allWpPost.nodes
-  const seoMeta = data.allWpPage.edges
+const InsightBlogArchive = ({
+    data,
+    pageContext: { nextPagePath, previousPagePath },
+  }) => {
 
-  if (!posts.length) {
-    return (
-      <Layout isHomePage>
-        <SEO title="All posts" />
-        <p>
-          No blog posts found. Add posts to your WordPress site and they'll
-          appear here!
-        </p>
-      </Layout>
+    const posts = data.allWpPost.nodes
+    const seoMeta = data.allWpPage.edges
+
+    return(
+        <Layout>
+            {seoMeta.map(page => (
+            <SEO 
+            title={page.node.seo.title} 
+            description={page.node.seo.metaDesc}
+            metaImage={page.node.seo.opengraphImage.localFile.childImageSharp.fluid}
+            />
+            ))}
+            <MainPage>
+                <h1><Link to={"/insights/"}>Insights</Link></h1>
+                <Sidebar>
+                    <InsightBlogSidebar/>
+                </Sidebar>
+                <BlogLoop>
+                    {posts.map(post => {
+                        const title = post.title
+
+                        return (
+                        <li key={post.uri}>
+                            <article
+                            className="post-list-item"
+                            itemScope
+                            itemType="http://schema.org/Article"
+                            >
+                            <Link to={`/insights/${post.slug}`} itemProp="url">
+                                <Img fluid={post.featuredImage.node.localFile.childImageSharp.fluid} alt={post.title} />
+                                <div class="entry-wrap">
+                                    <header>
+                                        <h2><span itemProp="headline">{parse(title)}</span></h2>
+                                    </header>
+                                    <div class="bottom-flex">
+                                        <p>{post.date}</p>
+                                    </div>
+                                </div>
+                            </Link>
+                            </article>
+                        </li>
+                        )
+                    })}
+
+                    <Pagination>
+                        {previousPagePath && (
+                            <>
+                            <Link to={previousPagePath}><FaChevronLeft size={36}/></Link>
+                            <br />
+                            </>
+                        )}
+                        {nextPagePath && <Link to={nextPagePath}><FaChevronRight size={36}/></Link>}
+                    </Pagination>
+                </BlogLoop>
+            </MainPage>
+        </Layout>
     )
-  }
 
-  return (
-    <Layout isHomePage>
-      {seoMeta.map(page => (
-      <SEO 
-      title={page.node.seo.title} 
-      description={page.node.seo.metaDesc}
-      metaImage={page.node.seo.opengraphImage.localFile.childImageSharp.fluid}
-      />
-      ))}
-      <MainBackground>
-        <MainLoop>
-          {posts.map(post => {
-            const title = post.title
-
-            return (
-              <li key={post.uri}>
-                <article
-                  className="post-list-item"
-                  itemScope
-                  itemType="http://schema.org/Article"
-                >
-                  <Img fluid={post.featuredImage.node.localFile.childImageSharp.fluid} alt={post.title} />
-                  <div class="entry-wrap">
-                    <header>
-                      <h2>
-                        <Link to={`/insights/${post.slug}`} itemProp="url">
-                          <span itemProp="headline">{parse(title)}</span>
-                        </Link>
-                      </h2>
-                    </header>
-                    <section itemProp="description">{parse(post.excerpt)}</section>
-                    <div class="bottom-flex">
-                      <p><Link to={`/insights/${post.slug}`} itemProp="url">Read More</Link></p>
-                      <p>{post.date}</p>
-                    </div>
-                  </div>
-                </article>
-              </li>
-            )
-          })}
-        </MainLoop>
-
-        <Pagination>
-          {previousPagePath && (
-            <>
-              <Link to={previousPagePath}><FaChevronLeft size={36}/></Link>
-              <br />
-            </>
-          )}
-          {nextPagePath && <Link to={nextPagePath}><FaChevronRight size={36}/></Link>}
-        </Pagination>
-
-        
-      </MainBackground>
-      
-    </Layout>
-  )
 }
 
-const MainBackground = styled.div`
-  width: 100%;
-  background-color: #353431;
-  padding-top: 100px;
-`
-
-const MainLoop = styled.ol`
-  list-style: none;
-  max-width: 1080px;
-  width: 100%;
-  margin: 0px auto;
-  display: flex;
-  flex-wrap: wrap;
-  > li {
-    width: 33.33%;
-    padding: 15px;
-    article {
-      background-color: #000;
-      .entry-wrap {
-        padding: 15px;
-        h2 {
-          font-family: "Kessel Light";
-          font-size: 25px;
-          letter-spacing: 1px;
-          line-height: 30px;
-          a {
-            color: #d2232a;
-            transition-duration: .3s;
-            &:hover {
-              color: #fff;
-            }
-          }
-        }
-        p {
-          font-family: "Kessel Light";
-          font-size: 14px;
-          color: #f1f2f2;
-          line-height: 1.6;
-        }
-        .bottom-flex {
-          margin-top: 35px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          p:first-child {
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 15.4px;
-            a {
-              color: #fff;
-              text-decoration: none;
-              transition-duration: .3s;
-              &:hover {
-                color: #d2232a;
-              }
-            }
-          }
-          p:last-child {
-            color: #d2232a;
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 15.4px;
-          }
-        }
+const MainPage = styled.div`
+    background-image: url(../images/blog-bg.png);
+    background-size: 100%;
+    background-position: top center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-top: 100px;
+    h1 {
+        width: 100%;
+        font-family: Madelyn;
+        font-size: 145px;
+        font-weight: normal;
+        line-height: 1;
+        color: rgb(210, 35, 42);
+        text-align: center;
+        position: relative;
+        margin-bottom: 80px;
+    }
+    @media(max-width:540px) {
+      h1 {
+        font-size: 100px;
+        margin-bottom: 40px;
       }
     }
-  }
-  .post-list-item {
-    .gatsby-image-wrapper {
-      height: 250px;
+`
+
+const Sidebar = styled.div`
+    max-width: 350px;
+    width: 100%;
+    @media(max-width:1080px) {
+      order: 2;
+      max-width: 100%;
     }
-  }
-  @media( max-width: 1120px) {
-    max-width: 720px;
+`
+
+const BlogLoop = styled.ul`
+    max-width: calc(100% - 350px);
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
     > li {
-      width: 50%;
+        width: 33.33%;
+        height: 350px;
+        margin: 0;
+        article {
+            margin: 0;
+            height: 350px;
+        }
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            .gatsby-image-wrapper {
+              height: 350px;
+            }
+            img {
+              height: 350px !important;
+              object-fit: cover;
+            }
+            .entry-wrap {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,.5);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 30px;
+                transition-duration: .3s;
+                h2 {
+                    font-family: "Kessel Light";
+                    color: #fff;
+                    font-weight: 400;
+                    line-height: 1.3;
+                    font-size: 20px;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    margin-top: 0px;
+                }
+                p {
+                    font-family: Madelyn;
+                    font-size: 28px;
+                    font-weight: 100;
+                    line-height: 1;
+                    color: #fff;
+                }
+            }
+        }
+        &:hover {
+            a {
+                .entry-wrap {
+                    background-color: rgba(210, 35, 42, .5);
+                }
+            }
+        }
     }
-  }
-  @media( max-width: 760px) {
-    max-width: 360px;
-    > li {
+    @media(max-width:1200px) {
+      > li {
+        width: 50%;
+      }
+    }
+    @media(max-width:1080px) {
+      order: 1;
+      max-width: 100%;
       width: 100%;
+      > li {
+        width: 33.33%;
+      }
     }
-  }
+    @media(max-width:980px) {
+      > li {
+        width: 50%;
+      }
+    }
+    @media(max-width:660px) {
+      > li {
+        width: 100%;
+      }
+    }
 `
 
 const Pagination = styled.div`
-  margin: 0px auto;
-  padding: 50px 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  a {
-    color: #fff;
-  }
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    a {
+      color: #fff;
+    }
 `
 
-export default BlogIndex
+export default InsightBlogArchive
 
 export const pageQuery = graphql`
   query WordPressPostArchive($offset: Int!, $postsPerPage: Int!) {
@@ -196,12 +224,10 @@ export const pageQuery = graphql`
       skip: $offset
     ) {
       nodes {
-        excerpt
         uri
         slug
         date(formatString: "MMMM DD, YYYY")
         title
-        excerpt
         featuredImage {
           node {
             localFile {
