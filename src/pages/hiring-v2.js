@@ -330,6 +330,14 @@ const HiringV2Page = () => {
                 font-size: 24px;
             }
         }
+        @media(max-width:767px) {
+            h3 {
+                font-size: 28px;
+            }
+            p {
+                font-size: 24px;
+            }
+        }
     }
     .row-two {
         display: flex;
@@ -480,6 +488,9 @@ const HiringV2Page = () => {
                 text-align: center;
                 h3 {
                     text-align: center;
+                    span.white-spaced {
+                        font-size: 32px;
+                    }
                 }
             }
             .row-three-image {
@@ -528,6 +539,18 @@ const HiringV2Page = () => {
                 li {
                     width: 100%;
                     text-align: center;
+                }
+            }
+        }
+    }
+    @media(max-width:767px) {
+        .row-four {
+            h2 {
+                font-size: 36px;
+            }
+            ul.job-openings {
+                li {
+                    font-size: 20px;
                 }
             }
         }
@@ -604,13 +627,16 @@ const HiringV2Page = () => {
                 .icon-row {
                     > div {
                         width: 50%;
+                        h3 {
+                            font-size: 20px;
+                            letter-spacing: 1px;
+                        }
                     }
                 }
             }
         }
     }
   `
-
  
 const FormSection = styled.section`
     width: 100%;
