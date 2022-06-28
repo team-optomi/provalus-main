@@ -419,6 +419,7 @@ const HiringV2Page = () => {
             }
             .row-two-image {
                 width: 100%;
+                height: 350px;
             }
         }
     }
@@ -496,6 +497,7 @@ const HiringV2Page = () => {
             .row-three-image {
                 order: 2;
                 width: 100%;
+                height: 350px;
             }
         }
     }
