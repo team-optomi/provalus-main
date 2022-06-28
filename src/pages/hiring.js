@@ -6,39 +6,11 @@ import Img from "gatsby-image"
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
 
-const GrillChillPage = () => {
+const HiringV2Page = () => {
 
     const data = useStaticQuery(graphql`
       query {
-        iconOne: file(relativePath: { eq: "Icons-01.png" }) {
-            childImageSharp {
-              fixed(width: 500, height: 500) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-        }
-        iconThree: file(relativePath: { eq: "Icons-03.png" }) {
-            childImageSharp {
-              fixed(width: 500, height: 500) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-        }
-        iconFour: file(relativePath: { eq: "Icons-04.png" }) {
-            childImageSharp {
-              fixed(width: 500, height: 500) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-        }
-        iconWheel: file(relativePath: { eq: "Prize Wheel-09.png" }) {
-            childImageSharp {
-              fixed(width: 500, height: 500) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-        }
-        allWpPage(filter: {databaseId: {eq: 2078}}) {
+        allWpPage(filter: {databaseId: {eq: 2490}}) {
           edges {
             node {
               seo {
@@ -67,76 +39,66 @@ const GrillChillPage = () => {
                   }
                 }
               }
-              grillChill {
-                chillHeroBackground { 
-                    title
-                    localFile {
-                        childImageSharp {
-                            fluid(maxWidth: 1800) {
-                                ...GatsbyImageSharpFluid
-                            }
+              hiringTwo {
+                h2BannerImage {
+                  title
+                  localFile {
+                    childImageSharp {
+                        fluid(maxWidth: 1920) {
+                            ...GatsbyImageSharpFluid
                         }
                     }
+                  }
                 }
-                chillHeroIcon { 
-                    title
-                    localFile {
-                        childImageSharp {
-                            fluid(maxWidth: 662) {
-                                ...GatsbyImageSharpFluid
-                            }
+                h2BannerContent
+                h2SectionOneContent
+                h2SectionTwoContent
+                h2SectionTwoImage {
+                  title
+                  localFile {
+                    childImageSharp {
+                        fluid(maxWidth: 1000) {
+                            ...GatsbyImageSharpFluid
                         }
                     }
+                  }
                 }
-                chillBannerCopy
-                chillRowOneIcon {
-                    title
-                    localFile {
-                        childImageSharp {
-                            fluid(maxWidth: 500) {
-                                ...GatsbyImageSharpFluid
-                            }
+                h2SectionThreeContent
+                h2SectionThreeImage {
+                  title
+                  localFile {
+                    childImageSharp {
+                        fluid(maxWidth: 1000) {
+                            ...GatsbyImageSharpFluid
                         }
                     }
+                  }
                 }
-                chillRowOneContent
-                chillRowTwoContent
-                chillRowThreeContent
-                chillRowFourContent
-                chillRowFiveIcon {
-                    title
-                    localFile {
-                        childImageSharp {
-                            fluid(maxWidth: 500) {
-                                ...GatsbyImageSharpFluid
-                            }
+                h2SectionFourContent
+                h2SectionFiveTitle
+                h2SectionFiveBackground {
+                  title
+                  localFile {
+                    childImageSharp {
+                        fluid(maxWidth: 1920) {
+                            ...GatsbyImageSharpFluid
                         }
                     }
+                  }
                 }
-                chillRowFiveContent
-                chillRowSixIcon {
+                h2HiringIcons {
+                  h2IconTitle
+                  h2Icon {
                     title
                     localFile {
-                        childImageSharp {
-                            fluid(maxWidth: 500) {
-                                ...GatsbyImageSharpFluid
-                            }
+                      childImageSharp {
+                        fluid(maxWidth: 600) {
+                            ...GatsbyImageSharpFluid
                         }
+                      }
                     }
+                  }
                 }
-                chillRowSixContent
-                chillRowSevenIcon {
-                    title
-                    localFile {
-                        childImageSharp {
-                            fluid(maxWidth: 500) {
-                                ...GatsbyImageSharpFluid
-                            }
-                        }
-                    }
-                }
-                chillRowSevenContent
-                chillRowEightContent
               }
             }
           }
@@ -156,47 +118,46 @@ const GrillChillPage = () => {
           <PageMain>
             <HeroSection>
                 <div class="background">
-                    <Img fluid={post.node.grillChill.chillHeroBackground.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillHeroBackground.title} />
+                    <Img fluid={post.node.hiringTwo.h2BannerImage.localFile.childImageSharp.fluid} alt={post.node.hiringTwo.h2BannerImage.title} />
                 </div>
-                <div class="hero-icon">
-                    <Img fluid={post.node.grillChill.chillHeroIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillHeroIcon.title} />
-                </div>
-                <div class="hero-banner" dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillBannerCopy }} />
+                <div class="hero-banner" dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2BannerContent }} />
             </HeroSection>
            <MainSection>
                <div class="row-one row">
-                    <Img fluid={post.node.grillChill.chillRowOneIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillRowOneIcon.title} />
-                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowOneContent }} />
+                    <div dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionOneContent }} />
                </div>
                <div class="row-two row">
-                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowTwoContent }} />
+                    <div class="row-two-content" dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionTwoContent }} />
+                    <Img className={"row-two-image"} fluid={post.node.hiringTwo.h2SectionTwoImage.localFile.childImageSharp.fluid} alt={post.node.hiringTwo.h2SectionTwoImage.title} />
                </div>
                <div class="row-three row">
-                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowThreeContent }} />
+                    <Img className={"row-three-image"} fluid={post.node.hiringTwo.h2SectionThreeImage.localFile.childImageSharp.fluid} alt={post.node.hiringTwo.h2SectionThreeImage.title} />
+                    <div class="row-three-content" dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionThreeContent }} />
                </div>
                <div class="row-four row">
-                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowFourContent }} />
+                    <div dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionFourContent }} />
                </div>
                <div class="row-five row">
-                    <Img fluid={post.node.grillChill.chillRowFiveIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillRowFiveIcon.title} />
-                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowFiveContent }} />
-               </div>
-               <div class="row-six row">
-                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowSixContent }} />
-                    <Img fluid={post.node.grillChill.chillRowSixIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillRowSixIcon.title} />
-               </div>
-               <div class="row-seven row">
-                    <Img fluid={post.node.grillChill.chillRowSevenIcon.localFile.childImageSharp.fluid} alt={post.node.grillChill.chillRowSevenIcon.title} />
-                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowSevenContent }} />
-               </div>
-               <div class="row-eight row">
-                    <div dangerouslySetInnerHTML={{ __html: post.node.grillChill.chillRowEightContent }} />
+                    <div class="background">
+                        <Img fluid={post.node.hiringTwo.h2SectionFiveBackground.localFile.childImageSharp.fluid} alt={post.node.hiringTwo.h2SectionFiveBackground.title} />
+                    </div>
+                    <div class="main-row">
+                        <h2 dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionFiveTitle }} />
+                        <div class="icon-row">
+                            {post.node.hiringTwo.h2HiringIcons.map(iconSrc => (
+                                <div class="icon-col">
+                                    <Img fluid={iconSrc.h2Icon.localFile.childImageSharp.fluid} alt={iconSrc.h2Icon.title} />
+                                    <h3 dangerouslySetInnerHTML={{ __html: iconSrc.h2IconTitle }} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                </div>
            </MainSection>
            <FormSection>
                <h2>Pre-Register <br/><span>Optional</span></h2>
-                <form name="Grill and Chill Registration" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
-                    <input type="hidden" name="form-name" value="Apply" aria-label="Input" />
+                <form name="Carolina Career Fair Registration" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
+                    <input type="hidden" name="form-name" value="Carolina Career Fair Registration" aria-label="Input" />
                     <p class="hidden">
                         <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
                     </p>
@@ -231,8 +192,7 @@ const GrillChillPage = () => {
                     </p>
                 </form>
                 <div class="apply">
-                    <h2>Apply Now</h2>
-                    <Link to={"/apply/"}>Here</Link>
+                    <h2><Link to={"/apply/"}>Apply Now</Link></h2>
                 </div>
            </FormSection>
           </PageMain>
@@ -249,7 +209,7 @@ const GrillChillPage = () => {
 
   const HeroSection = styled.section`
     position: relative;
-    height: 100vh;
+    height: 550px;
     width: 100%;
     padding-top: 100px;
     .background {
@@ -257,46 +217,42 @@ const GrillChillPage = () => {
         top: 0px;
         left: 0px;
         width: 100%;
-        height: 100vh;
+        height: 550px;
         .gatsby-image-wrapper {
-            height: 100vh;
+            height: 550px;
             width: 100%;
         }
         .img {
-            height: 100vh;
+            height: 550px;
             width: 100%;
         }
     }
-    .hero-icon {
-        max-width: 350px;
-        width: 100%;
-        margin: 0 auto;
-    }
     .hero-banner {
         width: 100%;
-        background-color: #d2232a99;
-        padding: 60px 20px;
+        height: 100%;
+        padding: 20px;
         position: relative;
         z-index: 1;
-        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         h1 {
             font-family: "Balboa Medium";
             width: 100%;
             text-align: center;
             margin: 0;
             text-transform: uppercase;
-            font-size: 72px;
-            letter-spacing: 10px;
-            color: #fff;
-            span {
-                color: #000;
-            }
+            font-size: 100px;
+            letter-spacing: 3px;
+            line-height: 1;
+            color: #d2232a;
+            text-shadow: 3px 3px 6px rgba(0,0,0,.5);
         }
     }
     @media(max-width:1000px) {
         .hero-banner {
             h1 {
-                font-size: 44px;
+                font-size: 72px;
             }
         }
     }
@@ -304,7 +260,7 @@ const GrillChillPage = () => {
         padding-top: 150px;
         .hero-banner {
             h1 {
-                font-size: 32px;
+                font-size: 54px;
                 letter-spacing: 3px;
             }
         }
@@ -312,49 +268,60 @@ const GrillChillPage = () => {
   `
 
   const MainSection = styled.section`
-    padding: 0 20px;
     .row {
-        max-width: 1200px;
         width: 100%;
         margin: 0 auto;
-        border-bottom: 1px solid #d2232a;
         padding-bottom: 30px;
     }
     .row-one {
+        max-width: 1200px;
         text-align: center;
+        padding: 0 20px;
+        padding-bottom: 50px;
         .gatsby-image-wrapper {
-            width: 200px;
+            width: 200px !important;
             height: 200px;
             margin: 0 auto;
+            margin-top: -100px;
         }
         h2 {
             font-family: Madelyn;
             font-size: 200px;
             font-weight: 100;
             color: #d2232a;
-            margin-top: -100px;
         }
         h3 {
             font-family: "Balboa Medium";
-            font-size: 60px;
-            letter-spacing: 3px;
+            font-size: 72px;
+            letter-spacing: 5px;
             color: #fff;
-            margin-top: 0px;
+            margin-top: -40px;
             span {
                 color: #d2232a;
             }
         }
         h4 {
+            font-family: "Balboa Medium";
+            color: #fff;
+            font-size: 44px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        p {
             font-family: "Kessel Light";
             color: #d2232a;
-            font-size: 32px;
+            font-size: 38px;
+            font-weight: 700;
             letter-spacing: 1px;
-            margin-top: 10px;
+            line-height: 1.4;
+            a {
+                color: #d2232a;
+                text-decoration: none;
+            }
         }
         @media(max-width:1000px) {
             h2 {
                 font-size: 140px;
-                margin-top: -60px;
             }
             h3 {
                 font-size: 44px;
@@ -363,321 +330,315 @@ const GrillChillPage = () => {
                 font-size: 24px;
             }
         }
+        @media(max-width:767px) {
+            h3 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 24px;
+            }
+        }
     }
     .row-two {
-        padding-top: 200px;
-        p:first-child {
-            font-family: "Kessel Light";
-            color: #fff;
-            font-size: 32px;
-            letter-spacing: 1px;
-            text-align: center;
-            position: relative;
-            @media(max-width:1300px) {
-                max-width: 900px;
-                margin: 0 auto;
-                margin-bottom: 40px;
-            }
-            span {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #d2232a;
+        padding-bottom: 0px;
+        .row-two-content {
+            width: 45%;
+            padding: 50px;
+            text-align: right;
+            h2 {
                 font-family: Madelyn;
                 font-size: 200px;
                 font-weight: 100;
-                position: absolute;
-                top: -200px;
-                left: -80px;  
-                @media(max-width:1100px) {
-                    font-size: 140px;
-                    width: 100%;
-                    left: 0;
-                    top: -150px;
-                }          
+                color: #fff;
+                line-height: 1;
+                margin-bottom: -40px;
+                margin-top: 20px;
+            }
+            p {
+                font-family: "Kessel Light";
+                color: #fff;
+                font-size: 28px;
+                font-weight: 400;
+                line-height: 1.3;
             }
         }
-        p:last-child {
-            font-family: "Kessel Light";
-            color: #fff;
-            letter-spacing: 5px;
-            font-size: 50px;
-            text-align: center;
-            font-style: italic;
-            span {
-                font-family: "Balboa Medium";
-                font-size: 44px;
-                color: #d2232a;
-                font-style: normal;
+        .row-two-image {
+            width: 55%;
+            height: 100%;
+            img {
+                margin-bottom: 0px;
             }
         }
-        @media(max-width:1000px) {
-            p:last-child {
-                font-size: 32px;
-                span {
-                    font-size: 32px;
+    }
+    @media(max-width:1600px) {
+        .row-two {
+            .row-two-image {
+                height: 500px;
+            }
+            .row-two-content {
+                h2 {
+                    font-size: 120px;
+                    margin-bottom: 0px;
                 }
+                p {
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+    @media(max-width:1400px) {
+        .row-two {
+            .row-two-content {
+                padding: 35px;
+                h2 {
+                    font-size: 120px;
+                    margin-bottom: 0px;
+                }
+                p {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+    @media(max-width:767px) {
+        .row-two {
+            flex-wrap: wrap;
+            .row-two-content {
+                width: 100%;
+                padding: 35px;
+                text-align: center;
+                h2 {
+                    text-align: center;
+                }
+                p {
+                    text-align: center;
+                }
+            }
+            .row-two-image {
+                width: 100%;
+                height: 350px;
             }
         }
     }
     .row-three {
-        padding-top: 30px;
-        p {
-            font-family: "Kessel Light";
-            color: #fff;
-            font-size: 36px;
-            line-height: 1.1;
-            &:last-child {
-                text-align: center;
+        display: flex;
+        align-items: center;
+        padding-bottom: 0px;
+        border-bottom: 1px solid #d2232a;
+        .row-three-content {
+            width: 45%;
+            padding: 50px;
+            h3 {
+                span.red {
+                    font-family: "Balboa Medium";
+                    font-size: 48px;
+                    letter-spacing: 3px;
+                    color: #d2232a;
+                }
+                span.white-spaced {
+                    font-family: "Kessel Light";
+                    color: rgb(255, 255, 255);
+                    letter-spacing: 10px;
+                    font-size: 60px;
+                    font-style: italic;
+                }
             }
         }
-        @media(max-width:1000px) {
-            p {
+        .row-three-image {
+            width: 55%;
+            height: 100%;
+            img {
+                margin-bottom: 0px;
+            }
+        }
+    }
+    @media(max-width:1600px) {
+        .row-three {
+            .row-three-image {
+                height: 500px;
+            }
+        }
+    }
+    @media(max-width:1400px) {
+        .row-three {
+            .row-three-content {
+                padding: 35px;
+                h3 {
+                    span.red {
+                        font-size: 42px;
+                        letter-spacing: 3px;
+                    }
+                    span.white-spaced {
+                        letter-spacing: 7px;
+                        font-size: 50px;
+                    } 
+                }
+            }
+        }
+    }
+    @media(max-width:767px) {
+        .row-three {
+            flex-wrap: wrap;
+            .row-three-content {
+                order: 1;
+                width: 100%;
+                padding: 35px;
                 text-align: center;
-                font-size: 28px;
-                line-height: 1.2;
+                h3 {
+                    text-align: center;
+                    span.white-spaced {
+                        font-size: 32px;
+                    }
+                }
+            }
+            .row-three-image {
+                order: 2;
+                width: 100%;
+                height: 350px;
             }
         }
     }
     .row-four {
-        padding-top: 30px;
-        p {
+        max-width: 1200px;
+        text-align: center;
+        padding: 50px 20px;
+        h2 {
             font-family: "Balboa Medium";
-            font-size: 76px;
+            font-size: 54px;
             letter-spacing: 3px;
-            line-height: 1.1;
+            color: #fff;
             text-align: center;
-            margin-bottom: 0px;
-            color: #d2232a;
-            span {
+        }
+        ul.job-openings {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 70px;
+            li {
+                width: 50%;
+                font-family: "Kessel Light";
                 color: #fff;
+                font-size: 32px;
+                font-weight: 400;
+                line-height: 1.3;
+                text-align: left;
+                margin-bottom: 0px;
+                &:last-child {
+                    font-weight: 700;
+                }
             }
         }
-        @media(max-width:1000px) {
-            p {
-                font-size: 44px;
+        
+    }
+    @media(max-width:991px) {
+        .row-four {
+            ul.job-openings {
+                li {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    @media(max-width:767px) {
+        .row-four {
+            h2 {
+                font-size: 36px;
+            }
+            ul.job-openings {
+                li {
+                    font-size: 20px;
+                }
             }
         }
     }
     .row-five {
+        position: relative;
         padding-top: 30px;
         display: flex;
-        .gatsby-image-wrapper {
-            width: 300px;
-            height: 300px;
-        }
-        h3 {
-            font-family: Madelyn;
-            font-size: 200px;
-            font-weight: 100;
-            color: #d2232a;
-            position: relative;
-            span {
-                right: -200px;
-                position: absolute;
-                top: 115px;
-            }
-        }
-        p {
-            font-family: "Balboa Medium";
-            font-size: 76px;
-            letter-spacing: 3px;
-            line-height: 1.1;
-            text-align: center;
-            margin-bottom: 0px;
-            margin-top: 50px;
-            color: #fff;
-        }
-        @media(max-width:1000px) {
-            h3 {
-                font-size: 100px;
-                span {
-                    right: -105px;
-                    top: 60px;
-                }
-            }
-            p {
-                font-size: 44px;
-            }
-        }
-        @media(max-width:767px) {
-            flex-wrap: wrap;
+        border-top: 1px solid #d2232a;
+        border-bottom: 1px solid #d2232a;
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
             .gatsby-image-wrapper {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            > div {
-                width: 100%;
-            }
-            h3 {
-                font-size: 70px;
-                text-align: center;
-                margin-bottom: 0px;
-                span {
-                    position: relative;
-                    right: auto;
-                    top: auto;
-                }
+                height: 100%;
             }
         }
-    }
-    .row-six {
-        padding-top: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .gatsby-image-wrapper {
-            width: 300px;
-            height: 300px;
-        }
-        p {
-            font-family: "Kessel Light";
-            color: #fff;
-            font-size: 36px;
-            line-height: 1;
-            text-align: right;
-            margin-left: 100px;
-            span {
+        .main-row {
+            max-width: 1240px;
+            width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            h2 {
                 font-family: Madelyn;
-                font-size: 160px;
+                font-size: 140px;
                 font-weight: 100;
                 color: #fff;
+                line-height: 1;
+                text-align: left;
+                margin-bottom: 0px;
             }
-        }
-        @media(max-width:1000px) {
-            p {
-                font-size: 28px;
-                margin-left: 20px;
-                span {
-                    font-size: 100px;
-                }
-            }
-        }
-        @media(max-width:767px) {
-            flex-wrap: wrap;
-            .gatsby-image-wrapper {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            > div {
-                width: 100%;
-            }
-            > div:first-child {
-                order: 2;
-            }
-            > div:last-child {
-                order: 1;
-            }
-            p {
-                text-align: center;
-                span {
-                    font-size: 80px;
+            .icon-row {
+                display: flex;
+                > div {
+                    width: 20%;
+                    padding: 10px;
+                    h3 {
+                        font-family: "Kessel Light";
+                        color: #fff;
+                        font-size: 28px;
+                        text-align: center;
+                        font-weight: 100;
+                        margin-top: 0px;
+                    }
                 }
             }
         }
     }
-    .row-seven {
-        padding-top: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .gatsby-image-wrapper {
-            width: 300px;
-            height: 300px;
-            margin-right: 100px;
-        }
-        h3 {
-            font-family: "Balboa Medium";
-            font-size: 44px;
-            letter-spacing: 2px;
-            line-height: 1.2;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-        p {
-            font-family: "Kessel Light";
-            color: #fff;
-            font-size: 32px;
-            line-height: 1.2;
-        }
-        @media(max-width:1000px) {
-            h3 {
-                font-size: 32px;
-            }
-            p {
-                font-size: 28px;
-            }
-        }
-        @media(max-width:767px) {
-            flex-wrap: wrap;
-            .gatsby-image-wrapper {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            > div {
-                width: 100%;
-            }
-            h3 {
-                text-align: center;
-            }
-            p {
-                text-align: center;
+    @media(max-width:991px) {
+        .row-five {
+            .main-row {
+                h2 {
+                    text-align: center;
+                }
+                .icon-row {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    > div {
+                        width: 33.33%;
+                    }
+                }
             }
         }
     }
-    .row-eight {
-        padding-top: 60px;
-        padding-bottom: 60px;
-        position: relative;
-        h2 {
-            font-family: Madelyn;
-            font-size: 100px;
-            font-weight: 100;
-            line-height: 1;
-            color: #d2232a;
-            margin-top: 40px;
-            margin-bottom: 0px;
-            width: 100%;
-            text-align: right;
-            position: relative;
-        }
-        h3 {
-            font-family: "Balboa Medium";
-            font-size: 66px;
-            letter-spacing: 2px;
-            line-height: 1.2;
-            margin-top: -20px;
-            color: #fff;
-            text-align: center;
-            position: relative;
-        }
-        &:before {
-            content: '';
-            position: absolute;
-            top: 60px;
-            left: -60px;
-            width: 300px;
-            height: 300px;
-            background-color: #460c0f;
-            border-radius: 50%;
-        }
-        @media(max-width:1000px) {
-            h2 {
-                font-size: 72px;
-                text-align: center;
-            }
-            h3 {
-                font-size: 44px;
-                margin-top: 0px;
-            }
-        }
-        @media(max-width:767px) {
-            h2 {
-                font-size: 60px;
-            }
-            h3 {
-                font-size: 32px;
+    @media(max-width:767px) {
+        .row-five {
+            .main-row {
+                .icon-row {
+                    > div {
+                        width: 50%;
+                        h3 {
+                            font-size: 20px;
+                            letter-spacing: 1px;
+                        }
+                    }
+                }
             }
         }
     }
   `
-
  
 const FormSection = styled.section`
     width: 100%;
@@ -685,7 +646,7 @@ const FormSection = styled.section`
     margin: 0 auto;
     h2 {
         font-family: Madelyn;
-        font-size: 200px;
+        font-size: 160px;
         font-weight: 100;
         color: #d2232a;
         position: relative;
@@ -694,7 +655,7 @@ const FormSection = styled.section`
         text-align: center;
         span {
             font-family: "Balboa Medium";
-            font-size: 76px;
+            font-size: 60px;
             letter-spacing: 3px;
             line-height: 1.1;
             text-align: center;
@@ -706,21 +667,20 @@ const FormSection = styled.section`
             bottom: -20px;
         }
     }
-    a {
-        font-family: "Balboa Medium";
-        font-size: 76px;
-        letter-spacing: 3px;
-        line-height: 1.1;
-        text-align: center;
-        margin-bottom: 0px;
-        margin-top: 50px;
-        color: #fff;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
     div.apply {
         text-align: center;
         margin-bottom: 50px;
+        a {
+            font-family: Madelyn;
+            font-size: 90px;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            text-align: center;
+            margin-bottom: 0px;
+            margin-top: 50px;
+            color: #d2232a;
+            text-decoration: none;
+        }
     }
     form {
         max-width: 800px;
@@ -766,17 +726,21 @@ const FormSection = styled.section`
         width: 100%;
     }
     button[type="submit"] {
-        font-family: "Madelyn";
-        font-size: 130px;
-        color: #d2232a;
-        padding: 25px 20px 0;
+        font-family: "Kessel Light";
+        color: rgb(255, 255, 255);
+        font-size: 20px;
         text-align: center;
-        text-transform: capitalize;
-        background: transparent;
-        border: none;
+        font-weight: 400;
+        padding: 10px 25px;
+        padding-bottom: 8px;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: #d2232a;
+        border: 1px solid #fff;
+        border-radius: 10px;
         outline: 0;
         &:hover {
-        cursor: pointer;
+            cursor: pointer;
         }
     }
     &.hidden {
@@ -857,4 +821,4 @@ const FormSection = styled.section`
     }
 `
 
-  export default GrillChillPage
+  export default HiringV2Page
