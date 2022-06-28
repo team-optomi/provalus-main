@@ -117,24 +117,48 @@ const HiringV2Page = () => {
           />
           <PageMain>
             <HeroSection>
-                <div class="background">
+                <div 
+                data-sal="fade"
+                data-sal-duration="1000"
+                data-sal-easing="ease"
+                class="background">
                     <Img fluid={post.node.hiringTwo.h2BannerImage.localFile.childImageSharp.fluid} alt={post.node.hiringTwo.h2BannerImage.title} />
                 </div>
-                <div class="hero-banner" dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2BannerContent }} />
+                <div 
+                data-sal="slide-up"
+                data-sal-duration="1000"
+                data-sal-easing="ease"
+                class="hero-banner" dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2BannerContent }} />
             </HeroSection>
            <MainSection>
-               <div class="row-one row">
+               <div 
+               data-sal="slide-up"
+               data-sal-duration="1000"
+               data-sal-easing="ease"
+               class="row-one row">
                     <div dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionOneContent }} />
                </div>
-               <div class="row-two row">
+               <div 
+               data-sal="slide-up"
+               data-sal-duration="1000"
+               data-sal-easing="ease"
+               class="row-two row">
                     <div class="row-two-content" dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionTwoContent }} />
                     <Img className={"row-two-image"} fluid={post.node.hiringTwo.h2SectionTwoImage.localFile.childImageSharp.fluid} alt={post.node.hiringTwo.h2SectionTwoImage.title} />
                </div>
-               <div class="row-three row">
+               <div 
+               data-sal="slide-up"
+               data-sal-duration="1000"
+               data-sal-easing="ease"
+               class="row-three row">
                     <Img className={"row-three-image"} fluid={post.node.hiringTwo.h2SectionThreeImage.localFile.childImageSharp.fluid} alt={post.node.hiringTwo.h2SectionThreeImage.title} />
                     <div class="row-three-content" dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionThreeContent }} />
                </div>
-               <div class="row-four row">
+               <div 
+               data-sal="slide-up"
+               data-sal-duration="1000"
+               data-sal-easing="ease"
+               class="row-four row">
                     <div dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionFourContent }} />
                </div>
                <div class="row-five row">
@@ -142,10 +166,18 @@ const HiringV2Page = () => {
                         <Img fluid={post.node.hiringTwo.h2SectionFiveBackground.localFile.childImageSharp.fluid} alt={post.node.hiringTwo.h2SectionFiveBackground.title} />
                     </div>
                     <div class="main-row">
-                        <h2 dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionFiveTitle }} />
+                        <h2 
+                        data-sal="slide-up"
+                        data-sal-duration="1000"
+                        data-sal-easing="ease"
+                        dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2SectionFiveTitle }} />
                         <div class="icon-row">
                             {post.node.hiringTwo.h2HiringIcons.map(iconSrc => (
-                                <div class="icon-col">
+                                <div 
+                                data-sal="slide-up"
+                                data-sal-duration="1000"
+                                data-sal-easing="ease"
+                                class="icon-col">
                                     <Img fluid={iconSrc.h2Icon.localFile.childImageSharp.fluid} alt={iconSrc.h2Icon.title} />
                                     <h3 dangerouslySetInnerHTML={{ __html: iconSrc.h2IconTitle }} />
                                 </div>
@@ -192,7 +224,7 @@ const HiringV2Page = () => {
                     </p>
                 </form>
                 <div class="apply">
-                    <h2><Link to={"/apply/"}>Apply Now</Link></h2>
+                    <h2><a href="/apply/" target="_blank">Apply Now</a></h2>
                 </div>
            </FormSection>
           </PageMain>
@@ -236,6 +268,7 @@ const HiringV2Page = () => {
         display: flex;
         align-items: center;
         justify-content: center;
+        transition-delay: 1.2s;
         h1 {
             font-family: "Balboa Medium";
             width: 100%;
@@ -428,6 +461,7 @@ const HiringV2Page = () => {
         align-items: center;
         padding-bottom: 0px;
         border-bottom: 1px solid #d2232a;
+        overflow: hidden;
         .row-three-content {
             width: 45%;
             padding: 50px;
@@ -450,6 +484,7 @@ const HiringV2Page = () => {
         .row-three-image {
             width: 55%;
             height: 100%;
+            margin-bottom: -2px;
             img {
                 margin-bottom: 0px;
             }
@@ -603,6 +638,21 @@ const HiringV2Page = () => {
                         font-weight: 100;
                         margin-top: 0px;
                     }
+                    &:nth-child(1) {
+                        transition-delay: .3s;
+                    }
+                    &:nth-child(2) {
+                        transition-delay: .6s;
+                    }
+                    &:nth-child(3) {
+                        transition-delay: .9s;
+                    }
+                    &:nth-child(4) {
+                        transition-delay: 1.2s;
+                    }
+                    &:nth-child(5) {
+                        transition-delay: 1.5s;
+                    }
                 }
             }
         }
@@ -618,6 +668,21 @@ const HiringV2Page = () => {
                     justify-content: center;
                     > div {
                         width: 33.33%;
+                        &:nth-child(1) {
+                            transition-delay: .3s;
+                        }
+                        &:nth-child(2) {
+                            transition-delay: .3s;
+                        }
+                        &:nth-child(3) {
+                            transition-delay: .3s;
+                        }
+                        &:nth-child(4) {
+                            transition-delay: .3s;
+                        }
+                        &:nth-child(5) {
+                            transition-delay: .3s;
+                        }
                     }
                 }
             }
@@ -670,6 +735,10 @@ const FormSection = styled.section`
     div.apply {
         text-align: center;
         margin-bottom: 50px;
+        h2 {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
         a {
             font-family: Madelyn;
             font-size: 90px;
@@ -739,8 +808,10 @@ const FormSection = styled.section`
         border: 1px solid #fff;
         border-radius: 10px;
         outline: 0;
+        transition-duration: .3s;
         &:hover {
             cursor: pointer;
+            background-color: #cc6e73;
         }
     }
     &.hidden {

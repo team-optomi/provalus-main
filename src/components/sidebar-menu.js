@@ -120,13 +120,6 @@ class SideMainMenu extends Component {
                     Core Values
                     </Link>
                 </MenuItem>
-                <MenuItem>
-                    <Link
-                    to="/hiring/"
-                    >
-                    Hiring
-                    </Link>
-                </MenuItem>
                 <SubMenuToggle onClick={() => this.toggleMenuTwo()} ><p>Join Us <FaCaretDown size={12}/></p></SubMenuToggle>
                     <SubMenu className={menuTwoName}>
                         <MenuItem>
@@ -134,6 +127,13 @@ class SideMainMenu extends Component {
                             to="/join-us/career/"
                             >
                             Career
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link
+                            to="/hiring/"
+                            >
+                            Hiring
                             </Link>
                         </MenuItem>
                         <MenuItem>
@@ -269,7 +269,7 @@ const SubMenu = styled.ul`
             left: 20px;
             opacity: 1;
             visibility: visible;
-            height: 150px;
+            height: 190px;
         }
     }
 `
