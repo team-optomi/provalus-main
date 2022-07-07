@@ -54,6 +54,7 @@ const ContactUsPage = () => {
                 contactLocationOne
                 contactLocationThree
                 contactLocationTwo
+                mainContactNumber
               }
             }
           }
@@ -100,7 +101,7 @@ const ContactUsPage = () => {
                   <ScrollingImages/>
                   <div class="phone-content">
                       <Img fluid={data.phoneImage.childImageSharp.fixed} />
-                      <p>888.689.0872</p>
+                      <p>{post.node.ContactUsContent.mainContactNumber}</p>
                   </div>
                 </SectionFour>
             </Layout>
