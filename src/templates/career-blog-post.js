@@ -11,7 +11,7 @@ const CareerBlogPost = ({ data: { post } }) => {
 
     const featuredImage = {
         fluid: post.CareerPostSingle?.careerSingleHeaderImage?.localFile?.childImageSharp?.fluid,
-        alt: post.CareerPostSingle?.careerSingleHeaderImage?.alt || ``,
+        alt: post.CareerPostSingle?.careerSingleHeaderImage?.title || post.featuredImage?.node?.title || ``,
     }
 
     return (

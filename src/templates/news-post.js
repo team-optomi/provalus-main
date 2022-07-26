@@ -9,8 +9,8 @@ import SEO from "../components/seo"
 
 const NewsPostTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
-    fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-    alt: post.featuredImage?.node?.alt || ``,
+    fluid: post.NewsPostSingle?.newsSingleHeaderImage?.localFile?.childImageSharp?.fluid || post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+    alt: post.NewsPostSingle?.newsSingleHeaderImage?.title || post.featuredImage?.node?.title || ``,
   }
 
   return (
@@ -137,6 +137,20 @@ export const pageQuery = graphql`
 
       featuredImage {
         node {
+          altText
+          title
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 100) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+      NewsPostSingle {
+        newsSingleHeaderImage {
+          title
           altText
           localFile {
             childImageSharp {
