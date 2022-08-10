@@ -110,6 +110,10 @@ const BlogLoop = styled.ul`
         margin: 0;
         article {
             margin: 0;
+            height: 100%;
+            .gatsby-image-wrapper {
+              height: 100%;
+            }
         }
         a {
             display: block;

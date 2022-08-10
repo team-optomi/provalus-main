@@ -123,8 +123,12 @@ const BlogLoop = styled.ul`
         width: 33.33%;
         margin: 0;
         article {
-            margin: 0;
-        }
+          margin: 0;
+          height: 100%;
+          .gatsby-image-wrapper {
+                height: 100%;
+              }
+          }
         a {
             display: block;
             width: 100%;
@@ -194,7 +198,13 @@ const BlogLoop = styled.ul`
     }
 `
 
-const Pagination = styled.div``
+const Pagination = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+`
 
 export default CareerBlogArchive
 
