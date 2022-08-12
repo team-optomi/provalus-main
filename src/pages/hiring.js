@@ -99,6 +99,7 @@ const HiringV2Page = () => {
                     }
                   }
                 }
+                h2FormTitle
               }
             }
           }
@@ -187,7 +188,7 @@ const HiringV2Page = () => {
                </div>
            </MainSection>
            <FormSection>
-               <h2>Pre-Register <br/><span>Optional</span></h2>
+               <div dangerouslySetInnerHTML={{ __html: post.node.hiringTwo.h2FormTitle }} />
                 <form name="Carolina Career Fair Registration" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
                     <input type="hidden" name="form-name" value="Carolina Career Fair Registration" aria-label="Input" />
                     <p class="hidden">
