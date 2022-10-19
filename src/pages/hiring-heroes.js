@@ -870,6 +870,9 @@ const HiringHeroesPage = () => {
           margin: 0 auto;
           margin-bottom: 100px;
           display: block;
+          img {
+            object-fit: contain !important;
+          }
         }
       }
       .half-col {

@@ -54,6 +54,7 @@ const ContactUsPage = () => {
                 contactLocationOne
                 contactLocationThree
                 contactLocationTwo
+                contactLocationFour
                 mainContactNumber
               }
             }
@@ -93,6 +94,12 @@ const ContactUsPage = () => {
                           <a href="https://goo.gl/maps/kMCGGCgVdb31pMKz6" target="_blank">
                             <Img fluid={data.locationImage.childImageSharp.fixed} />
                             <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationThree }} />
+                          </a>
+                        </div>
+                        <div>
+                          <a href="#" target="_blank">
+                            <Img fluid={data.locationImage.childImageSharp.fixed} />
+                            <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationFour }} />
                           </a>
                         </div>
                     </div>
@@ -223,12 +230,12 @@ const SectionThree = styled.section`
       color: #fff;
       font-weight: 400;
       text-align: center;
-      margin-top: 0;
+      margin-top: 0px;
       margin-bottom: 35px;
       text-transform: uppercase;
     }
     .location-flex {
-      max-width: 1000px;
+      max-width: 1200px;
       width: 100%;
       display: flex;
       margin: 0 auto;
@@ -236,7 +243,7 @@ const SectionThree = styled.section`
         text-decoration: none;
       }
       > div {
-        width: 33.33%;
+        width: 25%;
         text-align: center;
         .gatsby-image-wrapper {
           width: 35px;
@@ -262,6 +269,15 @@ const SectionThree = styled.section`
         }
         .location-content {
           margin-top: -30px;
+        }
+      }
+    }
+    @media(max-width: 991px) {
+      .location-flex {
+        flex-wrap: wrap;
+        > div {
+          width: 50%;
+          margin-bottom: 40px;
         }
       }
     }
