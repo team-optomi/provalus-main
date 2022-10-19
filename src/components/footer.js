@@ -187,6 +187,7 @@ const Footer = () => {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        padding-left: 50px;
         .icons {
           display: flex;
           justify-content: flex-end;
@@ -214,6 +215,9 @@ const Footer = () => {
         .award-imgs {
           width: 100%;
           text-align: right;
+          img {
+            object-fit: contain !important;
+          }
         }
         .gatsby-image-wrapper {
           &.footer-awards {
@@ -248,6 +252,7 @@ const Footer = () => {
           width: 100%;
           align-items: flex-start;
           order: 3;
+          padding-left: 0;
           .award-imgs {
             text-align: left;
           }
