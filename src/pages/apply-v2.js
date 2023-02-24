@@ -88,7 +88,7 @@ const ApplyPage = () => {
                     </div>
                 </SectionOne>
                 <FormSection>
-                  <div class={'hidden'}>
+                  <div class={'hidden'} style={{display: 'none'}}>
                     <form name="Apply Texas/Oklahoma" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
                       <input type="hidden" name="form-name" value="Apply Texas/Oklahoma" aria-label="Input" />
                       <p class="hidden">
@@ -196,7 +196,7 @@ const ApplyPage = () => {
                       </p>
                     </form>
                   </div>
-                  <div class={'hidden'}>
+                  <div class={'hidden'} style={{display: 'none'}}>
                     <form name="Apply Other" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
                       <input type="hidden" name="form-name" value="Apply Other" aria-label="Input" />
                       <p class="hidden">
