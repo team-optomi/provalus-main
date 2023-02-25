@@ -1,12 +1,32 @@
-import React from "react"
+import React, {useState} from "react"
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Layout from "../components/layout-v2"
 import SEO from "../components/seo"
-import ApplyForm from "../components/apply-form"
+//import ApplyForm from "../components/apply-form-v2"
 
 const ApplyPage = () => {
+    const[formState, setFormState] = useState('Apply Alabama/South Carolina');
+    const[referralDisplay, setReferralDisplay] = useState('full-row hidden');
+
+    const stateSelect = (option) => {
+      if (option == 'alabama' || option == 'south-carolina') {
+        setFormState('Apply Alabama/South Carolina');
+      } else if (option == 'texas' || option == 'oklahoma') {
+        setFormState('Apply Texas/Oklahoma');
+      } else {
+        setFormState('Apply Other');
+      }
+    }
+
+    const referralSelect = (option) => {
+      if (option == 'Referral') {
+        setReferralDisplay('full-row');
+      } else {
+        setReferralDisplay('full-row hidden');
+      }
+    }
 
     const data = useStaticQuery(graphql`
       query {
@@ -68,17 +88,29 @@ const ApplyPage = () => {
                     </div>
                 </SectionOne>
                 <FormSection>
-                  <ApplyForm />
-                  <div type="hidden" style={{ display: 'none' }}>
-                    <form name="Apply" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
-                      <input type="hidden" name="form-name" value="Apply" aria-label="Input" />
+                  <div class={'hidden'} style={{display: 'none'}}>
+                    <form name="Apply Texas/Oklahoma" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
+                      <input type="hidden" name="form-name" value="Apply Texas/Oklahoma" aria-label="Input" />
                       <p class="hidden">
                           <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
                       </p>
-                      <p class="two-thirds">
+                      <p class="full-row">
+                          <label htmlFor="location">Which location are you interested in?* 
+                            <select 
+                            name="location" 
+                            required>
+                              <option value="alabama">Alabama</option>
+                              <option value="texas">Texas</option>
+                              <option value="south-carolina">South Carolina</option>
+                              <option value="oklahoma">Oklahoma</option>
+                              <option value="other">Other</option>
+                            </select>
+                          </label>   
+                      </p>
+                      <p class="full-row">
                           <label htmlFor="name">Full Name* <input type="text" name="name" aria-label="Input" required/></label>   
                       </p>
-                      <p class="two-thirds">
+                      <p class="full-row">
                           <label htmlFor="address">Street Address* <input type="text" name="address" aria-label="Input" required/></label>
                       </p>
                       <p class="one-third">
@@ -99,7 +131,9 @@ const ApplyPage = () => {
                       <p class="full-row">
                           <label  htmlFor="hear-about">
                             How did you hear about us?*
-                            <select name="hear-about" required>
+                            <select 
+                            name="hear-about" 
+                            required>
                               <option value="">Select Option</option>
                               <option value="Website">Website</option>
                               <option value="Job fair">Job fair</option>
@@ -107,10 +141,13 @@ const ApplyPage = () => {
                               <option value="Educational institution">Educational institution</option>
                               <option value="Job board">Job board</option>
                               <option value="Social media">Social media</option>
-                              <option value="Referral from friend or family">Referral from friend or family</option>
+                              <option value="Referral">Referral from friend or family</option>
                               <option value="Other">Other</option>
                             </select>
                           </label>
+                      </p>
+                      <p>
+                        <label htmlFor="referral">Who did you hear about us from? <input type="text" name="referral" aria-label="Input"/></label>   
                       </p>
                       <p class="full-row">
                           <label htmlFor="your-message">In 140 characters or less, please describe why you would be a good fit for this job
@@ -120,15 +157,269 @@ const ApplyPage = () => {
                       <div class="optional">
                           <p>Optional</p>
                       </div>
-                      <p class="two-thirds">
+                      <p class="full-row">
                           <label htmlFor="linkedin">LinkedIn Profile Url <input type="text" name="linkedin" aria-label="Input" /></label>   
                       </p>
+                      <div class="checkbox-row">
+                        <p>Select the roles you are most interested in: (select all that apply)</p>
+                        <div class="checkbox">
+                          <input type="checkbox" id="customer-experience" name="customer-experience" value="Customer Experience" />
+                          <label for="customer-experience"> Customer Experience</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="it-service-desk" name="it-service-desk" value="IT Service Desk" />
+                          <label for="it-service-desk"> I.T. Service Desk</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="network-operations" name="network-operations" value="Network Operations" />
+                          <label for="network-operations"> Network Operations</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="cybersecurity" name="cybersecurity" value="Cybersecurity" />
+                          <label for="cybersecurity"> Cybersecurity</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="application-development" name="application-development" value="Application Development" />
+                          <label for="application-development"> Application Development</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="interested-in-all-operations" name="interested-in-all-operations" value="Interested in all operations" />
+                          <label for="interested-in-all-operations"> Interested in all operations</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="other" name="other" value="Other" />
+                          <label for="other"> Other</label>
+                        </div>
+                      </div>
                       <p class="two-thirds">
                           <label htmlFor="resume">Upload Resume <input type="file" name="resume" size="40" accept=".pdf,.doc,.docx" aria-label="Input" /></label>   
                       </p>
-                      <p class={"button"}>
-                          <button type="submit" name="submit" class={"submit"}  aria-label="Send">Submit</button>
+                    </form>
+                  </div>
+                  <div class={'hidden'} style={{display: 'none'}}>
+                    <form name="Apply Other" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
+                      <input type="hidden" name="form-name" value="Apply Other" aria-label="Input" />
+                      <p class="hidden">
+                          <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
                       </p>
+                      <p class="full-row">
+                          <label htmlFor="location">Which location are you interested in?* 
+                            <select 
+                            name="location" 
+                            required>
+                              <option value="alabama">Alabama</option>
+                              <option value="texas">Texas</option>
+                              <option value="south-carolina">South Carolina</option>
+                              <option value="oklahoma">Oklahoma</option>
+                              <option value="other">Other</option>
+                            </select>
+                          </label>   
+                      </p>
+                      <p class="full-row">
+                          <label htmlFor="name">Full Name* <input type="text" name="name" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="full-row">
+                          <label htmlFor="address">Street Address* <input type="text" name="address" aria-label="Input" required/></label>
+                      </p>
+                      <p class="one-third">
+                          <label htmlFor="city">City* <input type="text" name="city" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="one-third">
+                          <label htmlFor="state">State* <input type="text" name="state" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="one-third">
+                          <label htmlFor="zip">Zip* <input type="text" name="zip" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="one-half">
+                          <label htmlFor="email">Email Address* <input type="email" name="email" aria-label="Input" required/></label>   
+                      </p>
+                      <p  class="one-half">
+                          <label htmlFor="phone">Phone* <input type="text" name="phone" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="full-row">
+                          <label  htmlFor="hear-about">
+                            How did you hear about us?*
+                            <select 
+                            name="hear-about" 
+                            required>
+                              <option value="">Select Option</option>
+                              <option value="Website">Website</option>
+                              <option value="Job fair">Job fair</option>
+                              <option value="Local event">Local event</option>
+                              <option value="Educational institution">Educational institution</option>
+                              <option value="Job board">Job board</option>
+                              <option value="Social media">Social media</option>
+                              <option value="Referral">Referral from friend or family</option>
+                              <option value="Other">Other</option>
+                            </select>
+                          </label>
+                      </p>
+                      <p>
+                        <label htmlFor="referral">Who did you hear about us from? <input type="text" name="referral" aria-label="Input"/></label>   
+                      </p>
+                      <p class="full-row">
+                          <label htmlFor="your-message">In 140 characters or less, please describe why you would be a good fit for this job
+                              <textarea name="your-message" cols="40" rows="10" maxLength="140" minLength="0" aria-label="Input"/>
+                          </label>   
+                      </p>
+                      <div class="optional">
+                          <p>Optional</p>
+                      </div>
+                      <p class="full-row">
+                          <label htmlFor="linkedin">LinkedIn Profile Url <input type="text" name="linkedin" aria-label="Input" /></label>   
+                      </p>
+                      <div class="checkbox-row">
+                        <p>Select the roles you are most interested in: (select all that apply)</p>
+                        <div class="checkbox">
+                          <input type="checkbox" id="customer-experience" name="customer-experience" value="Customer Experience" />
+                          <label for="customer-experience"> Customer Experience</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="it-service-desk" name="it-service-desk" value="IT Service Desk" />
+                          <label for="it-service-desk"> I.T. Service Desk</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="network-operations" name="network-operations" value="Network Operations" />
+                          <label for="network-operations"> Network Operations</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="cybersecurity" name="cybersecurity" value="Cybersecurity" />
+                          <label for="cybersecurity"> Cybersecurity</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="application-development" name="application-development" value="Application Development" />
+                          <label for="application-development"> Application Development</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="interested-in-all-operations" name="interested-in-all-operations" value="Interested in all operations" />
+                          <label for="interested-in-all-operations"> Interested in all operations</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="other" name="other" value="Other" />
+                          <label for="other"> Other</label>
+                        </div>
+                      </div>
+                      <p class="two-thirds">
+                          <label htmlFor="resume">Upload Resume <input type="file" name="resume" size="40" accept=".pdf,.doc,.docx" aria-label="Input" /></label>   
+                      </p>
+                    </form>
+                  </div>
+                  <div>
+                    <form name={formState} method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
+                      <input type="hidden" name="form-name" value={formState} aria-label="Input" />
+                      <p class="hidden">
+                          <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
+                      </p>
+                      <p class="full-row">
+                          <label htmlFor="location">Which location are you interested in?* 
+                            <select 
+                            name="location" 
+                            required 
+                            onChange={e => {
+                              stateSelect(e.target.value);
+                              }}>
+                              <option value="alabama">Alabama</option>
+                              <option value="texas">Texas</option>
+                              <option value="south-carolina">South Carolina</option>
+                              <option value="oklahoma">Oklahoma</option>
+                              <option value="other">Other</option>
+                            </select>
+                          </label>   
+                      </p>
+                      <p class="full-row">
+                          <label htmlFor="name">Full Name* <input type="text" name="name" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="full-row">
+                          <label htmlFor="address">Street Address* <input type="text" name="address" aria-label="Input" required/></label>
+                      </p>
+                      <p class="one-third">
+                          <label htmlFor="city">City* <input type="text" name="city" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="one-third">
+                          <label htmlFor="state">State* <input type="text" name="state" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="one-third">
+                          <label htmlFor="zip">Zip* <input type="text" name="zip" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="one-half">
+                          <label htmlFor="email">Email Address* <input type="email" name="email" aria-label="Input" required/></label>   
+                      </p>
+                      <p  class="one-half">
+                          <label htmlFor="phone">Phone* <input type="text" name="phone" aria-label="Input" required/></label>   
+                      </p>
+                      <p class="full-row">
+                          <label  htmlFor="hear-about">
+                            How did you hear about us?*
+                            <select 
+                            name="hear-about" 
+                            required 
+                            onChange={e => {
+                              referralSelect(e.target.value);
+                              }}>
+                              <option value="">Select Option</option>
+                              <option value="Website">Website</option>
+                              <option value="Job fair">Job fair</option>
+                              <option value="Local event">Local event</option>
+                              <option value="Educational institution">Educational institution</option>
+                              <option value="Job board">Job board</option>
+                              <option value="Social media">Social media</option>
+                              <option value="Referral">Referral from friend or family</option>
+                              <option value="Other">Other</option>
+                            </select>
+                          </label>
+                      </p>
+                      <p className={referralDisplay}>
+                        <label htmlFor="referral">Who did you hear about us from? <input type="text" name="referral" aria-label="Input"/></label>   
+                      </p>
+                      <p class="full-row">
+                          <label htmlFor="your-message">In 140 characters or less, please describe why you would be a good fit for this job
+                              <textarea name="your-message" cols="40" rows="10" maxLength="140" minLength="0" aria-label="Input"/>
+                          </label>   
+                      </p>
+                      <div class="optional">
+                          <p>Optional</p>
+                      </div>
+                      <p class="full-row">
+                          <label htmlFor="linkedin">LinkedIn Profile Url <input type="text" name="linkedin" aria-label="Input" /></label>   
+                      </p>
+                      <div class="checkbox-row">
+                        <p>Select the roles you are most interested in: (select all that apply)</p>
+                        <div class="checkbox">
+                          <input type="checkbox" id="customer-experience" name="customer-experience" value="true" />
+                          <label for="customer-experience"> Customer Experience</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="it-service-desk" name="it-service-desk" value="true" />
+                          <label for="it-service-desk"> I.T. Service Desk</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="network-operations" name="network-operations" value="true" />
+                          <label for="network-operations"> Network Operations</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="cybersecurity" name="cybersecurity" value="true" />
+                          <label for="cybersecurity"> Cybersecurity</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="application-development" name="application-development" value="true" />
+                          <label for="application-development"> Application Development</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="interested-in-all-operations" name="interested-in-all-operations" value="true" />
+                          <label for="interested-in-all-operations"> Interested in all operations</label>
+                        </div>
+                        <div class="checkbox">
+                          <input type="checkbox" id="other" name="other" value="true" />
+                          <label for="other"> Other</label>
+                        </div>
+                      </div>
+                      <p class="two-thirds">
+                          <label htmlFor="resume">Upload Resume <input type="file" name="resume" size="40" accept=".pdf,.doc,.docx" aria-label="Input" /></label>   
+                      </p>
+                      <div class="button">
+                          <button type="submit" name="submit" class={"submit"}  aria-label="Send">Submit</button>
+                          <p>Fuel your <span class="fancy">passion</span> for life with rewarding work.</p>
+                      </div>
                     </form>
                   </div>
                 </FormSection>
@@ -209,6 +500,68 @@ const FormSection = styled.section`
     form {
       display: flex;
       flex-wrap: wrap;
+      gap: 30px;
+    }
+    .checkbox-row {
+      width: 100%;
+      p {
+        font-family: "Kessel Light";
+        color: #fff;
+        font-size: 20px;
+        padding-bottom: 10px;
+        padding-top: 22px;
+        text-transform: uppercase;
+        margin-bottom: 0;
+      }
+      .checkbox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        input {
+          width: 30px;
+          height: 30px;
+          margin-right: 10px;
+        }
+        label {
+          font-family: "Kessel Light";
+          color: #fff;
+          font-size: 20px;
+          text-transform: uppercase;
+          margin-bottom: 0;
+        }
+      }
+    }
+    div.button {
+      display: flex;
+      align-items: center;
+      button {
+        font-family: "Kessel Light";
+        color: #fff;
+        font-size: 20px;
+        padding: 14px 25px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background-color: rgb(210,35,42);
+        border-radius: 20px;
+        margin-right: 20px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      p {
+        font-family: "Kessel Light";
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 0;
+        span.fancy {
+          font-family: "Madelyn";
+          font-size: 48px;
+          line-height: 1;
+          position: relative;
+          bottom: 2px;
+          padding: 0 5px;
+        }
+      }
     }
     p {
       label {
@@ -272,21 +625,22 @@ const FormSection = styled.section`
         margin-right: 35%;
       }
       &.one-third {
-        width: 30%;
-        margin-right: 5%;
+        width: calc(33.33% - 20px);
+        margin-bottom: 0;
         &.last {
           margin-right: 0;
         }
       }
       &.one-half {
-        width: 47.5%;
-        margin-right: 5%;
+        width: calc(50% - 15px);
+        margin-bottom: 0;
         &.last {
           margin-right: 0;
         }
       }
       &.full-row {
         width: 100%;
+        margin-bottom: 0;
       }
     }
     .optional {
