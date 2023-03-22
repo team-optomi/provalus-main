@@ -122,6 +122,20 @@ const CareerPage = () => {
                     }
                 }
                 careerMilitarySection
+                careerAwards {
+                  careerAwardsRowLayout
+                  careerAwardContent
+                  careerAwardImage {
+                    title
+                    localFile {
+                        childImageSharp {
+                            fluid {
+                                ...GatsbyImageSharpFluid_withWebp
+                            }
+                        }
+                      }
+                  }
+                }
                 careerBenefitsHeader
                 careerBenefitsIcons {
                     careerBenefitsIcon {
@@ -297,6 +311,18 @@ const CareerPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             class="military-content" dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerMilitarySection }} />
+            <div class="awards-flex">
+                {post.node.CareerPage.careerAwards.map(award => (
+                    <div 
+                    data-sal="fade"
+                    data-sal-duration="1000"
+                    data-sal-easing="ease"
+                    className={`award-row-${award.careerAwardsRowLayout}`}>
+                        <Img className={"award-image"} fluid={award.careerAwardImage.localFile.childImageSharp.fluid} alt={award.careerAwardImage.title} />
+                        <div class="award-content" dangerouslySetInnerHTML={{ __html: award.careerAwardContent }} />
+                    </div>
+                ))}
+            </div>
           </MilitarySection>
           <BenefitsSection>
             <div 
@@ -774,6 +800,92 @@ const BlogSection = styled.section`
 
 const MilitarySection = styled.section`
   padding: 50px 20px;
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  h2 {
+    color: #fff;
+    font-family: Madelyn;
+    font-weight: 100;
+    font-size: 100px;
+    line-height: 1;
+  }
+  .awards-flex {
+    p {
+        font-family: "Kessel Light";
+        line-height: 1.5;
+        padding-top: 0px;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 0;
+    }
+    .award-row-image-left {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        .award-image {
+            width: 250px;
+            order: 1;
+        }
+        .award-content {
+            order: 2;
+            width: calc(100% - 250px);
+            padding-left: 30px;
+        }
+    }
+    .award-row-image-right {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        .award-image {
+            width: 250px;
+            order: 2;
+        }
+        .award-content {
+            order: 1;
+            width: calc(100% - 250px);
+            padding-right: 30px;
+        }
+    }
+    .award-row-full-width {
+        .award-image {
+            margin-bottom: 30px;
+        }
+        .award-content {
+            margin-bottom: 30px;
+        }
+    }
+}
+@media(max-width: 767px) {
+    .awards-flex {
+        .award-row-image-left {
+            flex-direction: column;
+            justify-content: center;
+            .award-image {
+                margin-bottom: 30px;
+            }
+            .award-content {
+                width: 100%;
+                padding-left: 0;
+            }
+        }
+        .award-row-image-right {
+            flex-direction: column;
+            justify-content: center;
+
+            .award-image {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            .award-content {
+                order: 2;
+                width: 100%;
+                padding-right: 0;
+            }
+        }
+    }
+}
+  
   .mil-flex-row {
     max-width: 1360px;
     width: 100%;
