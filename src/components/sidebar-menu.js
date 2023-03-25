@@ -167,6 +167,13 @@ class SideMainMenu extends Component {
                 </MenuItem>
                 <MenuItem>
                     <Link
+                    to="/awards/"
+                    >
+                    Awards
+                    </Link>
+                </MenuItem>
+                <MenuItem>
+                    <Link
                     to="/career-blog/"
                     >
                     Blog
