@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import parse from "html-react-parser"
 
 import Layout from "../components/layout-v2"
 
