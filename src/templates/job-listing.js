@@ -53,7 +53,7 @@ const SingleJobTemplate = () => {
                 })}
                 </script>
             </Helmet> */}
-            <h1>Job Listing: {parse(listing.title)}</h1>
+            <h1>Job Listing: Test</h1>
         </Layout>
     )
 
