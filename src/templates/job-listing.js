@@ -4,11 +4,11 @@ import { Helmet } from "react-helmet"
 
 import Layout from "../components/layout-v2"
 
-const SingleJobTemplate = ({ data: { listing } }) => {
+const SingleJobTemplate = () => {
 
     return (
         <Layout>
-            <Helmet title="Structured Job Opening">
+            {/* <Helmet title="Structured Job Opening">
                 <script type="application/ld+json">
                 {JSON.stringify({
                     "@context": "https://schema.org/",
@@ -51,7 +51,7 @@ const SingleJobTemplate = ({ data: { listing } }) => {
                     experienceRequirements: listing.jobListingData.jobListingExperienceRequirements ? listing.jobListingData.jobListingExperienceRequirements : 'N/A'
                 })}
                 </script>
-            </Helmet>
+            </Helmet> */}
             <h1>Job Listing: {parse(listing.title)}</h1>
         </Layout>
     )
@@ -60,34 +60,34 @@ const SingleJobTemplate = ({ data: { listing } }) => {
 
 export default SingleJobTemplate
 
-export const pageQuery = graphql`
-  query JobListingById(
-    # these variables are passed in via createPage.pageContext in gatsby-node.js
-    $id: String!
-  ) {
-    # selecting the current post by id
-    listing: wpJobListing(id: { eq: $id }) {
-      id
-      title
-      jobListingData {
-        jobListingTitle
-        jobListingDescription
-        jobListingDatePosted
-        jobListingValidThrough
-        jobListingEmploymentType
-        jobListingStreetAddress
-        jobListingCity
-        jobListingState
-        jobListingZipCode
-        jobListingSalary
-        jobListingMaxSalary
-        jobListingPer
-        jobListingSkills
-        jobListingQualifications
-        jobListingResponsibilities
-        jobListingEducationRequirements
-        jobListingExperienceRequirements
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query JobListingById(
+//     # these variables are passed in via createPage.pageContext in gatsby-node.js
+//     $id: String!
+//   ) {
+//     # selecting the current post by id
+//     listing: wpJobListing(id: { eq: $id }) {
+//       id
+//       title
+//       jobListingData {
+//         jobListingTitle
+//         jobListingDescription
+//         jobListingDatePosted
+//         jobListingValidThrough
+//         jobListingEmploymentType
+//         jobListingStreetAddress
+//         jobListingCity
+//         jobListingState
+//         jobListingZipCode
+//         jobListingSalary
+//         jobListingMaxSalary
+//         jobListingPer
+//         jobListingSkills
+//         jobListingQualifications
+//         jobListingResponsibilities
+//         jobListingEducationRequirements
+//         jobListingExperienceRequirements
+//       }
+//     }
+//   }
+// `
