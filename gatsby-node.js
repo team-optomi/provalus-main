@@ -91,10 +91,10 @@ exports.createPages = async gatsbyUtilities => {
 
 
   // Job Listing setup
-  const jobListings = await getJobListings(gatsbyUtilities)
+  //const jobListings = await getJobListings(gatsbyUtilities)
 
    // If there are career posts, create pages for them
-  await createIndividualJobListings({ jobListings, gatsbyUtilities })
+  //await createIndividualJobListings({ jobListings, gatsbyUtilities })
 
 }
 
