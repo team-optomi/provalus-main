@@ -8,7 +8,7 @@ const SingleJobTemplate = ({ data: { listing } }) => {
 
     return (
         <Layout>
-            {/* <Helmet title="Structured Job Opening">
+            <Helmet title="Structured Job Opening">
                 <script type="application/ld+json">
                 {JSON.stringify({
                     "@context": "https://schema.org/",
@@ -51,7 +51,7 @@ const SingleJobTemplate = ({ data: { listing } }) => {
                     experienceRequirements: listing.jobListingData.jobListingExperienceRequirements ? listing.jobListingData.jobListingExperienceRequirements : 'N/A'
                 })}
                 </script>
-            </Helmet> */}
+            </Helmet>
             <h1>Job Listing: {listing.title}</h1>
         </Layout>
     )
@@ -69,25 +69,25 @@ export const pageQuery = graphql`
     listing: wpJobListing(id: { eq: $id }) {
       id
       title
-    //   jobListingData {
-    //     jobListingTitle
-    //     jobListingDescription
-    //     jobListingDatePosted
-    //     jobListingValidThrough
-    //     jobListingEmploymentType
-    //     jobListingStreetAddress
-    //     jobListingCity
-    //     jobListingState
-    //     jobListingZipCode
-    //     jobListingSalary
-    //     jobListingMaxSalary
-    //     jobListingPer
-    //     jobListingSkills
-    //     jobListingQualifications
-    //     jobListingResponsibilities
-    //     jobListingEducationRequirements
-    //     jobListingExperienceRequirements
-    //   }
+      jobListingData {
+        jobListingTitle
+        jobListingDescription
+        jobListingDatePosted
+        jobListingValidThrough
+        jobListingEmploymentType
+        jobListingStreetAddress
+        jobListingCity
+        jobListingState
+        jobListingZipCode
+        jobListingSalary
+        jobListingMaxSalary
+        jobListingPer
+        jobListingSkills
+        jobListingQualifications
+        jobListingResponsibilities
+        jobListingEducationRequirements
+        jobListingExperienceRequirements
+      }
     }
   }
 `
