@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import parse from "html-react-parser"
 
 import Layout from "../components/layout-v2"
 
@@ -53,7 +52,7 @@ const SingleJobTemplate = ({ data: { listing } }) => {
                 })}
                 </script>
             </Helmet> */}
-            <h1>Job Listing: {parse(listing.title)}</h1>
+            <h1>Job Listing: {listing.title}</h1>
         </Layout>
     )
 
