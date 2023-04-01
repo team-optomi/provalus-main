@@ -53,7 +53,7 @@ const SingleJobTemplate = () => {
                 })}
                 </script>
             </Helmet> */}
-            <h1>Job Listing: Test</h1>
+            <h1>Job Listing: {parse(listing.title)}</h1>
         </Layout>
     )
 
@@ -61,34 +61,34 @@ const SingleJobTemplate = () => {
 
 export default SingleJobTemplate
 
-// export const pageQuery = graphql`
-//   query JobListingById(
-//     # these variables are passed in via createPage.pageContext in gatsby-node.js
-//     $id: String!
-//   ) {
-//     # selecting the current post by id
-//     listing: wpJobListing(id: { eq: $id }) {
-//       id
-//       title
-//       jobListingData {
-//         jobListingTitle
-//         jobListingDescription
-//         jobListingDatePosted
-//         jobListingValidThrough
-//         jobListingEmploymentType
-//         jobListingStreetAddress
-//         jobListingCity
-//         jobListingState
-//         jobListingZipCode
-//         jobListingSalary
-//         jobListingMaxSalary
-//         jobListingPer
-//         jobListingSkills
-//         jobListingQualifications
-//         jobListingResponsibilities
-//         jobListingEducationRequirements
-//         jobListingExperienceRequirements
-//       }
-//     }
-//   }
-// `
+export const pageQuery = graphql`
+  query JobListingById(
+    # these variables are passed in via createPage.pageContext in gatsby-node.js
+    $id: String!
+  ) {
+    # selecting the current post by id
+    listing: wpJobListing(id: { eq: $id }) {
+      id
+      title
+    //   jobListingData {
+    //     jobListingTitle
+    //     jobListingDescription
+    //     jobListingDatePosted
+    //     jobListingValidThrough
+    //     jobListingEmploymentType
+    //     jobListingStreetAddress
+    //     jobListingCity
+    //     jobListingState
+    //     jobListingZipCode
+    //     jobListingSalary
+    //     jobListingMaxSalary
+    //     jobListingPer
+    //     jobListingSkills
+    //     jobListingQualifications
+    //     jobListingResponsibilities
+    //     jobListingEducationRequirements
+    //     jobListingExperienceRequirements
+    //   }
+    }
+  }
+`
