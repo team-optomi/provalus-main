@@ -5,7 +5,7 @@ import parse from "html-react-parser"
 
 import Layout from "../components/layout-v2"
 
-const SingleJobTemplate = () => {
+const SingleJobTemplate = ({ data: { listing } }) => {
 
     return (
         <Layout>
