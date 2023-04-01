@@ -89,6 +89,13 @@ exports.createPages = async gatsbyUtilities => {
   // And a monthly archive
   await createCareerPostMonthlyArchive({ careerPosts, gatsbyUtilities })
 
+
+  // Job Listing setup
+  const jobListings = await getJobListings(gatsbyUtilities)
+
+   // If there are career posts, create pages for them
+  await createIndividualJobListings({ jobListings, gatsbyUtilities })
+
 }
 
 /**
@@ -239,6 +246,35 @@ Promise.all(
          // so our blog post template knows which blog post
          // the current page is (when you open it in a browser)
          id: careerPost.id,
+       },
+     })
+   )
+ )
+
+
+ /**
+ * This function creates all the individual case study pages in this site
+ */
+ const createIndividualJobListings = async ({ jobListings, gatsbyUtilities }) =>
+ Promise.all(
+   jobListings.map(({ jobListing }) =>
+     // createPage is an action passed to createPages
+     // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+     gatsbyUtilities.actions.createPage({
+       // Use the WordPress uri as the Gatsby page path
+       // This is a good idea so that internal links and menus work 👍
+       path: `/job-listing/${jobListing.slug}`,
+ 
+       // use the blog post template as the page component
+       component: path.resolve(`./src/templates/job-listing.js`),
+ 
+       // `context` is available in the template as a prop and
+       // as a variable in GraphQL.
+       context: {
+         // we need to add the post id here
+         // so our blog post template knows which blog post
+         // the current page is (when you open it in a browser)
+         id: jobListing.id,
        },
      })
    )
@@ -786,4 +822,39 @@ async function getPosts({ graphql, reporter }) {
   }
 
   return graphqlResult.data.allWpCareerPost.edges
+}
+
+
+
+/**
+ * This function pulls all the job listings from graphql
+ */
+
+async function getJobListings({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query WpJobListing {
+      # Query all WordPress career posts sorted by date
+      allWpJobListing(sort: { fields: [date], order: DESC }) {
+        edges {
+          # note: this is a GraphQL alias. It renames "node" to "jobListing" for this query
+          # We're doing this because this "node" is a post! It makes our code more readable further down the line.
+          jobListing: node {
+            id
+            uri
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      graphqlResult.errors
+    )
+    return
+  }
+
+  return graphqlResult.data.allWpJobListing.edges
 }
