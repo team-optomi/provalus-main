@@ -1,14 +1,19 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import styled from 'styled-components'
+import parse from "html-react-parser"
 
 import Layout from "../components/layout-v2"
+import SEO from "../components/seo"
 
-const SingleJobTemplate = () => {
+
+const SingleJobTemplate = ({ data: { listing } }) => {
 
     return (
         <Layout>
-            {/* <Helmet title="Structured Job Opening">
+            <SEO title={listing.title} description={listing.jobListingData.jobListingDescription ? listing.jobListingData.jobListingDescription : 'N/A'} />
+            <Helmet title="Structured Job Opening">
                 <script type="application/ld+json">
                 {JSON.stringify({
                     "@context": "https://schema.org/",
@@ -51,43 +56,126 @@ const SingleJobTemplate = () => {
                     experienceRequirements: listing.jobListingData.jobListingExperienceRequirements ? listing.jobListingData.jobListingExperienceRequirements : 'N/A'
                 })}
                 </script>
-            </Helmet> */}
-            <h1>Job Listing: </h1>
+            </Helmet>
+           
+            <MainBackground>
+                <MainArticle
+                className="blog-post"
+                itemScope
+                itemType="http://schema.org/Article"
+                >
+
+                <div class="entry-content">
+                    <header>
+                    <h1 itemProp="headline">{parse(listing.title)}</h1>
+                    </header>
+                    {!!listing.content && (
+                    <section itemProp="articleBody">{parse(listing.content)}</section>
+                    )}
+                </div>
+
+                </MainArticle>
+
+            </MainBackground>
+
         </Layout>
     )
 
 }
 
+
+const MainBackground = styled.div`
+  width: 100%;
+  background-color: #353431;
+  padding: 100px 20px;
+`
+
+const MainArticle = styled.article`
+  max-width: 1080px;
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
+  background-color: #000;
+  .gatsby-image-wrapper {
+    margin-bottom: 0;
+  }
+  .entry-content {
+    padding: 60px;
+    h1 {
+      font-family: "Kessel Light";
+      font-size: 25px;
+      color: #fffffd;
+      letter-spacing: 1px;
+      line-height: 30px;
+    }
+    p, li {
+      font-family: "Kessel Light";
+      font-size: 14px;
+      color: #f1f2f2;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      a {
+        color: #d2232a;
+        text-decoration: none;
+      }
+    }
+    ul {
+        padding-left: 30px;
+    }
+  }
+  iframe {
+    max-width: 1000px;
+    width: 100%;
+    height: 500px;
+  }
+  .wp-video {
+    max-width: 1000px;
+    width: 100%;
+    height: auto;
+    video {
+        max-width: 1000px !important;
+        width: 100% !important;
+        height: auto;
+    }
+  }
+  @media(max-width:767px) {
+    .entry-content {
+      padding: 20px;
+    }
+  }
+`
+
 export default SingleJobTemplate
 
-// export const pageQuery = graphql`
-//   query JobListingById(
-//     # these variables are passed in via createPage.pageContext in gatsby-node.js
-//     $id: String!
-//   ) {
-//     # selecting the current post by id
-//     listing: wpJobListing(id: { eq: $id }) {
-//       id
-//       title
-//       jobListingData {
-//         jobListingTitle
-//         jobListingDescription
-//         jobListingDatePosted
-//         jobListingValidThrough
-//         jobListingEmploymentType
-//         jobListingStreetAddress
-//         jobListingCity
-//         jobListingState
-//         jobListingZipCode
-//         jobListingSalary
-//         jobListingMaxSalary
-//         jobListingPer
-//         jobListingSkills
-//         jobListingQualifications
-//         jobListingResponsibilities
-//         jobListingEducationRequirements
-//         jobListingExperienceRequirements
-//       }
-//     }
-//   }
-// `
+export const pageQuery = graphql`
+  query JobListingById(
+    # these variables are passed in via createPage.pageContext in gatsby-node.js
+    $id: String!
+  ) {
+    # selecting the current post by id
+    listing: wpJobListing(id: { eq: $id }) {
+      id
+      title
+      content
+      jobListingData {
+        jobListingTitle
+        jobListingDescription
+        jobListingDatePosted
+        jobListingValidThrough
+        jobListingEmploymentType
+        jobListingStreetAddress
+        jobListingCity
+        jobListingState
+        jobListingZipCode
+        jobListingSalary
+        jobListingMaxSalary
+        jobListingPer
+        jobListingSkills
+        jobListingQualifications
+        jobListingResponsibilities
+        jobListingEducationRequirements
+        jobListingExperienceRequirements
+      }
+    }
+  }
+`

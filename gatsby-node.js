@@ -91,10 +91,10 @@ exports.createPages = async gatsbyUtilities => {
 
 
   // Job Listing setup
-  //const jobListings = await getJobListings(gatsbyUtilities)
+  const jobListings = await getJobListings(gatsbyUtilities)
 
-   // If there are career posts, create pages for them
-  //await createIndividualJobListings({ jobListings, gatsbyUtilities })
+   // If there are job listings, create pages for them
+  await createIndividualJobListings({ jobListings, gatsbyUtilities })
 
 }
 
@@ -833,7 +833,7 @@ async function getPosts({ graphql, reporter }) {
 async function getJobListings({ graphql, reporter }) {
   const graphqlResult = await graphql(/* GraphQL */ `
     query WpJobListing {
-      # Query all WordPress career posts sorted by date
+      # Query all WordPress job listings sorted by date
       allWpJobListing(sort: { fields: [date], order: DESC }) {
         edges {
           # note: this is a GraphQL alias. It renames "node" to "jobListing" for this query
