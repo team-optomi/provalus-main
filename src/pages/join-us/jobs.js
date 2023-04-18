@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import Layout from "../../components/layout-v2"
 import SEO from "../../components/seo"
+import JobListingsCarousel from "../../components/job-listings-carousel"
 import Checkmark from "../../images/checkmark.png"
 
 const JobsPage = () => {
@@ -96,6 +97,10 @@ const JobsPage = () => {
                 dangerouslySetInnerHTML={{ __html: post.node.JobsContent.jContactSection }}/>
             </ContactSection>
           </PageMain>
+          <JobListings>
+            <h2>Job <span>Listings</span></h2>
+            <JobListingsCarousel />
+          </JobListings>
         </Layout>
       ))
     )
@@ -106,6 +111,7 @@ const JobsPage = () => {
   const PageMain = styled.div`
     width: 100%;
     padding: 200px;
+    padding-bottom: 0;
     h1 {
       font-family: "Madelyn";
       font-size: 185px;
@@ -119,6 +125,7 @@ const JobsPage = () => {
     @media(max-width:1000px) {
       max-width: 640px;
       padding: 100px 20px;
+      padding-bottom: 0;
       margin: 0 auto;
       h1 {
         font-size: 100px;
@@ -127,6 +134,24 @@ const JobsPage = () => {
     @media(max-width:390px) {
       h1 {
         font-size: 80px;
+      }
+    }
+  `
+
+  const JobListings = styled.section`
+    h2 {
+      font-family: "Kessel Light";
+      color: rgb(255,255,255);
+      font-size: 54px;
+      font-weight: 100;
+      letter-spacing: 2px;
+      line-height: 2;
+      text-align: center;
+      margin-bottom: 50px;
+      span {
+        font-family: Madelyn;
+        font-size: 100px;
+        line-height: 1;
       }
     }
   `

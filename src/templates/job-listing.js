@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import Image from "gatsby-image"
 import styled from 'styled-components'
 import parse from "html-react-parser"
 
@@ -9,6 +10,11 @@ import SEO from "../components/seo"
 
 
 const SingleJobTemplate = ({ data: { listing } }) => {
+
+  const featuredImage = {
+    fluid: listing.featuredImage?.node?.localFile?.childImageSharp?.fluid ,
+    alt:  listing.featuredImage?.node?.title || ``,
+  }
 
     return (
         <Layout>
@@ -65,6 +71,14 @@ const SingleJobTemplate = ({ data: { listing } }) => {
                 itemType="http://schema.org/Article"
                 >
 
+                  {/* if we have a featured image for this post let's display it */}
+                  {featuredImage?.fluid && (
+                    <Image
+                      fluid={featuredImage.fluid}
+                      alt={featuredImage.alt}
+                    />
+                  )}
+
                 <div class="entry-content">
                     <header>
                     <h1 itemProp="headline">{parse(listing.title)}</h1>
@@ -110,12 +124,12 @@ const MainArticle = styled.article`
     }
     p, li {
       font-family: "Kessel Light";
-      font-size: 14px;
+      font-size: 16px;
       color: #f1f2f2;
       line-height: 1.6;
       margin-bottom: 20px;
       a {
-        color: #d2232a;
+        color: #298fc2;
         text-decoration: none;
       }
     }
@@ -157,6 +171,18 @@ export const pageQuery = graphql`
       id
       title
       content
+      featuredImage {
+        node {
+          title
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 100) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
       jobListingData {
         jobListingTitle
         jobListingDescription
