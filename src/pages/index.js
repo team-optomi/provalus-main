@@ -282,6 +282,18 @@ const IndexPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             class="one-fifth-col">
+              <Link to="#">
+                <div class="icon-block">
+                    <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFiveIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFiveIcon.title} />
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFiveContent }} />
+              </Link>
+            </div>
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="one-fifth-col">
               <Link to="/services/build/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
@@ -299,18 +311,6 @@ const IndexPage = () => {
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFourContent }} />
-              </Link>
-            </div>
-            <div 
-            data-sal="slide-up"
-            data-sal-duration="1000"
-            data-sal-easing="ease"
-            class="one-fifth-col">
-              <Link to="#">
-                <div class="icon-block">
-                    <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFiveIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFiveIcon.title} />
-                </div>
-                <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFiveContent }} />
               </Link>
             </div>
         </SectionThree>
