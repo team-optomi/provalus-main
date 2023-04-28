@@ -121,6 +121,17 @@ const IndexPage = () => {
                   }
                 }
                 homeColumnFourContent
+                homeColumnFiveIcon {
+                  title
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 800) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+                homeColumnFiveContent
               }
               homeSectionFour {
                 homeFourFirstContent
@@ -246,7 +257,7 @@ const IndexPage = () => {
             data-sal="slide-up"
             data-sal-duration="1000"
             data-sal-easing="ease"
-            class="one-fourth-col">
+            class="one-fifth-col">
               <Link to="/services/support/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
@@ -258,7 +269,7 @@ const IndexPage = () => {
             data-sal="slide-up"
             data-sal-duration="1000"
             data-sal-easing="ease"
-            class="one-fourth-col">
+            class="one-fifth-col">
               <Link to="/services/run/">
                 <div class="icon-block">
                   <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.title} />
@@ -270,7 +281,7 @@ const IndexPage = () => {
             data-sal="slide-up"
             data-sal-duration="1000"
             data-sal-easing="ease"
-            class="one-fourth-col">
+            class="one-fifth-col">
               <Link to="/services/build/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
@@ -282,12 +293,24 @@ const IndexPage = () => {
             data-sal="slide-up"
             data-sal-duration="1000"
             data-sal-easing="ease"
-            class="one-fourth-col">
+            class="one-fifth-col">
               <Link to="/services/security/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFourContent }} />
+              </Link>
+            </div>
+            <div 
+            data-sal="slide-up"
+            data-sal-duration="1000"
+            data-sal-easing="ease"
+            class="one-fifth-col">
+              <Link to="#">
+                <div class="icon-block">
+                    <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFiveIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFiveIcon.title} />
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: post.node.HomePageContent.homeSectionThree.homeColumnFiveContent }} />
               </Link>
             </div>
         </SectionThree>
@@ -587,7 +610,7 @@ const SectionThree = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   h2 {
     font-family: "Kessel Light";
     color: rgb(210,35,42);
@@ -602,8 +625,8 @@ const SectionThree = styled.section`
   a {
     text-decoration: none;
   }
-  .one-fourth-col {
-    width: 25%;
+  .one-fifth-col {
+    width: 20%;
     padding: 0 35px;
     border-right: 2px solid #aaa;
     &:nth-child(2) {
@@ -640,7 +663,7 @@ const SectionThree = styled.section`
     h3 {
       font-family: "Balboa Medium";
       color: #828587;
-      font-size: 30px;
+      font-size: 20px;
       line-height: 1;
       letter-spacing: 1px;
       text-transform: uppercase;
