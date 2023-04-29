@@ -5,12 +5,13 @@ import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
 import SEO from "../../components/seo"
+import BuildCaseStudySlider from "../../components/build-case-study-slider"
 
 const DataPage = () => {
 
     const data = useStaticQuery(graphql`
       query {
-        allWpPage(filter: {databaseId: {eq: 3173}}) {
+        allWpPage(filter: {databaseId: {eq: 1308}}) {
           edges {
             node {
               seo {
@@ -27,9 +28,11 @@ const DataPage = () => {
                 }
               }
               title
-              DataPage {
-                dataSectionOne
-                dataTopIcon {
+              BuildPageContent {
+                buildSectionOne
+                buildSectionThree
+                buildSectionTwo
+                buildTopIcon {
                     title
                     localFile {
                       childImageSharp {
@@ -59,13 +62,19 @@ const DataPage = () => {
                 <h2>Service Offerings</h2>
                 <hr/>
                 <div>
-                  <Img fluid={post.node.DataPage.dataTopIcon.localFile.childImageSharp.fluid} alt={post.node.DataPage.dataTopIcon.title} />
-                  <h1>{post.node.title}</h1>
+                  <Img fluid={post.node.BuildPageContent.buildTopIcon.localFile.childImageSharp.fluid} alt={post.node.BuildPageContent.buildTopIcon.title} />
+                  <h1>Build</h1>
                 </div>
             </HeaderSection>
           <SectionOne>
-            <div dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataSectionOne }}/>
+            <div dangerouslySetInnerHTML={{ __html: post.node.BuildPageContent.buildSectionOne }}/>
           </SectionOne>
+          <SectionTwo>
+            <div dangerouslySetInnerHTML={{ __html: post.node.BuildPageContent.buildSectionTwo }}/>
+          </SectionTwo>
+          <SectionThree>
+            <BuildCaseStudySlider/>
+          </SectionThree>
         </Layout>
       ))
     )
