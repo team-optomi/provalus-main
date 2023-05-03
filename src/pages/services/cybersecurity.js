@@ -63,7 +63,7 @@ const SecurityPage = () => {
                 <hr/>
                 <div>
                   <Img fluid={post.node.SecurityPageContent.securityTopIcon.localFile.childImageSharp.fluid} alt={post.node.SecurityPageContent.securityTopIcon.title} />
-                  <h1>Security</h1>
+                  <h1>{post.node.title}</h1>
                 </div>
             </HeaderSection>
           <SectionOne>

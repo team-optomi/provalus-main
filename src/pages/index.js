@@ -258,7 +258,7 @@ const IndexPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             class="one-fifth-col">
-              <Link to="/services/support/">
+              <Link to="/services/business-optimization/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnOneIcon.title} />
                 </div>
@@ -270,7 +270,7 @@ const IndexPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             class="one-fifth-col">
-              <Link to="/services/run/">
+              <Link to="/services/cloudinfrastructure/">
                 <div class="icon-block">
                   <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnTwoIcon.title} />
                 </div>
@@ -282,7 +282,7 @@ const IndexPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             class="one-fifth-col">
-              <Link to="#">
+              <Link to="/services/data-analytics-intelligent-automation/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFiveIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFiveIcon.title} />
                 </div>
@@ -294,7 +294,7 @@ const IndexPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             class="one-fifth-col">
-              <Link to="/services/build/">
+              <Link to="/services/cybersecurity/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnThreeIcon.title} />
                 </div>
@@ -306,7 +306,7 @@ const IndexPage = () => {
             data-sal-duration="1000"
             data-sal-easing="ease"
             class="one-fifth-col">
-              <Link to="/services/security/">
+              <Link to="/services/application-product-development/">
                 <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.localFile.childImageSharp.fluid} alt={post.node.HomePageContent.homeSectionThree.homeColumnFourIcon.title} />
                 </div>

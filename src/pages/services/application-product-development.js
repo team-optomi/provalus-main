@@ -5,13 +5,13 @@ import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
 import SEO from "../../components/seo"
-import RunCaseStudySlider from "../../components/run-case-study-slider"
+import BuildCaseStudySlider from "../../components/build-case-study-slider"
 
 const RunPage = () => {
 
     const data = useStaticQuery(graphql`
       query {
-        allWpPage(filter: {databaseId: {eq: 1278}}) {
+        allWpPage(filter: {databaseId: {eq: 1308}}) {
           edges {
             node {
               seo {
@@ -28,11 +28,11 @@ const RunPage = () => {
                 }
               }
               title
-              RunPageContent {
-                runSectionOne
-                runSectionThree
-                runSectionTwo
-                runTopIcon {
+              BuildPageContent {
+                buildSectionOne
+                buildSectionThree
+                buildSectionTwo
+                buildTopIcon {
                     title
                     localFile {
                       childImageSharp {
@@ -62,18 +62,18 @@ const RunPage = () => {
                 <h2>Service Offerings</h2>
                 <hr/>
                 <div>
-                  <Img fluid={post.node.RunPageContent.runTopIcon.localFile.childImageSharp.fluid} alt={post.node.RunPageContent.runTopIcon.title} />
-                  <h1>Run</h1>
+                  <Img fluid={post.node.BuildPageContent.buildTopIcon.localFile.childImageSharp.fluid} alt={post.node.BuildPageContent.buildTopIcon.title} />
+                  <h1>{post.node.title}</h1>
                 </div>
             </HeaderSection>
           <SectionOne>
-            <div dangerouslySetInnerHTML={{ __html: post.node.RunPageContent.runSectionOne }}/>
+            <div dangerouslySetInnerHTML={{ __html: post.node.BuildPageContent.buildSectionOne }}/>
           </SectionOne>
           <SectionTwo>
-            <div dangerouslySetInnerHTML={{ __html: post.node.RunPageContent.runSectionTwo }}/>
+            <div dangerouslySetInnerHTML={{ __html: post.node.BuildPageContent.buildSectionTwo }}/>
           </SectionTwo>
           <SectionThree>
-            <RunCaseStudySlider />
+            <BuildCaseStudySlider/>
           </SectionThree>
         </Layout>
       ))

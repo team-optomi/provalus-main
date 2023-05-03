@@ -51,30 +51,37 @@ class SideMainMenu extends Component {
                     <SubMenu className={menuOneName}>
                         <MenuItem>
                             <Link
-                            to="/services/support/"
+                            to="/services/business-optimization/"
                             >
-                            Support
+                            Business Optimization
                             </Link>
                         </MenuItem>
                         <MenuItem>
                             <Link
-                            to="/services/run/"
+                            to="/services/cloudinfrastructure/"
                             >
-                            Run
+                            Cloud & Infrastructure
                             </Link>
                         </MenuItem>
                         <MenuItem>
                             <Link
-                            to="/services/build/"
+                            to="/services/data-analytics-intelligent-automation/"
                             >
-                            Build
+                           Data Analytics & Intelligent Automation
                             </Link>
                         </MenuItem>
                         <MenuItem>
                             <Link
-                            to="/services/security/"
+                            to="/services/cybersecurity/"
                             >
-                            Security
+                            Cybersecurity
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link
+                            to="/services/application-product-development/"
+                            >
+                            Application &amp; Product Development
                             </Link>
                         </MenuItem>
                     </SubMenu>
@@ -268,7 +275,7 @@ const SubMenu = styled.ul`
             left: 20px;
             opacity: 1;
             visibility: visible;
-            height: 150px;
+            height: 350px;
         }
     }
     &.subMenuTwo {

@@ -5,13 +5,13 @@ import Img from "gatsby-image"
 
 import Layout from "../../components/layout-v2"
 import SEO from "../../components/seo"
-import SupportCaseStudySlider from "../../components/support-case-study-slider"
+import BuildCaseStudySlider from "../../components/build-case-study-slider"
 
-const SupportPage = () => {
+const DataPage = () => {
 
     const data = useStaticQuery(graphql`
       query {
-        allWpPage(filter: {databaseId: {eq: 1327}}) {
+        allWpPage(filter: {databaseId: {eq: 3173}}) {
           edges {
             node {
               seo {
@@ -28,11 +28,11 @@ const SupportPage = () => {
                 }
               }
               title
-              SupportPageContent {
-                supportSectionOne
-                supportSectionThree
-                supportSectionTwo
-                supportTopIcon {
+              DataPage {
+                dataSectionOne
+                dataSectionThree
+                dataSectionTwo
+                dataTopIcon {
                     title
                     localFile {
                       childImageSharp {
@@ -62,18 +62,18 @@ const SupportPage = () => {
                 <h2>Service Offerings</h2>
                 <hr/>
                 <div>
-                  <Img fluid={post.node.SupportPageContent.supportTopIcon.localFile.childImageSharp.fluid} alt={post.node.SupportPageContent.supportTopIcon.title} />
-                  <h1>Support</h1>
+                  <Img fluid={post.node.DataPage.dataTopIcon.localFile.childImageSharp.fluid} alt={post.node.DataPage.dataTopIcon.title} />
+                  <h1>{post.node.title}</h1>
                 </div>
             </HeaderSection>
           <SectionOne>
-            <div dangerouslySetInnerHTML={{ __html: post.node.SupportPageContent.supportSectionOne }}/>
+            <div dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataSectionOne }}/>
           </SectionOne>
           <SectionTwo>
-            <div dangerouslySetInnerHTML={{ __html: post.node.SupportPageContent.supportSectionTwo }}/>
+            <div dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataSectionTwo }}/>
           </SectionTwo>
           <SectionThree>
-            <SupportCaseStudySlider />
+            <BuildCaseStudySlider/>
           </SectionThree>
         </Layout>
       ))
@@ -257,7 +257,6 @@ const SectionThree = styled.section`
   max-width: 1140px;
   padding: 0 20px;
   margin: 80px auto;
-  margin-bottom: 120px;
   @media(max-width:767px) {
     h2 {
       font-size: 28px;
@@ -271,4 +270,4 @@ const SectionThree = styled.section`
   }
 `
   
-export default SupportPage
+export default DataPage
