@@ -104,6 +104,18 @@ const CareerPage = () => {
                         }
                     }
                 }
+                careerColFiveIcon {
+                  title
+                  localFile {
+                    childImageSharp {
+                        fluid(maxWidth: 1920) {
+                            ...GatsbyImageSharpFluid_withWebp
+                        }
+                    }
+                  }
+                }
+                careerColFiveContent
+                careerColFiveLink
                 careerTestimonialsHeader
                 careerTestimonialSection {
                     careerSingleTestimonial
@@ -198,7 +210,7 @@ const CareerPage = () => {
               data-sal="slide-up"
               data-sal-duration="1000"
               data-sal-easing="ease"
-              class="one-fourth-col">
+              class="one-fifth-col">
                 <Link to={post.node.CareerPage.careerColOneLink}>
                   <div class="icon-block">
                       <Img className={"home-icon"} fluid={post.node.CareerPage.careerColOneIcon.localFile.childImageSharp.fluid} alt={post.node.CareerPage.careerColOneIcon.title} />
@@ -210,7 +222,7 @@ const CareerPage = () => {
               data-sal="slide-up"
               data-sal-duration="1000"
               data-sal-easing="ease"
-              class="one-fourth-col">
+              class="one-fifth-col">
                 <Link to={post.node.CareerPage.careerColTwoLink}>
                   <div class="icon-block">
                     <Img className={"home-icon"} fluid={post.node.CareerPage.careerColTwoIcon.localFile.childImageSharp.fluid} alt={post.node.CareerPage.careerColTwoIcon.title} />
@@ -222,7 +234,7 @@ const CareerPage = () => {
               data-sal="slide-up"
               data-sal-duration="1000"
               data-sal-easing="ease"
-              class="one-fourth-col">
+              class="one-fifth-col">
                 <Link to={post.node.CareerPage.careerColThreeLink}>
                   <div class="icon-block">
                       <Img className={"home-icon"} fluid={post.node.CareerPage.careerColThreeIcon.localFile.childImageSharp.fluid} alt={post.node.CareerPage.careerColThreeIcon.title} />
@@ -234,12 +246,24 @@ const CareerPage = () => {
               data-sal="slide-up"
               data-sal-duration="1000"
               data-sal-easing="ease"
-              class="one-fourth-col">
+              class="one-fifth-col">
                 <Link to={post.node.CareerPage.careerColFourLink}>
                   <div class="icon-block">
                       <Img className={"home-icon"} fluid={post.node.CareerPage.careerColFourIcon.localFile.childImageSharp.fluid} alt={post.node.CareerPage.careerColFourIcon.title} />
                   </div>
                   <div dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerColFourContent }} />
+                </Link>
+              </div>
+              <div 
+              data-sal="slide-up"
+              data-sal-duration="1000"
+              data-sal-easing="ease"
+              class="one-fifth-col">
+                <Link to={post.node.CareerPage.careerColFiveLink}>
+                  <div class="icon-block">
+                      <Img className={"home-icon"} fluid={post.node.CareerPage.careerColFiveIcon.localFile.childImageSharp.fluid} alt={post.node.CareerPage.careerColFiveIcon.title} />
+                  </div>
+                  <div dangerouslySetInnerHTML={{ __html: post.node.CareerPage.careerColFiveContent }} />
                 </Link>
               </div>
           </SectionTwo>
@@ -416,8 +440,8 @@ const SectionTwo = styled.section`
   a {
     text-decoration: none;
   }
-  .one-fourth-col {
-    width: 25%;
+  .one-fifth-col {
+    width: 20%;
     padding: 0 35px;
     border-right: 2px solid #aaa;
     &:nth-child(2) {
@@ -474,7 +498,7 @@ const SectionTwo = styled.section`
   }
   @media(max-width:1160px) {
     max-width: 800px;
-    .one-fourth-col {
+    .one-fifth-col {
       width: 50%;
       padding: 0 35px !important;
       border-right: none;
@@ -491,7 +515,7 @@ const SectionTwo = styled.section`
   @media(max-width:767px) {
     max-width: 700px;
     width: 100%;
-    .one-fourth-col {
+    .one-fifth-col {
       width: 100%;
       padding: 0 20px !important;
     }
