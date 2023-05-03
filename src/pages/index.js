@@ -683,7 +683,7 @@ const SectionThree = styled.section`
   }
   @media(max-width:1160px) {
     max-width: 800px;
-    .one-fourth-col {
+    .one-fifth-col {
       width: 50%;
       padding: 0 35px !important;
       border-right: none;
@@ -700,7 +700,7 @@ const SectionThree = styled.section`
   @media(max-width:767px) {
     max-width: 700px;
     width: 100%;
-    .one-fourth-col {
+    .one-fifth-col {
       width: 100%;
       padding: 0 20px !important;
     }
