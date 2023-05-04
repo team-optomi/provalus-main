@@ -29,7 +29,7 @@ const CareerBlogArchive = ({
             />
             ))}
             <MainPage>
-                <h1><Link to={"/career-blog/"}>Career Blog</Link></h1>
+                <h1><Link to={"/blog/"}>Blog</Link></h1>
                 <Sidebar>
                     <CareerBlogSidebar/>
                 </Sidebar>
@@ -44,7 +44,7 @@ const CareerBlogArchive = ({
                             itemScope
                             itemType="http://schema.org/Article"
                             >
-                            <Link to={`/career-blog/${post.slug}`} itemProp="url">
+                            <Link to={`/blog/${post.slug}`} itemProp="url">
                                 <Img fluid={post.featuredImage.node.localFile.childImageSharp.fluid} alt={post.title} />
                                 <div class="entry-wrap">
                                     <header>

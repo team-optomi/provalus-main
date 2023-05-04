@@ -234,7 +234,7 @@ Promise.all(
      gatsbyUtilities.actions.createPage({
        // Use the WordPress uri as the Gatsby page path
        // This is a good idea so that internal links and menus work 👍
-       path: `/career-blog/${careerPost.slug}`,
+       path: `/blog/${careerPost.slug}`,
  
        // use the blog post template as the page component
        component: path.resolve(`./src/templates/career-blog-post.js`),
@@ -563,7 +563,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
         if (page > 0 && page <= totalPages) {
           // slug for archive and pagination
           // "/career-blog/2" for example
-          return page === 1 ? `/career-blog/` : `/career-blog/${page}`
+          return page === 1 ? `/blog/` : `/blog/${page}`
         }
 
         return null
@@ -620,7 +620,7 @@ async function createCareerPostMonthlyArchive({ careerPosts, gatsbyUtilities }) 
   return Promise.all(
     postMap.map(async (archivePage) => {
       await gatsbyUtilities.actions.createPage({
-        path: `/career-blog/${archivePage.node.MonthlyArchive.archiveSlug}`,
+        path: `/blog/${archivePage.node.MonthlyArchive.archiveSlug}`,
         component: path.resolve(`./src/templates/career-blog-monthly-archive.js`),
         context: {
           pubTitle: archivePage.node.MonthlyArchive.archiveLabel,
