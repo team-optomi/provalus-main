@@ -54,7 +54,7 @@ const CareerBlogSidebar = () => {
                 <ul>
                 {careerBlogMonths.map(careerBlogMonth => (
                     <li>
-                        <Link to={`/career-blog/${careerBlogMonth.slug}`}>{careerBlogMonth.month}</Link>
+                        <Link to={`/blog/${careerBlogMonth.slug}`}>{careerBlogMonth.month}</Link>
                     </li>
                 ))}
                 </ul>
