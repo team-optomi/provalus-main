@@ -347,6 +347,7 @@ const ClientValuePage = () => {
   `
 
   const ValueSection = styled.section`
+    margin-bottom: 60px;
     h2 {
       font-family: "Madelyn";
       font-size: 100px;
