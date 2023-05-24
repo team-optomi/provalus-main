@@ -34,7 +34,7 @@ class LeadershipSimpleSlider extends Component {
                             <BackgroundImg fluid={post.node.featuredImage.node.localFile.childImageSharp.fluid} alt={post.node.title} />
                             <BackgroundImgBW fluid={post.node.TeamMemberContent.tmGrayImage.localFile.childImageSharp.fluid} alt={post.node.title} />
                             <div class={"slide-overlay"}>
-                                <div class={"slide-row"}>
+                                <div class={"slide-row"} style={{justifyContent: post.node.TeamMemberContent.tmContentAlignment}}>
                                     <div 
                                         class={"slide-content"}
                                         data-sal="slide-up"
@@ -62,7 +62,6 @@ const LeadershipFull = styled.div`
     position: relative;
     z-index: 1;
 `
-
 
 const LeadershipCategory = styled.div`
     width: 100%;
@@ -464,6 +463,7 @@ export default props => (
                         tmFullTitle
                         tmLinkedinLink
                         tmMenuTitle
+                        tmContentAlignment
                       }
                     }
                 }
