@@ -91,8 +91,8 @@ class ContactPage extends Component {
                     <ModalContent>
                         <button onClick={this.handleCloseModal} class={"close"} aria-label="Close">×</button>
                         <h2>Let's Talk</h2>
-                        <form name="Contact" method="POST" netlify-honeypot="bot-field" action="https://provalus.com/thank-you/" data-netlify="true">
-                                <input type="hidden" name="form-name" value="Contact" aria-label="Input"/>
+                        <form name="Contact Main" method="POST" netlify-honeypot="bot-field" action="https://provalus.com/thank-you/" data-netlify="true">
+                                <input type="hidden" name="form-name" value="Contact Main" aria-label="Input"/>
                                 <p class="hidden">
                                     <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
                                 </p>
@@ -179,8 +179,8 @@ class ContactPage extends Component {
                     </ModalContent>
                 </CustomModal>
                 <div type="hidden" style={{ display: 'none' }}>
-                    <form name="Contact" method="POST" netlify-honeypot="bot-field" action="https://provalus.com/thank-you/" data-netlify="true">
-                        <input type="hidden" name="form-name" value="Contact" aria-label="Input"/>
+                    <form name="Contact Main" method="POST" netlify-honeypot="bot-field" action="https://provalus.com/thank-you/" data-netlify="true">
+                        <input type="hidden" name="form-name" value="Contact Main" aria-label="Input"/>
                         <p class="hidden">
                             <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
                         </p>
