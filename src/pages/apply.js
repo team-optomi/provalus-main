@@ -99,6 +99,7 @@ const ApplyPage = () => {
                             <select 
                             name="location" 
                             required>
+                              <option value="" disabled selected>Select a location</option>
                               <option value="alabama">Alabama</option>
                               <option value="texas">Texas</option>
                               <option value="south-carolina">South Carolina</option>
@@ -207,6 +208,7 @@ const ApplyPage = () => {
                             <select 
                             name="location" 
                             required>
+                              <option value="" disabled selected>Select a location</option>
                               <option value="alabama">Alabama</option>
                               <option value="texas">Texas</option>
                               <option value="south-carolina">South Carolina</option>
@@ -318,6 +320,7 @@ const ApplyPage = () => {
                             onChange={e => {
                               stateSelect(e.target.value);
                               }}>
+                              <option value="" disabled selected>Select a location</option>
                               <option value="alabama">Alabama</option>
                               <option value="texas">Texas</option>
                               <option value="south-carolina">South Carolina</option>
