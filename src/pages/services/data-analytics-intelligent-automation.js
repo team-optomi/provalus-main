@@ -30,8 +30,30 @@ const DataPage = () => {
               title
               DataPage {
                 dataSectionOne
+                dataOverviewParagraph
+                dataOverviewList
+                dataMainImage {
+                  title
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 800) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                    }
+                }
                 dataSectionThree
                 dataSectionTwo
+                dataSectionTwoBackgroundImage {
+                  title
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 800) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                    }
+                }
                 dataTopIcon {
                     title
                     localFile {
@@ -58,21 +80,36 @@ const DataPage = () => {
           description={post.node.seo.metaDesc}
           metaImage={post.node.seo.opengraphImage.localFile.childImageSharp.fluid}
           />
-            <HeaderSection>
-                <h2>Service Offerings</h2>
-                <hr/>
-                <div>
-                  <Img fluid={post.node.DataPage.dataTopIcon.localFile.childImageSharp.fluid} alt={post.node.DataPage.dataTopIcon.title} />
-                  <h1>{post.node.title}</h1>
-                </div>
-            </HeaderSection>
+          <HeaderSection>
+              <h2>Service Offerings</h2>
+              <h1>{post.node.title}</h1>
+              <div class="service-menu" dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataOverviewList }} />
+          </HeaderSection>
           <SectionOne>
-            <div dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataSectionOne }}/>
+            <div class="flex-row">
+              <div class="left-col">
+                <div class="overview-paragraph" dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataOverviewParagraph }}/>
+                <Img fluid={post.node.DataPage.dataTopIcon.localFile.childImageSharp.fluid} alt={post.node.DataPage.dataTopIcon.title} />
+              </div>
+              <div class="right-col">
+                <Img fluid={post.node.DataPage.dataMainImage.localFile.childImageSharp.fluid} alt={post.node.DataPage.dataMainImage.title} />
+                <div class="overview-list">
+                  <h2>Overview of Services</h2>
+                  <div dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataOverviewList }} />
+                </div>
+              </div>
+            </div>
           </SectionOne>
           <SectionTwo>
-            <div dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataSectionTwo }}/>
+            <div class="flex-row">
+              <div class="left-col" dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataSectionTwo }}/>
+              <div class="right-col">
+                <Img fluid={post.node.DataPage.dataSectionTwoBackgroundImage.localFile.childImageSharp.fluid} alt={post.node.DataPage.dataSectionTwoBackgroundImage.title} />
+              </div>
+            </div>
           </SectionTwo>
           <SectionThree>
+            <div class="section-three-main" dangerouslySetInnerHTML={{ __html: post.node.DataPage.dataSectionThree }}/>
             <BuildCaseStudySlider/>
           </SectionThree>
         </Layout>
@@ -81,51 +118,73 @@ const DataPage = () => {
   
   }
 
-const HeaderSection = styled.header`
+  const HeaderSection = styled.header`
   max-width: 1140px;
   padding: 0 20px;
   padding-top: 100px;
   margin: 0 auto;
+  
   h2 {
     font-family: "Kessel Light";
     color: rgb(210,35,42);
     font-weight: 400;
     line-height: 1.2;
-    font-size: 38px;
+    font-size: 28px;
     text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 10px;
-    text-align: center;
-  }
-  > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-top: 2px solid #828587;
     padding-top: 40px;
-    .gatsby-image-wrapper {
-      max-width: 200px;
-      width: 100%;
-    }
-    h1 {
-      font-family: "Balboa Medium";
+    padding-left: 100px;
+  }
+
+  h1 {
+    font-family: "Balboa Medium";
+    color: #828587;
+    font-size: 50px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 100px;
+    padding-bottom: 30px;
+  }
+
+  ul {
+    border-top: 2px solid #828587;
+    border-bottom: 2px solid #828587;
+    padding: 15px 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    li {
       color: #828587;
-      font-size: 50px;
-      line-height: 1;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-align: center;
-      margin-top: 0;
-      margin-left: 20px;
+      font-family: "Kessel Light";
+      line-height: 1.5;
+      font-size: 16px;
       margin-bottom: 0;
+      margin: 5px 30px;
+
     }
   }
   @media(max-width: 767px) {
-    > div {
-      h1 {
-        font-size: 36px;
-      }
-      .gatsby-image-wrapper {
-        max-width: 140px;
+    h1 {
+      padding-left: 0;
+      text-align: center;
+    }
+    h2 {
+      padding-left: 0;
+      text-align: center;
+    }
+    ul {
+      flex-wrap: wrap;
+      justify-content: center;
+
+      li {
+        margin: 5px 20px;
       }
     }
   }
@@ -150,9 +209,63 @@ const SectionOne = styled.section`
     line-height: 1.5;
     font-size: 18px;
     color: #fff;
-    max-width: 650px;
     font-weight: 400;
     margin-bottom: 0;
+  }
+  .flex-row {
+    display: flex;
+    gap: 40px;
+
+    .left-col {
+      width: calc(50% - 20px);
+
+      .gatsby-image-wrapper {
+        max-width: 450px ;
+        width: 100% !important;
+        margin: 0 auto !important;
+      }
+
+     
+    }
+
+    .right-col {
+      width: calc(50% - 20px);
+
+      h2 {
+        font-family: "Balboa Medium";
+        color: #828587;
+        font-size: 50px;
+        line-height: 1;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 30px;
+        margin-bottom: 0;
+      }
+
+      ul {
+        list-style: none;
+
+        li {
+          font-family: "Kessel Light";
+          line-height: 1.5;
+          font-size: 18px;
+          color: #828587;
+          font-weight: 400;
+          margin-bottom: 0;
+        }
+      }
+    }
+    @media(max-width: 767px) {
+      flex-wrap: wrap;
+      gap: 0;
+      .left-col {
+        width: 100%;
+      }
+      .right-col {
+        width: 100%;
+        text-align: center;
+      }
+    }
   }
   .row-2 {
     display: flex;
@@ -203,10 +316,14 @@ const SectionOne = styled.section`
 const SectionTwo = styled.section`
   padding: 50px 20px;
   background-color: #0b283a;
-  > div {
+  .flex-row {
     max-width: 1140px;
     padding: 0 20px;
     margin: 0px auto;
+    display: flex;
+  }
+  .left-col {
+    width: 65%;
     > div {
       display: flex;
       justify-content: flex-start;
@@ -235,6 +352,9 @@ const SectionTwo = styled.section`
       }
     }
   }
+  .right-col {
+    width: 35%;
+  }
   @media(max-width:767px) {
     > div {
       > div {
@@ -250,6 +370,16 @@ const SectionTwo = styled.section`
         display: none;
       }
     }
+
+    .flex-row {
+      flex-wrap: wrap;
+      .left-col {
+        width: 100%;
+      }
+      .right-col {
+        width: 100%;
+      }
+    }
   }
 `
 
@@ -257,6 +387,23 @@ const SectionThree = styled.section`
   max-width: 1140px;
   padding: 0 20px;
   margin: 80px auto;
+  margin-top: 20px;
+  .section-three-main {
+    text-align: center;
+    p {
+      font-family: "Kessel Light";
+      color: rgb(210,35,42);
+      font-weight: 400;
+      line-height: 1.2;
+      span.fancy {
+        font-family: "Madelyn";
+        font-weight: 400;
+        font-size: 40px;
+        bottom: 0px;
+        position: relative;
+      }
+    }
+  }
   @media(max-width:767px) {
     h2 {
       font-size: 28px;

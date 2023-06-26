@@ -275,7 +275,7 @@ const SubMenu = styled.ul`
             left: 20px;
             opacity: 1;
             visibility: visible;
-            height: 350px;
+            height: 200px;
         }
     }
     &.subMenuTwo {
@@ -283,7 +283,15 @@ const SubMenu = styled.ul`
             left: 20px;
             opacity: 1;
             visibility: visible;
-            height: 190px;
+            height: 160px;
+        }
+    }
+
+    li {
+        font-size: 14px;
+
+        a {
+            font-size: 14px;
         }
     }
 `
