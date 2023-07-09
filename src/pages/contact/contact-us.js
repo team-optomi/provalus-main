@@ -51,30 +51,14 @@ class ContactPage extends Component {
                 <SectionThree>
                     <h2>Locations</h2>
                     <div class="location-flex">
+                      {post.node.ContactUsContent.contactLocations.map(location => (
                         <div>
-                          <a href="https://goo.gl/maps/UmhVNFV67BGUz2xg7" target="_blank">
+                          <a href={location.contactLocationLink} target="_blank">
                             <Img fluid={data.locationImage.childImageSharp.fixed} />
-                            <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationOne }} />
+                            <div class="location-content" dangerouslySetInnerHTML={{ __html: location.contactLocationInformation }} />
                           </a>
                         </div>
-                        <div>
-                          <a href="https://g.page/Provalus?share" target="_blank">
-                            <Img fluid={data.locationImage.childImageSharp.fixed} />
-                            <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationTwo }} />
-                          </a>
-                        </div>
-                        <div>
-                          <a href="https://goo.gl/maps/kMCGGCgVdb31pMKz6" target="_blank">
-                            <Img fluid={data.locationImage.childImageSharp.fixed} />
-                            <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationThree }} />
-                          </a>
-                        </div>
-                        <div>
-                          <a href="#" target="_blank">
-                            <Img fluid={data.locationImage.childImageSharp.fixed} />
-                            <div class="location-content" dangerouslySetInnerHTML={{ __html: post.node.ContactUsContent.contactLocationFour }} />
-                          </a>
-                        </div>
+                      ))}
                     </div>
                 </SectionThree>
                 <SectionFour>
@@ -561,15 +545,17 @@ const SectionThree = styled.section`
       text-transform: uppercase;
     }
     .location-flex {
-      max-width: 1200px;
+      max-width: 1400px;
       width: 100%;
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       margin: 0 auto;
       a {
         text-decoration: none;
       }
       > div {
-        width: 25%;
+        width: 20%;
         text-align: center;
         .gatsby-image-wrapper {
           width: 35px;
@@ -578,7 +564,7 @@ const SectionThree = styled.section`
         }
         h3 {
           font-family: "Madelyn";
-          font-size: 85px;
+          font-size: 72px;
           font-weight: normal;
           line-height: 35px;
           color: #d2232a;
@@ -727,10 +713,10 @@ export default props => (
                   }
               }
               contactSectionOneCopy
-              contactLocationOne
-              contactLocationThree
-              contactLocationTwo
-              contactLocationFour
+              contactLocations {
+                contactLocationInformation
+                contactLocationLink
+              }
               mainContactNumber
             }
           }
