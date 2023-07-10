@@ -11,7 +11,7 @@ const ApplyPage = () => {
     const[referralDisplay, setReferralDisplay] = useState('full-row hidden');
 
     const stateSelect = (option) => {
-      if (option == 'alabama' || option == 'south-carolina') {
+      if (option == 'alabama' || option == 'south-carolina' || option == 'north-carolina') {
         setFormState('Apply Alabama/South Carolina');
       } else if (option == 'texas' || option == 'oklahoma') {
         setFormState('Apply Texas/Oklahoma');
@@ -103,6 +103,7 @@ const ApplyPage = () => {
                               <option value="alabama">Alabama</option>
                               <option value="texas">Texas</option>
                               <option value="south-carolina">South Carolina</option>
+                              <option value="north-carolina">North Carolina</option>
                               <option value="oklahoma">Oklahoma</option>
                               <option value="other">Other</option>
                             </select>
@@ -212,6 +213,7 @@ const ApplyPage = () => {
                               <option value="alabama">Alabama</option>
                               <option value="texas">Texas</option>
                               <option value="south-carolina">South Carolina</option>
+                              <option value="north-carolina">North Carolina</option>
                               <option value="oklahoma">Oklahoma</option>
                               <option value="other">Other</option>
                             </select>
@@ -324,6 +326,7 @@ const ApplyPage = () => {
                               <option value="alabama">Alabama</option>
                               <option value="texas">Texas</option>
                               <option value="south-carolina">South Carolina</option>
+                              <option value="north-carolina">North Carolina</option>
                               <option value="oklahoma">Oklahoma</option>
                               <option value="other">Other</option>
                             </select>
