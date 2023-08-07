@@ -9,6 +9,22 @@ import SEO from "../components/seo"
 const ApplyPage = () => {
     const[formState, setFormState] = useState('Apply Alabama/South Carolina');
     const[referralDisplay, setReferralDisplay] = useState('full-row hidden');
+    const [name, setName] = useState('');
+    const [blockedNames, setBlockedNames] = useState(['cody pendleton']);
+
+    
+    // Handle name change
+    const handleNameChange = (e) => {
+      setName(e.target.value);
+    };
+
+    // Handle form submission
+    const handleFormSubmit = (e) => {
+      if (blockedNames.includes(name.toLowerCase())) {
+        e.preventDefault();
+        alert("This name is not allowed!");
+      }
+    };
 
     const stateSelect = (option) => {
       if (option == 'alabama' || option == 'south-carolina' || option == 'north-carolina') {
@@ -89,7 +105,7 @@ const ApplyPage = () => {
                 </SectionOne>
                 <FormSection>
                   <div class={'hidden'} style={{display: 'none'}}>
-                    <form name="Apply Texas/Oklahoma" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
+                    <form onSubmit={handleFormSubmit} name="Apply Texas/Oklahoma" method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
                       <input type="hidden" name="form-name" value="Apply Texas/Oklahoma" aria-label="Input" />
                       <p class="hidden">
                           <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
@@ -110,7 +126,7 @@ const ApplyPage = () => {
                           </label>   
                       </p>
                       <p class="full-row">
-                          <label htmlFor="name">Full Name* <input type="text" name="name" aria-label="Input" required/></label>   
+                          <label htmlFor="name">Full Name* <input type="text" name="name" onChange={handleNameChange} aria-label="Input" required/></label>   
                       </p>
                       <p class="full-row">
                           <label htmlFor="address">Street Address* <input type="text" name="address" aria-label="Input" required/></label>
@@ -309,7 +325,7 @@ const ApplyPage = () => {
                     </form>
                   </div>
                   <div>
-                    <form name={formState} method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
+                    <form onSubmit={handleFormSubmit} name={formState} method="POST" netlify-honeypot="bot-field" action="/thank-you/" data-netlify="true">
                       <input type="hidden" name="form-name" value={formState} aria-label="Input" />
                       <p class="hidden">
                           <label>Don’t fill this out if you're human: <input name="bot-field" aria-label="Input" /></label>
@@ -333,7 +349,7 @@ const ApplyPage = () => {
                           </label>   
                       </p>
                       <p class="full-row">
-                          <label htmlFor="name">Full Name* <input type="text" name="name" aria-label="Input" required/></label>   
+                          <label htmlFor="name">Full Name* <input type="text" name="name" onChange={handleNameChange} aria-label="Input" required/></label>   
                       </p>
                       <p class="full-row">
                           <label htmlFor="address">Street Address* <input type="text" name="address" aria-label="Input" required/></label>
